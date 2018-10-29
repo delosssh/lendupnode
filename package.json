@@ -16,7 +16,8 @@
     "testbe": "tsc -p server && node_modules/.bin/mocha dist/server/test",
     "lint": "ng lint",
     "lintbe": "tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postInstall": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\""
   },
   "private": true,
   "dependencies": {

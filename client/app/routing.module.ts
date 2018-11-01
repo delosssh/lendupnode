@@ -15,6 +15,7 @@ import { ClientListComponent } from './client-list/client-list.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
+import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuardLogin } from './services/auth-guard-login.service';
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'client-list', component: ClientListComponent },
   { path: 'loan-details', component: LoanDetailsComponent },
   { path: 'add-new-loan', component: AddNewLoanComponent },
+  { path: 'loan-payment', component: LoanPaymentComponent },
   { path: '**', redirectTo: '/notfound' },
 ];
 

@@ -1,0 +1,64 @@
+<div class="container" fxLayout="column">
+  <div flFlex>
+    <div fxLayout="row">
+      <div fxLayout="column">
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="balance" [(ngModel)]="payment.balanceAmount">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="interest %" [(ngModel)]="payment.interestRate">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="interest amount" [value]="interestAmount()">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="cash withdrawal" [(ngModel)]="payment.cashWithdrawal">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="less interest" [value]="lessInterestAmount()">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="payment on principal" [(ngModel)]="payment.paymentAmount">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="cash out to client" [value]="cashOut()">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="new balance" [value]="newBalance()">
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,8 @@ import { ClientPaymentService } from '../services/client-payment.service';
 })
 export class LoanPaymentComponent implements OnInit {
 
-
+  clientName: String;
+  todayDate: String;
   payment: LoanPaymentModel;
 
   constructor(
@@ -27,8 +28,12 @@ export class LoanPaymentComponent implements OnInit {
     this.payment = new LoanPaymentModel();
 
     // sample data;
-    this.payment.balanceAmount = 10000;
+    this.payment.clientNumber = "PR0001";
+    this.payment.balanceAmount = 100000;
     this.payment.interestRate = 2.5;
+
+    this.clientName = "Precy Evangelista";
+    this.todayDate = "2/Nov/2018";
   }
 
   ngOnInit() {
@@ -64,7 +69,7 @@ export class LoanPaymentComponent implements OnInit {
   }
 
   cashOut() {
-    let lessInterest: Number = this.payment.lessInterestAmount;
+    let lessInterest: Number = this.lessInterestAmount();
     let paymentAmount: Number = this.payment.paymentAmount;
     let cashOut: Number = Number(lessInterest) - Number(paymentAmount);
 

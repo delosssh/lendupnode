@@ -2,6 +2,28 @@
   <div flFlex>
     <div fxLayout="row">
       <div fxLayout="column">
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="client number" [(ngModel)]="payment.clientNumber">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="client name" [(ngModel)]="clientName">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="date" [(ngModel)]="todayDate">
+          </mat-form-field>
+        </div>
+
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
@@ -26,28 +48,28 @@
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="cash withdrawal" [(ngModel)]="payment.cashWithdrawal">
+            <input matInput placeholder="salary" [(ngModel)]="payment.cashWithdrawal" style="inputEntry">
           </mat-form-field>
         </div>
 
-        <div fxFlex>
+        <!-- <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
             <input matInput placeholder="less interest" [value]="lessInterestAmount()">
           </mat-form-field>
-        </div>
+        </div> -->
 
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="payment on principal" [(ngModel)]="payment.paymentAmount">
+            <input matInput placeholder="principal" [(ngModel)]="payment.paymentAmount">
           </mat-form-field>
         </div>
 
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="cash out to client" [value]="cashOut()">
+            <input matInput placeholder="cash out" [value]="cashOut()">
           </mat-form-field>
         </div>
 

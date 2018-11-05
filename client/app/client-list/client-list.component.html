@@ -18,7 +18,13 @@
 <div>
   <button mat-raised-button color="accent" routerLink="/add-client">Add Client</button>
 </div>
-<div style="display: flex; flex-wrap: wrap;">
+<div style="display: flex; flex-wrap: wrap;" class="container">
+  <div style="display: flex">
+    <mat-form-field>
+      <input matInput placeholder="seach" #txtClientFirstName style="flex: 1" [(ngModel)]="searchTerm" (ngModelChange)="search()">
+    </mat-form-field>
+  </div>
+
     <mat-card style="flex: 1; max-width: 30rem; border-radius: 10px;" *ngFor="let client of clients" (click)="details(client._id)">
       <!-- <mat-card-title>{{ client.lastName }}, {{ client.firstName }}</mat-card-title> -->
       <mat-card-title>Client <b>{{client.clientNumber}}</b></mat-card-title>

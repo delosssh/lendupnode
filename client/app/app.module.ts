@@ -21,7 +21,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { AddClientComponent } from './add-client/add-client.component';
-import { ClientListComponent } from './client-list/client-list.component';
+import { ClientListComponent, SearchClientFilterPipe } from './client-list/client-list.component';
 import { ClientListChildComponent } from './client-list/client-list-child.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
@@ -63,7 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddNewLoanComponent,
     LoanPaymentComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    SearchClientFilterPipe
   ],
   entryComponents: [
     AddLoanPaymentDialogComponent,

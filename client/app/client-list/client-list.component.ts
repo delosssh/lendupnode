@@ -23,9 +23,11 @@ export class ClientListComponent {
  
   client: ClientModel;
   clients = [];
+  clientsCopy = [];
   clientNumber:String = "AnCdEf";
   dataSource: DataSource<any>;
   loan: Number;
+  searchTerm: String;
 
   public constructor (
     private http: Http,
@@ -44,6 +46,7 @@ export class ClientListComponent {
       .subscribe(
         data => {
           this.clients = data;
+          this.clientsCopy = data;
           this.dataSource = data;
         },
         error => console.log(error)
@@ -84,4 +87,27 @@ export class ClientListComponent {
     this.client.loans = event;
   }
 
+  search(): void {
+    let term = this.searchTerm;
+    this.clients = this.clientsCopy.filter(function(tag) {
+      return tag.firstName.toLowerCase().indexOf(term.toLowerCase()) >= 0;
+      // return tag.firstName.indexOf(term) >= 0;
+    });
+  }
+
+}
+
+
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'searchClient'
+})
+
+@Injectable()
+export class SearchClientFilterPipe implements PipeTransform {
+  transform(items: any[], field: string, value: string): any[] {
+    if(!items) return [];
+    return items.filter(it => it[field] == value);
+  }
 }

@@ -1,78 +1,199 @@
 <div class="container">
   <div style="display: flex">
-    <mat-icon matPrefix>person</mat-icon>
+    <mat-icon matPrefix>face</mat-icon>
     <mat-form-field>
       <input matInput placeholder="first name" id="firstName" name="firstName" [(ngModel)]="client.firstName" style="flex: 1">
     </mat-form-field>
     <!-- <button md-button><md-icon>search</md-icon></button> -->
   </div>
   <div style="display: flex">
-    <mat-icon matPrefix>person</mat-icon>
+    <mat-icon matPrefix></mat-icon>
     <mat-form-field>
       <input matInput placeholder="middle name" id="middleName" [(ngModel)]="client.middleName" style="flex: 1">
     </mat-form-field>
   </div>
   <div style="display: flex">
-    <mat-icon matPrefix>person</mat-icon>
+    <mat-icon matPrefix></mat-icon>
     <mat-form-field>
       <input matInput placeholder="last name" id="lastName" [(ngModel)]="client.lastName" style="flex: 1">
     </mat-form-field>
   </div>
 
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
+    <mat-icon matPrefix>wc</mat-icon>
     <mat-form-field>
-      <input matInput placeholder="birthdate" id="birthdate" name="birthdate" [value]="client.birthdate | date: 'MM/dd/yyyy'">
+      <mat-select placeholder="gender" [(ngModel)]="client.gender">
+        <mat-option value="ma">male</mat-option>
+        <mat-option value="fe">female</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>  
+
+  <div style="display: flex">
+    <mat-icon matPrefix>phone</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="mobile phone" id="mobilePhone" [(ngModel)]="client.mobilePhone" style="flex: 1">
     </mat-form-field>
   </div>
 
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
+    <mat-icon matPrefix>email</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="email address" id="emailAddress" [(ngModel)]="client.emailAddress" style="flex: 1">
+    </mat-form-field>
+  </div>
+
+  <!-- <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="birthdate" id="birthdate" name="birthdate" [value]="client.birthdate | date: 'MM/dd/yyyy'">
+    </mat-form-field>
+  </div> -->
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="birthdatePicker" placeholder="birthdate" [(ngModel)]="client.birthdate">
+      <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthdatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>map</mat-icon>
     <mat-form-field>
       <input matInput placeholder="address1" id="address1" [(ngModel)]="client.address1">
     </mat-form-field>
   </div>
     
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
+    <mat-icon matPrefix></mat-icon>
     <mat-form-field>
       <input matInput placeholder="address2" id="address2" [(ngModel)]="client.address2">
     </mat-form-field>
   </div>
 
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
+    <mat-icon matPrefix></mat-icon>
     <mat-form-field>
       <input matInput placeholder="zone name" id="zoneName" [(ngModel)]="client.zoneName">
     </mat-form-field>
   </div>
 
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
+    <mat-icon matPrefix></mat-icon>
     <mat-form-field>
       <input matInput placeholder="barangay" id="barangayName" [(ngModel)]="client.barangayName">
     </mat-form-field>
   </div>
 
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
-    <mat-select placeholder="city" [(ngModel)]="client.cityName">
-      <mat-option value="sjc">san jose city</mat-option>
-      <mat-option value="cab">cabanatuan city</mat-option>
-      <mat-option value="bag">baguio city</mat-option>
-      <mat-option value="scm">science city of munoz</mat-option>
-    </mat-select>
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <mat-select placeholder="city" [(ngModel)]="client.cityName">
+        <mat-option value="sjc">san jose city</mat-option>
+        <mat-option value="cab">cabanatuan city</mat-option>
+        <mat-option value="bag">baguio city</mat-option>
+        <mat-option value="scm">science city of munoz</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>    
   
   <div style="display: flex">
-    <mat-icon matPrefix>calendar</mat-icon>
-    <mat-select placeholder="province" [(ngModel)]="client.provinceName">
-      <mat-option value="ne">nueva ecija</mat-option>
-      <mat-option value="bu">bulacan</mat-option>
-      <mat-option value="be">benguet</mat-option>
-      <mat-option value="tu">tuguegarao</mat-option>
-    </mat-select>
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <mat-select placeholder="province" [(ngModel)]="client.provinceName">
+        <mat-option value="ne">nueva ecija</mat-option>
+        <mat-option value="bu">bulacan</mat-option>
+        <mat-option value="be">benguet</mat-option>
+        <mat-option value="tu">tuguegarao</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>    
+
+  <div style="display: flex">
+    <mat-icon matPrefix>location_on</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="location map" id="locationMap" [(ngModel)]="client.locationMap">
+    </mat-form-field>
+  </div>
+  
+  <!-- Employment -->
+  <div style="display: flex">
+    <mat-icon matPrefix>people</mat-icon>
+    <mat-form-field>
+      <mat-select placeholder="employment" [(ngModel)]="client.employment">
+        <mat-option value="em">employed</mat-option>
+        <mat-option value="se">self-employed</mat-option>
+        <mat-option value="of">ofw</mat-option>
+        <mat-option value="rp">retiree/pensioner</mat-option>
+        <mat-option value="st">Student</mat-option>
+        <mat-option value="ue">Unemployed</mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>  
+
+  <div style="display: flex">
+    <mat-icon matPrefix>business</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="company/business name" id="businessName" [(ngModel)]="client.businessName">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>map</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="company/business address" id="businessAddress" [(ngModel)]="client.businessAddress">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="company/business phone" id="businessPhone" [(ngModel)]="client.businessPhone">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="job title/position" id="businessJobTitle" [(ngModel)]="client.businessJobTitle">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="gross monthly income" id="grossMonthlyIncome" [(ngModel)]="client.grossMonthlyIncome">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="businessJoiningDate" [(ngModel)]="client.businessJoiningDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="paydate 1" [(ngModel)]="client.businessPayDate1">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="paydate 2" [(ngModel)]="client.businessPayDate2">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>  
+  </div>
 
   <div style="display: flex; margin-top: 5vh" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="save()">Save</button>

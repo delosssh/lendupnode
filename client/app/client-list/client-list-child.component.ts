@@ -32,6 +32,7 @@ export class ClientListChildComponent {
     this.loanService.countLoans(clientNumber)
       .subscribe (
         res => {
+          console.log("client-list-child.component : checkLoan : subscribe");
           console.log(res);
           console.dir(res);
           this.loans = res;

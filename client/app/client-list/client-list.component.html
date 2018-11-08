@@ -44,6 +44,7 @@
             </mat-form-field>
 
             <mat-form-field>
+              <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->
               <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
                 
               <input matInput placeholder="total loans" [value]="client.loans" readonly="true">

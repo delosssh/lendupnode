@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="container-header">
+    <h3>Add New Regular Loan</h3>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="client number" [(ngModel)]="client.clientNumber" readonly="true">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>face</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="first name" [(ngModel)]="client.firstName" readonly="true" style="flex: 1">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="middle name" [(ngModel)]="client.middleName" readonly="true" style="flex: 1">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="last name" [(ngModel)]="client.lastName" readonly="true" style="flex: 1">
+    </mat-form-field>
+  </div> 
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <mat-select placeholder="loan type" [(ngModel)]="loan.loanTypeId">
+        <mat-option value="sal">salary</mat-option>
+        <mat-option value="per">personal</mat-option>
+        <mat-option value="ofw">ofw</mat-option>
+        <mat-option value="oth">other</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>       
+
+  <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="loan proceed" [(ngModel)]="loan.loanProceed">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>phone</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="loan amount" [(ngModel)]="loan.principalAmount" style="flex: 1">
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>email</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="interest rate (%)" [(ngModel)]="loan.interestRate" style="flex: 1">
+    </mat-form-field>
+  </div>
+
+  <!-- <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="birthdate" id="birthdate" name="birthdate" [value]="client.birthdate | date: 'MM/dd/yyyy'">
+    </mat-form-field>
+  </div> -->
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="needByDatePicker" placeholder="need by date" [(ngModel)]="loan.needByDate">
+      <mat-datepicker-toggle matSuffix [for]="needByDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #needByDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dueDatePicker" placeholder="due date" [(ngModel)]="loan.dueDate">
+      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dueDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="releasePicker" placeholder="release date" [(ngModel)]="loan.releaseDate">
+      <mat-datepicker-toggle matSuffix [for]="releasePicker"></mat-datepicker-toggle>
+      <mat-datepicker #releasePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex; margin-top: 5vh" fxLayoutAlign="center">
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-button>Cancel</button>
+  </div>
+
+</div>

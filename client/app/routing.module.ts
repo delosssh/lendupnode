@@ -15,6 +15,7 @@ import { ClientListComponent } from './client-list/client-list.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
+import { AddNewRegularLoanComponent } from './add-new-regular-loan/add-new-regular-loan.component';
 import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { HomeComponent } from './home/home.component';
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'loan-details', component: LoanDetailsComponent },
   { path: 'add-new-loan', component: AddNewLoanComponent },
   { path: 'loan-payment', component: LoanPaymentComponent },
+  { path: 'add-new-regular-loan', component: AddNewRegularLoanComponent },
   { path: '**', redirectTo: '/notfound' },
 ];
 

@@ -51,8 +51,11 @@ export class ClientDetailComponent implements OnInit {
     });    
   }
 
-  newLoan(client: ClientModel) {
+  newLoan1(client: ClientModel) {
     this.router.navigate(['/add-new-loan', { clientNumber: client.clientNumber }]);
+  }
+  newLoan(client: ClientModel) {
+    this.router.navigate(['/add-new-regular-loan', { id: client._id }]);
   }
 
   update(client: ClientModel) {

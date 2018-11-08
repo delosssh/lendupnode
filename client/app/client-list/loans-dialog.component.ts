@@ -8,12 +8,14 @@ import { LoanService } from '../services/loan.service';
 
 @Component({
   selector: 'loans-dialog',
-  templateUrl: './loans-dialog.component.html'
+  templateUrl: './loans-dialog.component.html',
+  styleUrls: ['./loans-dialog.component.scss']
 })
 export class LoansDialogComponent {
 
   loan: LoanModel;
   loans = [];
+  loanPayments: Number = 0;
 
   constructor(
     private router: Router,
@@ -41,6 +43,21 @@ export class LoansDialogComponent {
     );
   }
  
+  // load(event) {
+  //   console.log('getLoanPayments');
+  //   console.log(event);
+  //   this.loanPayments = 100;
+  // }
+
+  loanEvent(event) {
+    console.log('loans-dialog: loanEvent: ' + event);
+    this.loanPayments = event;
+  }
+
+  getBalance(principal, payment) {
+    return principal - payment;
+  }
+
   gotoDetails(loan) {
     console.log('loanId: ' + loan);
     console.dir(loan);

@@ -84,7 +84,7 @@ export class ClientListComponent {
     console.log('loans');
     console.dir(event);
     // this.loan = event;
-    this.client.loans = event;
+    // this.client.loans = event;
   }
 
   search(): void {

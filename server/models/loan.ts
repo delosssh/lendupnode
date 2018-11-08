@@ -15,6 +15,8 @@ const loanSchema = new mongoose.Schema({
   numberOfPayments: Number,       /** daily: 80days, weekly: 8 weeks, bi-weekly: 4, flexible: one-time */
   paymentAmount: Number,
   paymentInterval: Number,        /** daily: 1 day, weekly: 7 days, etc */
+  loanProceed: String,
+  needByDate: Date,
   lastUpdate: Date,
   creationDate: Date
 });

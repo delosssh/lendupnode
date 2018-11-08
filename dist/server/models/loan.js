@@ -15,6 +15,8 @@ var loanSchema = new mongoose.Schema({
     numberOfPayments: Number,
     paymentAmount: Number,
     paymentInterval: Number,
+    loanProceed: String,
+    needByDate: Date,
     lastUpdate: Date,
     creationDate: Date
 });

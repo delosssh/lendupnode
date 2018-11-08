@@ -29,7 +29,9 @@ import { LoansDialogComponent } from './client-list/loans-dialog.component';
 import { LoanPaymentDialogComponent } from './loan-payments/loan-payment-dialog.component';
 import { AddLoanPaymentDialogComponent } from './add-loan-payment/add-loan-payment-dialog.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
+import { AddNewRegularLoanComponent } from './add-new-regular-loan/add-new-regular-loan.component';
 import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
+import { LoansDialogChildComponent } from './loans-dialog-child/loans-dialog-child.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 
@@ -58,9 +60,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoanDetailsComponent,
     ClientDetailComponent,
     LoansDialogComponent,
+    LoansDialogChildComponent,
     LoanPaymentDialogComponent,
     AddLoanPaymentDialogComponent,
     AddNewLoanComponent,
+    AddNewRegularLoanComponent,
     LoanPaymentComponent,
     NavbarComponent,
     HomeComponent,

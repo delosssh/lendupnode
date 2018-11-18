@@ -1,10 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoanModel } from '../models/loan.model';
 
 import { LoanService } from '../services/loan.service';
+
+import { LoanPaymentDialogComponent } from '../loan-payments/loan-payment-dialog.component';
+import { ClientLoanPaymentDialogComponent } from '../client-loan-payment-dialog/client-loan-payment-dialog.component';
 
 @Component({
   selector: 'loans-dialog',
@@ -20,7 +23,8 @@ export class LoansDialogComponent {
   constructor(
     private router: Router,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private loanService: LoanService
+    private loanService: LoanService,
+    private dialog: MatDialog,
   ) {
     console.log('constructor was called');
   }
@@ -63,5 +67,11 @@ export class LoansDialogComponent {
     console.dir(loan);
 
     this.router.navigate(['/loan-details', {id: loan._id}]);
+  }
+
+  showAddPayment(loan) {
+    this.dialog.open(ClientLoanPaymentDialogComponent, {
+      data: { loan: loan }
+    });     
   }
 }

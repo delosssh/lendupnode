@@ -72,6 +72,19 @@
   </div> -->
 
   <div style="display: flex">
+    <mat-icon matPrefix></mat-icon>
+    <mat-form-field>
+      <mat-select placeholder="payment type" [(ngModel)]="loan.paymentTypeId">
+        <mat-option value="dai">daily</mat-option>
+        <mat-option value="wek">weekly</mat-option>
+        <mat-option value="bwe">bi-weekly</mat-option>
+        <mat-option value="mon">monthly</mat-option>
+        <mat-option value="one">one time</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>   
+
+  <div style="display: flex">
     <mat-icon matPrefix>calendar_today</mat-icon>
     <mat-form-field>
       <input matInput [matDatepicker]="needByDatePicker" placeholder="need by date" [(ngModel)]="loan.needByDate">
@@ -101,6 +114,7 @@
   <div style="display: flex; margin-top: 5vh" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="save()">Save</button>
     <button mat-button>Cancel</button>
+    <button mat-button (click)="calculatePaymentSchedule()">Calc</button>
   </div>
 
 </div>

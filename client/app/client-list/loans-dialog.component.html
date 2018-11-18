@@ -60,6 +60,7 @@
             <!-- <loans-dialog-child [loanId]="loan.loanId" (loan)="loanEvent( $event )"></loans-dialog-child> -->
             <loans-dialog-child [loanId]="loan.loanId" (loan)="loan.totalPaymentAmount = $event"></loans-dialog-child>
             <input matInput placeholder="payments" [value]="loan.totalPaymentAmount" readonly="true">
+            <mat-icon matSuffix>receipt</mat-icon>
           </mat-form-field>
         </div>  
           
@@ -72,6 +73,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="accent" mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+        <button mat-button (click)="showAddPayment(loan)">Add Payment</button>
       </mat-card-actions>
     </mat-card> 
   </div>

@@ -27,10 +27,17 @@
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="balance" [(ngModel)]="payment.balanceAmount" readonly="true">
+            <input matInput placeholder="balance" [(ngModel)]="loan.balanceAmount" readonly="true">
           </mat-form-field>
         </div>
 
+        <div fxFlex>
+          <mat-icon>person</mat-icon>
+          <mat-form-field>
+            <input matInput placeholder="principal amount" [(ngModel)]="loan.principalAmount" readonly="true">
+          </mat-form-field>
+        </div>
+  
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
@@ -76,16 +83,23 @@
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
-            <input matInput placeholder="new balancer" [value]="newBalance()" readonly="true">
+            <input matInput placeholder="new balance" [value]="newBalance()" readonly="true">
           </mat-form-field>
         </div>
 
         <div fxFlex>
           <mat-icon>person</mat-icon>
           <mat-form-field>
+            <input matInput placeholder="loan id" [(ngModel)]="loan.loanId" readonly="true">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex>
+          <!-- <mat-icon>person</mat-icon>
+          <mat-form-field> -->
             <button mat-raised-button color="primary">Save</button>
             <button mat-raised-button>Close</button>
-          </mat-form-field>
+          <!-- </mat-form-field> -->
         </div>
 
       </div>

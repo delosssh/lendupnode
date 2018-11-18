@@ -16,6 +16,7 @@ export class LoanModel extends BaseModel {
   paymentInterval: Number;
   loanProceed: String;
   needByDate: Date;
+  balanceAmount: Number;
   totalPaymentAmount: Number;
   lastUpdate: Date;
   creationDate: Date;

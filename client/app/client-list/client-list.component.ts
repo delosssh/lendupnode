@@ -87,6 +87,12 @@ export class ClientListComponent {
     // this.client.loans = event;
   }
 
+  showLoans(client: ClientModel) {
+    this.dialog.open(LoansDialogComponent, {
+      data: { clientNumber: client.clientNumber }
+    });    
+  }
+
   search(): void {
     let term = this.searchTerm;
     this.clients = this.clientsCopy.filter(function(tag) {

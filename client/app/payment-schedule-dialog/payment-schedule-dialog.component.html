@@ -1,0 +1,65 @@
+<h3 mat-dialog-title>Payment Schedule</h3>
+
+<mat-dialog-content>
+
+  <div fxFlex fxLayout="column">
+
+    <div *ngFor="let paymentSchedule of paymentSchedules">
+
+      <mat-card>
+
+        <mat-card-content>
+
+          <div fxLayout="row" fxLayoutAlign="start">
+
+            <div fxFlex="10" style="font-size: 14pt; font-weight: bold; margin-right: 10px">{{ paymentSchedule.paymentNumber }}</div>
+            <div fxFlex="90" fxLayout="column" style="font-size: 8pt;">
+
+              <div fxLayout="row">
+
+                <div fxFlex="50">Due Date</div>
+                <div fxFlex="50" fxLayoutAlign="end">{{ paymentSchedule.dueDate | date: 'MM/dd/yyyy' }}</div>
+
+              </div>
+
+              <div fxLayout="row">
+
+                <div fxFlex="50">Installment</div>
+                <div fxFlex="50" fxLayoutAlign="end">{{ paymentSchedule.installmentAmount | number: '1.2-2' }}</div>
+
+              </div>
+
+              <div fxLayout="row">
+
+                <div fxFlex="50">Interest</div>
+                <div fxFlex="50" fxLayoutAlign="end">{{ paymentSchedule.interestAmount | number: '1.2-2' }}</div>
+  
+              </div>
+
+              <div fxLayout="row">
+
+                <div fxFlex="50">To Pay</div>
+                <div fxFlex="50" fxLayoutAlign="end">{{ paymentSchedule.installmentAmount + paymentSchedule.interestAmount | number: '1.2-2' }}</div>
+  
+              </div>
+
+              <div fxLayout="row">
+
+                <div fxFlex="50">Balance</div>
+                <div fxFlex="50" fxLayoutAlign="end">{{ paymentSchedule.balanceAmount | number: '1.2-2' }}</div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</mat-dialog-content>

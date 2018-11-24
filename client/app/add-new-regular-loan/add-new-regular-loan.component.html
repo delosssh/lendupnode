@@ -74,7 +74,7 @@
   <div style="display: flex">
     <mat-icon matPrefix></mat-icon>
     <mat-form-field>
-      <mat-select placeholder="payment type" [(ngModel)]="loan.paymentTypeId">
+      <mat-select placeholder="payment type" [(ngModel)]="loan.paymentTypeId" (change)="loanTypeChangeEvent($event)">
         <mat-option value="dai">daily</mat-option>
         <mat-option value="wek">weekly</mat-option>
         <mat-option value="bwe">bi-weekly</mat-option>
@@ -96,25 +96,32 @@
   <div style="display: flex">
     <mat-icon matPrefix>calendar_today</mat-icon>
     <mat-form-field>
-      <input matInput [matDatepicker]="dueDatePicker" placeholder="due date" [(ngModel)]="loan.dueDate">
-      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #dueDatePicker></mat-datepicker>
-    </mat-form-field>
-  </div>
-
-  <div style="display: flex">
-    <mat-icon matPrefix>calendar_today</mat-icon>
-    <mat-form-field>
       <input matInput [matDatepicker]="releasePicker" placeholder="release date" [(ngModel)]="loan.releaseDate">
       <mat-datepicker-toggle matSuffix [for]="releasePicker"></mat-datepicker-toggle>
       <mat-datepicker #releasePicker></mat-datepicker>
     </mat-form-field>
   </div>
 
+  <div style="display: flex">
+    <mat-icon matPrefix>calendar_today</mat-icon>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dueDatePicker" placeholder="first payment date" [(ngModel)]="loan.dueDate">
+      <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dueDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex">
+    <mat-icon matPrefix>email</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="maturity date" [(ngModel)]="loan.maturityDate" style="flex: 1" readonly="true">
+    </mat-form-field>
+  </div>
+
   <div style="display: flex; margin-top: 5vh" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="save()">Save</button>
     <button mat-button>Cancel</button>
-    <button mat-button (click)="calculatePaymentSchedule()">Calc</button>
+    <button mat-button (click)="calculatePaymentSchedule()">Show Schedule</button>
   </div>
 
 </div>

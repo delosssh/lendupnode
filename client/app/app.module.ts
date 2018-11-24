@@ -42,6 +42,7 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/payment-schedule-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddNewLoanComponent,
     AddNewRegularLoanComponent,
     LoanPaymentComponent,
+    PaymentScheduleDialogComponent,
     ClientLoanPaymentDialogComponent,
     NavbarComponent,
     HomeComponent,
@@ -76,7 +78,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddLoanPaymentDialogComponent,
     LoansDialogComponent,
     LoanPaymentDialogComponent,
-    ClientLoanPaymentDialogComponent
+    ClientLoanPaymentDialogComponent,
+    PaymentScheduleDialogComponent,
   ],
   imports: [
     RoutingModule,

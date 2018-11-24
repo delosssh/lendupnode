@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { ClientService } from '../services/client.service';
 import { LoanService } from '../services/loan.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { ClientModel } from '../models/client.model';
 import { LoanModel } from '../models/loan.model';
-import { PaymentSchedule } from '../models/payment-schedule.model';
+import { PaymentScheduleModel } from '../models/payment-schedule.model';
+import { PaymentScheduleDialogComponent } from '../payment-schedule-dialog/payment-schedule-dialog.component';
 
 @Component({
   selector: 'add-new-regular-loan',
@@ -19,15 +21,16 @@ export class AddNewRegularLoanComponent {
  
   client: ClientModel;
   loan: LoanModel;
-  paymentSchedule: PaymentSchedule;
+  paymentSchedule: PaymentScheduleModel;
   schedules = [];
 
   public constructor (
     private clientService: ClientService,
+    private dialog: MatDialog,
     private loanService: LoanService,
     private http: Http,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     this.client = new ClientModel();
     this.loan = new LoanModel();
@@ -63,14 +66,17 @@ export class AddNewRegularLoanComponent {
     //     error => console.log(error)
     //   );
 
-    var paymentSchedule: PaymentSchedule = new PaymentSchedule();
-    paymentSchedule.loanId = this.loan.loanId;
-    paymentSchedule.dueAmount = 200000;
+    this.calculatePaymentSchedule();
+
+    // var paymentSchedule: PaymentScheduleModel = new PaymentScheduleModel();
+    // paymentSchedule.loanId = this.loan.loanId;
+    // paymentSchedule.dueAmount = 200000;
 
     this.loan.clientNumber = this.client.clientNumber;
     this.loan.balanceAmount = this.loan.principalAmount;
     this.loan.paymentSchedule = [];
-    this.loan.paymentSchedule.push(paymentSchedule);
+    // this.loan.paymentSchedule.push(paymentSchedule);
+    this.loan.paymentSchedule = this.schedules;
     this.loanService.addLoan(this.loan)
     .subscribe(
       res => {
@@ -81,13 +87,20 @@ export class AddNewRegularLoanComponent {
     );
   }
 
+  /**
+   * loan type
+   */
+  loanTypeChangeEvent(event: any) {
+    console.dir(event);
+  }
+
   /** 
    * monthly installment
    * interest amount = balance amount * interest rate  
   */
   calculatePaymentSchedule() {
-    let principalAmount: Number = 100000;
-    let interestRate: Number = 0.05;
+    let principalAmount: Number = this.loan.principalAmount;
+    let interestRate: Number = Number(this.loan.interestRate) / 100;
     let numberOfPayments: Number = 12;
     let balanceAmount: Number = principalAmount;
     let monthlyInstallment: Number = Number(principalAmount) / Number(numberOfPayments);
@@ -96,11 +109,6 @@ export class AddNewRegularLoanComponent {
     var dueDateTmp: Date;
     var dueDateTmp2: Date;
     var paymentInterval = 1;
-    var a = 0;
-    var b = 0;
-    var c;
-
-    c = a+b;
 
     console.log('add-new-regular-loan:calculatePaymentSchedule: ' + this.loan.dueDate);
 
@@ -108,7 +116,7 @@ export class AddNewRegularLoanComponent {
     console.log(dueDate);
 
     for(var x = 1; x < (Number(numberOfPayments) + 1); x ++ ) {
-      this.paymentSchedule = new PaymentSchedule();
+      this.paymentSchedule = new PaymentScheduleModel();
       this.paymentSchedule.paymentNumber = x;
 
       if (x == 0) {
@@ -146,5 +154,15 @@ export class AddNewRegularLoanComponent {
     }
 
     console.dir(this.schedules);
+    this.loan.maturityDate = dueDateTmp;
+
+    this.showPaymentSchedule(this.schedules);
+  }
+
+  showPaymentSchedule(schedules: PaymentScheduleModel[]) {
+    var dialogConfig: MatDialogConfig = new MatDialogConfig();
+    dialogConfig.data = { paymentSchedules: schedules };
+    // dialogConfig.width = "400px";
+    this.dialog.open(PaymentScheduleDialogComponent, dialogConfig);
   }
 }

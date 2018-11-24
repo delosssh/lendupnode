@@ -31,68 +31,35 @@
       <mat-card-title>
           <div fxLayout="row" fxLayoutAlign="space-between">
             <div fxFlex="50">
-              <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
+              <img (click)="details(client._id)" style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
             </div>
             <div fxFlex="50" fxLayoutAlign="end">{{ client.clientNumber }}</div>
           </div>
       </mat-card-title>
-        <!-- <mat-card-title>Client <b>{{client.clientNumber}}</b></mat-card-title> -->
-        <mat-card-content>
-        <div fxLayout="row">
-          <!-- <div flex>
-            <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
-          </div> -->
-          <div flex fxLayout="column">
 
-            <!-- <div flex>
-              <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
-            </div> -->
-      
+      <mat-card-content>
+
+        <div fxLayout="column">
+
+          <div fxLayout="row">
             <span class="mat-span-title">{{ client.lastName }}</span>
-            <!-- <span class="mat-span-title" matLine>{{ client.middleName }}</span>                   -->
-            <span>{{ client.firstName }} - {{ client.middleName }}</span>
-            <!-- <mat-form-field>
-              <input matInput placeholder="first name" [value]="client.firstName" readonly="true">
-            </mat-form-field> -->
-            <!-- <span matLine>{{ client.middleName }}</span>                   -->
-            <!-- <mat-form-field>
-              <input matInput placeholder="last name" [value]="client.lastName" readonly="true">
-            </mat-form-field> -->
-
-            <!-- <span class="flex-container-div">
-              <div >
-                <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
-                {{ client.loans }}
-              </div>
-              <div>x</div>
-              <div>y</div>
-            </span>
-
-            <div fxLayout="row" fxLayoutAlign="space-around">
-              <div>1</div>
-              <div>1</div>
-              <div>1</div>
-            </div> -->
-            <span class="flex-container-div">
-              <div >
-                <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
-                Current Loans: {{ client.loans }}
-              </div>
-              <!-- <div>x</div> -->
-              <div>
-                <mat-icon matSuffix (click)="showLoans(client)">receipt</mat-icon>
-              </div>
-            </span>
-
-            <!-- <mat-form-field>
-              <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
-                
-              <input matInput placeholder="total loans" [value]="client.loans" readonly="true">
-              <mat-icon matSuffix (click)="showLoans(client)">receipt</mat-icon>
-            </mat-form-field> -->
-  
           </div>
-        </div>     
+          <div fxLayout="row">
+              <span>{{ client.firstName }} - {{ client.middleName }}</span>
+          </div>
+  
+          <div fxLayout="row">
+            <div fxFlex="50">
+              <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
+              Current Loans: {{ client.loans }}
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end">
+                <mat-icon matSuffix (click)="showLoans(client)">receipt</mat-icon>
+            </div> 
+          </div>
+
+        </div>
+    
       </mat-card-content>
       <!-- <mat-card-actions> -->
           <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->

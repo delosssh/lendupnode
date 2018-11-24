@@ -1,5 +1,5 @@
 import { BaseModel } from './base.model';
-import { PaymentSchedule } from './payment-schedule.model';
+import { PaymentScheduleModel } from './payment-schedule.model';
 
 export class LoanModel extends BaseModel {
   loanId: String;
@@ -19,7 +19,8 @@ export class LoanModel extends BaseModel {
   needByDate: Date;
   balanceAmount: Number;
   totalPaymentAmount: Number;
-  paymentSchedule: PaymentSchedule[];
+  paymentSchedule: PaymentScheduleModel[];
+  maturityDate: Date;
   lastUpdate: Date;
   creationDate: Date;
 }

@@ -60,7 +60,7 @@
     <loans-dialog-child [loanId]="loan.loanId" (loan)="loan.totalPaymentAmount = $event"></loans-dialog-child>
 
     <mat-card>
-      <mat-card-content fxFlex fxLayoutAlign="start" fxLayout="column" style="height: 75px">
+      <mat-card-content fxFlex fxLayoutAlign="start" fxLayout="column" style="height: 100px">
         <div fxFlex fxLayout="row" fxLayoutAlign="start">
 
           <div fxFlex fxLayout="column" fxLayoutAlign="start">
@@ -80,7 +80,7 @@
           </div>
 
         </div>
-        <div style="height: 30px" fxFlex fxLayoutAlign="bottom">
+        <div fxFlex="40" fxLayoutAlign="bottom">
           <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>
           <button mat-button (click)="showAddPayment(loan)">Add Payment</button>
         </div>

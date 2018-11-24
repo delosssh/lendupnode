@@ -1,4 +1,6 @@
-export class PaymentSchedule {
+import { BaseModel } from "./base.model";
+
+export class PaymentScheduleModel extends BaseModel {
   loanId: String;
   paymentNumber: Number;
   dueAmount: Number;

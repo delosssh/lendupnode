@@ -63,8 +63,14 @@ export class AddNewRegularLoanComponent {
     //     error => console.log(error)
     //   );
 
+    var paymentSchedule: PaymentSchedule = new PaymentSchedule();
+    paymentSchedule.loanId = this.loan.loanId;
+    paymentSchedule.dueAmount = 200000;
+
     this.loan.clientNumber = this.client.clientNumber;
     this.loan.balanceAmount = this.loan.principalAmount;
+    this.loan.paymentSchedule = [];
+    this.loan.paymentSchedule.push(paymentSchedule);
     this.loanService.addLoan(this.loan)
     .subscribe(
       res => {

@@ -18,7 +18,7 @@
 <div>
   <button mat-raised-button color="accent" routerLink="/add-client">Add Client</button>
 </div>
-<div style="display: flex; flex-wrap: wrap;" class="container">
+<div style="display: flex; flex-wrap: wrap;" class="container" >
   <div style="display: flex">
     <mat-form-field>
       <input matInput placeholder="seach" #txtClientFirstName style="flex: 1" [(ngModel)]="searchTerm" (ngModelChange)="search()">
@@ -28,38 +28,76 @@
     <!-- <mat-card style="flex: 1; max-width: 30rem; border-radius: 0px;" *ngFor="let client of clients" (click)="details(client._id)"> -->
     <mat-card style="flex: 1; max-width: 30rem; border-radius: 0px;" *ngFor="let client of clients">
         <!-- <mat-card-title>{{ client.lastName }}, {{ client.firstName }}</mat-card-title> -->
-      <mat-card-title>Client <b>{{client.clientNumber}}</b></mat-card-title>
-      <mat-card-content>
-        <div fxLayout="row">
-          <div flex>
-            <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
+      <mat-card-title>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxFlex="50">
+              <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end">{{ client.clientNumber }}</div>
           </div>
+      </mat-card-title>
+        <!-- <mat-card-title>Client <b>{{client.clientNumber}}</b></mat-card-title> -->
+        <mat-card-content>
+        <div fxLayout="row">
+          <!-- <div flex>
+            <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
+          </div> -->
           <div flex fxLayout="column">
-            <!-- <span>{{ client.firstName }}</span> -->
-            <mat-form-field>
-              <input matInput placeholder="first name" [value]="client.firstName" readonly="true">
-            </mat-form-field>
-            <!-- <span matLine>{{ client.middleName }}</span>                   -->
-            <mat-form-field>
-              <input matInput placeholder="last name" [value]="client.lastName" readonly="true">
-            </mat-form-field>
 
-            <mat-form-field>
-              <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->
+            <!-- <div flex>
+              <img style="height: 50px; border-radius: 50%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png">
+            </div> -->
+      
+            <span class="mat-span-title">{{ client.lastName }}</span>
+            <!-- <span class="mat-span-title" matLine>{{ client.middleName }}</span>                   -->
+            <span>{{ client.firstName }} - {{ client.middleName }}</span>
+            <!-- <mat-form-field>
+              <input matInput placeholder="first name" [value]="client.firstName" readonly="true">
+            </mat-form-field> -->
+            <!-- <span matLine>{{ client.middleName }}</span>                   -->
+            <!-- <mat-form-field>
+              <input matInput placeholder="last name" [value]="client.lastName" readonly="true">
+            </mat-form-field> -->
+
+            <!-- <span class="flex-container-div">
+              <div >
+                <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
+                {{ client.loans }}
+              </div>
+              <div>x</div>
+              <div>y</div>
+            </span>
+
+            <div fxLayout="row" fxLayoutAlign="space-around">
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+            </div> -->
+            <span class="flex-container-div">
+              <div >
+                <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
+                Current Loans: {{ client.loans }}
+              </div>
+              <!-- <div>x</div> -->
+              <div>
+                <mat-icon matSuffix (click)="showLoans(client)">receipt</mat-icon>
+              </div>
+            </span>
+
+            <!-- <mat-form-field>
               <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
                 
               <input matInput placeholder="total loans" [value]="client.loans" readonly="true">
-              <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->
               <mat-icon matSuffix (click)="showLoans(client)">receipt</mat-icon>
-            </mat-form-field>
+            </mat-form-field> -->
   
           </div>
         </div>     
       </mat-card-content>
-      <mat-card-actions>
+      <!-- <mat-card-actions> -->
           <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->
-          <button mat-button (click)="details(client._id)">Details</button>
+          <!-- <button mat-button (click)="details(client._id)">Details</button> -->
           <!-- <button mat-button (click)="showLoans(client)">Loans</button> -->
-      </mat-card-actions>
+      <!-- </mat-card-actions> -->
     </mat-card>  
 </div>

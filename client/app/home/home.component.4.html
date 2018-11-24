@@ -13,13 +13,8 @@
 
       <div fxLayout="row">
 
-        <!-- <div fxLayout="column"> -->
+        <div fxLayout="column">
 
-        <mat-card>
-
-          <mat-card-title>Login</mat-card-title>
-
-          <mat-card-content fxLayout="column">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
 
             <div>
@@ -32,18 +27,17 @@
             <div>
               <mat-icon></mat-icon>
               <mat-form-field>
-                <input matInput formControlName="password" placeholder="password" readonly="false" type="password">
+                <input matInput formControlName="password" placeholder="password" readonly="false">
               </mat-form-field>            
             </div>
 
-            <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+            <div>
+              <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+            </div>
 
           </form>
-        </mat-card-content>
 
-        </mat-card>
-
-        <!-- </div> -->
+        </div>
 
       </div>
     </div>

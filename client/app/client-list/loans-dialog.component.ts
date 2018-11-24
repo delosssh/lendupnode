@@ -8,6 +8,7 @@ import { LoanService } from '../services/loan.service';
 
 import { LoanPaymentDialogComponent } from '../loan-payments/loan-payment-dialog.component';
 import { ClientLoanPaymentDialogComponent } from '../client-loan-payment-dialog/client-loan-payment-dialog.component';
+import { ClientModel } from '../models/client.model';
 
 @Component({
   selector: 'loans-dialog',
@@ -16,6 +17,7 @@ import { ClientLoanPaymentDialogComponent } from '../client-loan-payment-dialog/
 })
 export class LoansDialogComponent {
 
+  client: ClientModel;
   loan: LoanModel;
   loans = [];
   loanPayments: Number = 0;
@@ -33,8 +35,9 @@ export class LoansDialogComponent {
     console.log('ngOnInit was called');
     console.log('data: ' + this.data);
     console.dir('data dir: ' + this.data);
-    console.dir('clientNumber: ' + this.data.clientNumber);
-    this.clientLoans(this.data.clientNumber);
+    console.dir('clientNumber: ' + this.data.client.clientNumber);
+    this.client = this.data.client;
+    this.clientLoans(this.data.client.clientNumber);
   }
 
   clientLoans(clientNumber) {
@@ -73,5 +76,9 @@ export class LoansDialogComponent {
     this.dialog.open(ClientLoanPaymentDialogComponent, {
       data: { loan: loan }
     });     
+  }
+
+  showNewLoan() {
+    this.router.navigate(['/add-new-regular-loan', { id: this.client._id }]);
   }
 }

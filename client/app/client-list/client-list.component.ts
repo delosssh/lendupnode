@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DataSource } from '@angular/cdk/collections';
-import { MatDialog } from '@angular/material'
+import { MatDialog, MatDialogConfig } from '@angular/material'
 
 import { AuthService } from '../services/auth.service';
 import { ClientService } from '../services/client.service';
@@ -74,11 +74,17 @@ export class ClientListComponent {
 
   }
 
-  openLoansDialog(clientNumber) {
-    this.dialog.open(LoansDialogComponent, {
-      data: { clientNumber: clientNumber }
-    });
-  }
+  // openLoansDialog(clientNumber) {
+  //   console.log(clientNumber);
+  //   const dialogConfig = new MatDialogConfig();
+  //   // dialogConfig.width = "400px";
+  //   dialogConfig.data = { clientNumber: clientNumber };
+  //   this.dialog.open(LoansDialogComponent, dialogConfig
+  //     // width: '400px',
+  //     // dialogConfig,
+  //     // data: { clientNumber: clientNumber },
+  //   );
+  // }
 
   loans(event) {
     console.log('loans');
@@ -89,7 +95,9 @@ export class ClientListComponent {
 
   showLoans(client: ClientModel) {
     this.dialog.open(LoansDialogComponent, {
-      data: { clientNumber: client.clientNumber }
+      // width: '400px',
+      // data: { clientNumber: client.clientNumber }
+      data: { client: client }
     });    
   }
 

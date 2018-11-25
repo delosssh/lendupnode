@@ -10,6 +10,8 @@ export default class LoanCtrl extends BaseCtrl {
   // Insert
   insert = (req, res) => {
     const obj = new this.model(req.body);
+    console.log('loan.ts : insert');
+    console.dir(obj);
     obj.loanId = random('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 6);
     obj.save((err, item) => {
       // 11000 is the code for duplicate key error

@@ -8,6 +8,7 @@ import { ClientService } from './services/client.service';
 import { LoanService } from './services/loan.service';
 import { ClientPaymentService } from './services/client-payment.service';
 import { AuthService } from './services/auth.service';
+import { PaymentScheduleService } from './services/payment-schedule.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
@@ -120,7 +121,8 @@ import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/paymen
     UserService,
     ClientService,
     LoanService,
-    ClientPaymentService
+    ClientPaymentService,
+    PaymentScheduleService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

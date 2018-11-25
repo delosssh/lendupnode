@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
+// import ClientPayment from './clientpayment';
 var loanSchema = new mongoose.Schema({
     loanId: String,
     clientNumber: String,

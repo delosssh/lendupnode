@@ -54,6 +54,7 @@ function setRoutes(app) {
     router.route('/loan/calculate').post(loanCtrl.calculateRepayment);
     // Payment Schedule
     router.route('/paymentschedule').post(paymentScheduleCtrl.insert);
+    router.route('/paymentschedules/loan/:loanId').get(paymentScheduleCtrl.getByLoanId);
     // Apply the routes to our application with the prefix /api
     app.use('/api', router);
 }

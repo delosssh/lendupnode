@@ -33,6 +33,7 @@ import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
 import { AddNewRegularLoanComponent } from './add-new-regular-loan/add-new-regular-loan.component';
 import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { ClientLoanPaymentDialogComponent } from './client-loan-payment-dialog/client-loan-payment-dialog.component';
+import { PaymentScheduleListComponent } from './payment-schedule-list/payment-schedule-list.component';
 import { LoansDialogChildComponent } from './loans-dialog-child/loans-dialog-child.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -71,6 +72,7 @@ import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/paymen
     LoanPaymentComponent,
     PaymentScheduleDialogComponent,
     ClientLoanPaymentDialogComponent,
+    PaymentScheduleListComponent,
     NavbarComponent,
     HomeComponent,
     SearchClientFilterPipe

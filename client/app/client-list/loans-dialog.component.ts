@@ -81,4 +81,8 @@ export class LoansDialogComponent {
   showNewLoan() {
     this.router.navigate(['/add-new-regular-loan', { id: this.client._id }]);
   }
+
+  showPaymentSchedule(loan) {
+    this.router.navigate(['/payment-schedule-list', { loanId: loan.loanId } ]);
+  }
 }

@@ -14,5 +14,9 @@ export class PaymentScheduleService {
 
   add(schedule) : Observable<any> {
     return this.http.post('/api/paymentschedule', JSON.stringify(schedule), this.options);
-  } 
+  }
+
+  getByLoanId(loanId) : Observable<any> {
+    return this.http.get(`/api/paymentschedules/loan/${loanId}`).map(res => res.json());;
+  }
 }

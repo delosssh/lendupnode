@@ -1,8 +1,8 @@
-import PaymentSchedule from '../models/payment-schedule';
+import PaymentScheduleModel from '../models/payment-schedule.model';
 import BaseCtrl from './base';
 
 export default class PaymentScheduleCtrl extends BaseCtrl {
-  model = PaymentSchedule;
+  model = PaymentScheduleModel;
 
   insert = (req, res) => {
     const obj = new this.model(req.body);
@@ -40,6 +40,13 @@ export default class PaymentScheduleCtrl extends BaseCtrl {
     //   }
     //   res.status(200).json(item);
     // });
+  }
+
+  getByLoanId = (req, res) => {
+    this.model.find({ loanId: req.params.loanId }, (err, obj) => {
+      if (err) { return console.error(err); }
+      res.json(obj);
+    });
   }
 
 }

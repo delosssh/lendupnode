@@ -10,13 +10,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var payment_schedule_1 = require("../models/payment-schedule");
+var payment_schedule_model_1 = require("../models/payment-schedule.model");
 var base_1 = require("./base");
 var PaymentScheduleCtrl = (function (_super) {
     __extends(PaymentScheduleCtrl, _super);
     function PaymentScheduleCtrl() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.model = payment_schedule_1.default;
+        _this.model = payment_schedule_model_1.default;
         _this.insert = function (req, res) {
             var obj = new _this.model(req.body);
             var schedule;
@@ -46,6 +46,14 @@ var PaymentScheduleCtrl = (function (_super) {
             //   }
             //   res.status(200).json(item);
             // });
+        };
+        _this.getByLoanId = function (req, res) {
+            _this.model.find({ loanId: req.params.loanId }, function (err, obj) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.json(obj);
+            });
         };
         return _this;
     }

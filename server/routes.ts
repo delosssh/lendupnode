@@ -11,7 +11,7 @@ import User from './models/user';
 import Payment from './models/clientpayment';
 import Client from './models/client';
 import Loan from './models/loan';
-import PaymentSchedule from './models/payment-schedule';
+import PaymentScheduleModel from './models/payment-schedule.model';
 
 export default function setRoutes(app) {
 
@@ -68,6 +68,7 @@ export default function setRoutes(app) {
   
   // Payment Schedule
   router.route('/paymentschedule').post(paymentScheduleCtrl.insert);
+  router.route('/paymentschedules/loan/:loanId').get(paymentScheduleCtrl.getByLoanId);
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);

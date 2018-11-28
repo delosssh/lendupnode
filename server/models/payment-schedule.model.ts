@@ -11,6 +11,6 @@ const paymentScheduleSchema = new mongoose.Schema({
   balanceAmount: Number
 });
 
-const PaymentSchedule = mongoose.model('PaymentSchedule', paymentScheduleSchema);
+const PaymentScheduleModel = mongoose.model('PaymentSchedule', paymentScheduleSchema);
 
-export default PaymentSchedule;
+export default PaymentScheduleModel;

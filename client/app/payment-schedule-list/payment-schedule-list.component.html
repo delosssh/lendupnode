@@ -1,0 +1,14 @@
+<!-- top -->
+<h3>Payment Schedule</h3>
+<div fxFlex fxLayout="column" fxLayoutAlign="start">
+  <mat-card *ngFor="let paymentSchedule of paymentSchedules">
+    <mat-card-title>
+
+    </mat-card-title>
+
+    <mat-card-content>
+      {{ paymentSchedule.loanId }}
+      {{ paymentSchedule. paymentNumber }}
+    </mat-card-content>
+  </mat-card>
+</div>

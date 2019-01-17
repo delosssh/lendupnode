@@ -6,15 +6,16 @@ export class LoanModel extends BaseModel {
   clientNumber: String;
   principalAmount: Number;
   interestRate: Number;
+  loanTypeInterestRate: Number;
   loanTypeId: String;
   paymentTypeId: String;
   applicationDate: Date;
   loanApproveDate: Date;
   releaseDate: Date;
   dueDate: Date;
-  numberOfPayments: Number;
+  numberOfPayments: number;
   paymentAmount: Number;
-  paymentInterval: Number;
+  paymentInterval: number;
   loanProceed: String;
   needByDate: Date;
   balanceAmount: Number;

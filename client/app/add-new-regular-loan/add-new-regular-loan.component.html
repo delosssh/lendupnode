@@ -69,7 +69,7 @@
     <mat-form-field>
       <input matInput placeholder="birthdate" id="birthdate" name="birthdate" [value]="client.birthdate | date: 'MM/dd/yyyy'">
     </mat-form-field>
-  </div> -->
+  </div> --> 
 
   <div style="display: flex">
     <mat-icon matPrefix></mat-icon>
@@ -83,6 +83,13 @@
       </mat-select>
     </mat-form-field>
   </div>   
+
+  <div style="display: flex">
+    <mat-icon matPrefix>email</mat-icon>
+    <mat-form-field>
+      <input matInput placeholder="number of payments" [(ngModel)]="loan.numberOfPayments" style="flex: 1">
+    </mat-form-field>
+  </div>
 
   <div style="display: flex">
     <mat-icon matPrefix>calendar_today</mat-icon>
@@ -114,14 +121,16 @@
   <div style="display: flex">
     <mat-icon matPrefix>email</mat-icon>
     <mat-form-field>
-      <input matInput placeholder="maturity date" [(ngModel)]="loan.maturityDate" style="flex: 1" readonly="true">
+      <input matInput [matDatepicker]="maturityDatePicker" placeholder="maturity date" [(ngModel)]="loan.maturityDate" style="flex: 1" readonly="true">
+      <mat-datepicker-toggle matSuffix [for]="maturityDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #maturityDatePicker></mat-datepicker>
     </mat-form-field>
   </div>
 
   <div style="display: flex; margin-top: 5vh" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="save()">Save</button>
     <button mat-button>Cancel</button>
-    <button mat-button (click)="calculatePaymentSchedule()">Show Schedule</button>
+    <button mat-button (click)="calculatePayment()">Show Schedule</button>
   </div>
 
 </div>

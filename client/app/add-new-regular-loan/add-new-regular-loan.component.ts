@@ -23,6 +23,7 @@ export class AddNewRegularLoanComponent {
   loan: LoanModel;
   paymentSchedule: PaymentScheduleModel;
   schedules = [];
+  paymentInterval: number;
 
   public constructor (
     private clientService: ClientService,
@@ -91,7 +92,70 @@ export class AddNewRegularLoanComponent {
    * loan type
    */
   loanTypeChangeEvent(event: any) {
+    var multiplier: number;
     console.dir(event);
+
+    switch (event.value) {
+      case 'dai':
+        this.loan.numberOfPayments = 80;
+        this.paymentInterval = 1;
+        break;
+      case 'wek':
+        this.loan.numberOfPayments = 8;
+        this.paymentInterval = 7;
+        this.loan.loanTypeInterestRate = Number(this.loan.interestRate) / 4;
+        break;
+      case 'bwe':
+        this.loan.numberOfPayments = 4;
+        this.paymentInterval = 14;
+        this.loan.loanTypeInterestRate = Number(this.loan.interestRate) / 2;
+        break;
+      case 'mon':
+        this.loan.numberOfPayments = 2;
+        this.paymentInterval = 28;
+        this.loan.loanTypeInterestRate = this.loan.interestRate;
+        break;
+      case 'one':
+        this.loan.numberOfPayments = 1;
+        this.paymentInterval = 56;
+        this.loan.loanTypeInterestRate = this.loan.interestRate;
+        break;
+      default:
+        this.loan.numberOfPayments = 0;
+        this.paymentInterval = 0;
+        break;
+    }
+
+    multiplier = this.loan.numberOfPayments * this.paymentInterval;
+
+    this.updateMaturityDate(multiplier);
+
+  }
+
+  updateMaturityDate(mult: number) {
+    var _newDate: Date;
+
+    _newDate = new Date();
+    _newDate.setDate( this.loan.releaseDate.getDate() + mult);
+    this.loan.maturityDate = _newDate;
+  }
+
+  calculatePayment() {
+
+    switch (this.loan.paymentTypeId) {
+      case 'dai':
+        this.calculatePaymentScheduleDaily();
+        break;
+      case 'wek':
+      case 'bwe':
+      case 'mon':
+        this.calculatePaymentSchedule();
+        break;
+      case 'one':
+      default:
+        break;
+    }
+
   }
 
   /** 
@@ -100,20 +164,26 @@ export class AddNewRegularLoanComponent {
   */
   calculatePaymentSchedule() {
     let principalAmount: Number = this.loan.principalAmount;
-    let interestRate: Number = Number(this.loan.interestRate) / 100;
-    let numberOfPayments: Number = 12;
+    // let interestRate: Number = Number(this.loan.interestRate) / 100;
+    let interestRate: Number = Number(this.loan.loanTypeInterestRate) / 100;
+    let numberOfPayments: Number = this.loan.numberOfPayments // 12;
     let balanceAmount: Number = principalAmount;
     let monthlyInstallment: Number = Number(principalAmount) / Number(numberOfPayments);
     let interestAmount: Number = 0;
     var dueDate: Date;
     var dueDateTmp: Date;
     var dueDateTmp2: Date;
-    var paymentInterval = 1;
+    var paymentInterval = Number(this.paymentInterval);
 
     console.log('add-new-regular-loan:calculatePaymentSchedule: ' + this.loan.dueDate);
 
-    dueDate = this.loan.dueDate;
+    // dueDate = this.loan.dueDate;
+    // dueDate = this.loan.releaseDate;
+    dueDate = new Date(this.loan.releaseDate.getFullYear(), this.loan.releaseDate.getMonth(), this.loan.releaseDate.getDate(), 0, 0, 0);
     console.log(dueDate);
+
+    // empty this.schedules
+    this.schedules = [];
 
     for(var x = 1; x < (Number(numberOfPayments) + 1); x ++ ) {
       this.paymentSchedule = new PaymentScheduleModel();
@@ -129,6 +199,7 @@ export class AddNewRegularLoanComponent {
         this.paymentSchedule.installmentAmount = monthlyInstallment;
         this.paymentSchedule.interestAmount = interestAmount;
       }
+      dueDate.setDate(dueDate.getDate() + paymentInterval);
       console.log('1: ' + dueDate);
       console.log('1a: ' + dueDate.getFullYear());
       console.log('1b: ' + (dueDate.getMonth()+1));
@@ -139,7 +210,7 @@ export class AddNewRegularLoanComponent {
       console.log('2: ' + dueDateTmp);
       this.paymentSchedule.dueDate = dueDateTmp;
       this.schedules.push(this.paymentSchedule);
-      dueDate.setDate(dueDate.getDate() + paymentInterval);
+      // dueDate.setDate(dueDate.getDate() + paymentInterval);
       console.log('3: ' + x);
       // dueDate.setDate(dueDate.getDate() + paymentInterval);
 
@@ -151,6 +222,93 @@ export class AddNewRegularLoanComponent {
 
       dueDateTmp2 = new Date(dueDate.getFullYear(), dueDate.getMonth()+1, dueDate.getDate(), 0, 0, 0);
       console.log('6: ' + dueDateTmp2);
+    }
+
+    console.dir(this.schedules);
+    this.loan.maturityDate = dueDateTmp;
+
+    this.showPaymentSchedule(this.schedules);
+  }
+
+  calculatePaymentScheduleDaily() {
+    let principalAmount: Number = this.loan.principalAmount;
+    let interestRate: Number = Number(this.loan.interestRate) / 100;
+    let numberOfPayments: Number = this.loan.numberOfPayments // 12;
+    let balanceAmount: Number = principalAmount;
+    let monthlyInstallment: Number = Number(principalAmount) / Number(numberOfPayments);
+    let interestAmount: Number = 0;
+    var dueDate: Date;
+    var dueDateTmp: Date;
+    var dueDateTmp2: Date;
+    var paymentInterval = Number(this.paymentInterval);
+    var months: Number;
+    var appliedInterestRate: Number;
+
+    console.log('interestRate');
+    console.log(interestRate);
+
+    // calculate the number of months based on 30 days per month
+    months = Number(numberOfPayments) / 30;
+    console.log('months: ');
+    console.log(months);
+
+    // calculate applicable interest rate
+    appliedInterestRate = Number(months) * Number(interestRate);
+    console.log('appliedInterestRate: ');
+    console.log(appliedInterestRate);
+
+    // calculate interest amount per payment interval
+    interestAmount = (Number(principalAmount) * Number(appliedInterestRate)) / Number(numberOfPayments);
+    console.log('interestAmount: ');
+    console.log(interestAmount);
+
+    // console.log('add-new-regular-loan:calculatePaymentSchedule: ' + this.loan.dueDate);
+
+    // dueDate = this.loan.dueDate;
+    // dueDate = this.loan.releaseDate;
+    dueDate = new Date(this.loan.releaseDate.getFullYear(), this.loan.releaseDate.getMonth(), this.loan.releaseDate.getDate(), 0, 0, 0);
+    console.log(dueDate);
+
+    // empty this.schedules
+    this.schedules = [];
+
+    for(var x = 1; x < (Number(numberOfPayments) + 1); x ++ ) {
+      this.paymentSchedule = new PaymentScheduleModel();
+      this.paymentSchedule.paymentNumber = x;
+
+      if (x == 0) {
+        this.paymentSchedule.balanceAmount = balanceAmount;
+      } else {
+        // interestAmount = Number(balanceAmount) * Number(interestRate);
+        balanceAmount = Number(balanceAmount) - Number(monthlyInstallment);
+        
+        this.paymentSchedule.balanceAmount = balanceAmount;
+        this.paymentSchedule.installmentAmount = monthlyInstallment;
+        this.paymentSchedule.interestAmount = interestAmount;
+      }
+      dueDate.setDate(dueDate.getDate() + paymentInterval);
+      // console.log('1: ' + dueDate);
+      // console.log('1a: ' + dueDate.getFullYear());
+      // console.log('1b: ' + (dueDate.getMonth()+1));
+      // console.log('1c: ' + dueDate.getDay());
+      // console.log('1d: ' + dueDate.getDate());
+      dueDateTmp = new Date(dueDate.getFullYear(), dueDate.getMonth(), dueDate.getDate(), 0, 0, 0);
+      // dueDateTmp.setDate(dueDate.getDate());
+      // console.log('2: ' + dueDateTmp);
+      this.paymentSchedule.dueDate = dueDateTmp;
+      this.schedules.push(this.paymentSchedule);
+      // dueDate.setDate(dueDate.getDate() + paymentInterval);
+      // console.log('3: ' + x);
+      // dueDate.setDate(dueDate.getDate() + paymentInterval);
+
+      // console.log('4: ' + dueDate);
+      // console.log('5a: ' + dueDate.getFullYear());
+      // console.log('5b: ' + dueDate.getMonth());
+      // console.log('5c: ' + dueDate.getDay());
+      // console.log('5d: ' + dueDate.getDate());
+
+      dueDateTmp2 = new Date(dueDate.getFullYear(), dueDate.getMonth()+1, dueDate.getDate(), 0, 0, 0);
+      // console.log('6: ' + dueDateTmp2);
     }
 
     console.dir(this.schedules);

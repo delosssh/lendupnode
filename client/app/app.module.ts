@@ -8,6 +8,7 @@ import { ClientService } from './services/client.service';
 import { LoanService } from './services/loan.service';
 import { ClientPaymentService } from './services/client-payment.service';
 import { AuthService } from './services/auth.service';
+import { PaymentScheduleService } from './services/payment-schedule.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
 import { AddNewRegularLoanComponent } from './add-new-regular-loan/add-new-regular-loan.component';
 import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { ClientLoanPaymentDialogComponent } from './client-loan-payment-dialog/client-loan-payment-dialog.component';
+import { PaymentScheduleListComponent } from './payment-schedule-list/payment-schedule-list.component';
 import { LoansDialogChildComponent } from './loans-dialog-child/loans-dialog-child.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -70,6 +72,7 @@ import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/paymen
     LoanPaymentComponent,
     PaymentScheduleDialogComponent,
     ClientLoanPaymentDialogComponent,
+    PaymentScheduleListComponent,
     NavbarComponent,
     HomeComponent,
     SearchClientFilterPipe
@@ -120,7 +123,8 @@ import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/paymen
     UserService,
     ClientService,
     LoanService,
-    ClientPaymentService
+    ClientPaymentService,
+    PaymentScheduleService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { ClientService } from '../services/client.service';
 import { LoanService } from '../services/loan.service';
+import { PaymentScheduleService } from '../services/payment-schedule.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { ClientModel } from '../models/client.model';
 import { LoanModel } from '../models/loan.model';
@@ -29,6 +30,7 @@ export class AddNewRegularLoanComponent {
     private clientService: ClientService,
     private dialog: MatDialog,
     private loanService: LoanService,
+    private paymentScheduleService: PaymentScheduleService,
     private http: Http,
     private route: ActivatedRoute,
     private router: Router,
@@ -67,6 +69,10 @@ export class AddNewRegularLoanComponent {
     //     error => console.log(error)
     //   );
 
+    this.loan.loanId = this.randomString();
+    console.log('save: ' + this.loan.loanId);
+
+
     this.calculatePaymentSchedule();
 
     // var paymentSchedule: PaymentScheduleModel = new PaymentScheduleModel();
@@ -82,7 +88,17 @@ export class AddNewRegularLoanComponent {
     .subscribe(
       res => {
         console.log('adding new loan');
-        this.router.navigate(['/client-detail', {id: this.client._id}]);
+        // this.router.navigate(['/client-detail', {id: this.client._id}]);
+
+        this.paymentScheduleService.add(this.schedules)
+        .subscribe(
+          res => {
+            console.log('payment schedules added');
+            this.router.navigate(['/client-detail', {id: this.client._id}]);
+          },
+          error => console.log(error)
+        );
+
       },
       error => console.log(error)
     );
@@ -187,6 +203,7 @@ export class AddNewRegularLoanComponent {
 
     for(var x = 1; x < (Number(numberOfPayments) + 1); x ++ ) {
       this.paymentSchedule = new PaymentScheduleModel();
+      this.paymentSchedule.loanId = this.loan.loanId;
       this.paymentSchedule.paymentNumber = x;
 
       if (x == 0) {
@@ -227,7 +244,7 @@ export class AddNewRegularLoanComponent {
     console.dir(this.schedules);
     this.loan.maturityDate = dueDateTmp;
 
-    this.showPaymentSchedule(this.schedules);
+    // this.showPaymentSchedule(this.schedules);
   }
 
   calculatePaymentScheduleDaily() {
@@ -323,4 +340,17 @@ export class AddNewRegularLoanComponent {
     // dialogConfig.width = "400px";
     this.dialog.open(PaymentScheduleDialogComponent, dialogConfig);
   }
+
+  randomString() {
+    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
+    var string_length = 6;
+    var randomstring = '';
+    for (var i=0; i<string_length; i++) {
+      var rnum = Math.floor(Math.random() * chars.length);
+      randomstring += chars.substring(rnum,rnum+1);
+    }
+    return randomstring;
+  }
+
+
 }

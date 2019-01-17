@@ -6,6 +6,7 @@ var user_1 = require("./controllers/user");
 var clientpayment_1 = require("./controllers/clientpayment");
 var client_1 = require("./controllers/client");
 var loan_1 = require("./controllers/loan");
+var payment_schedule_1 = require("./controllers/payment-schedule");
 function setRoutes(app) {
     var router = express.Router();
     var catCtrl = new cat_1.default();
@@ -13,6 +14,7 @@ function setRoutes(app) {
     var paymentCtrl = new clientpayment_1.default();
     var clientCtrl = new client_1.default();
     var loanCtrl = new loan_1.default();
+    var paymentScheduleCtrl = new payment_schedule_1.default();
     // Cats
     router.route('/cats').get(catCtrl.getAll);
     router.route('/cats/count').get(catCtrl.count);
@@ -50,6 +52,9 @@ function setRoutes(app) {
     router.route('/loans/client/:id').get(loanCtrl.getClientLoans);
     router.route('/loans/client/count/:id').get(loanCtrl.countClientLoans);
     router.route('/loan/calculate').post(loanCtrl.calculateRepayment);
+    // Payment Schedule
+    router.route('/paymentschedule').post(paymentScheduleCtrl.insert);
+    router.route('/paymentschedules/loan/:loanId').get(paymentScheduleCtrl.getByLoanId);
     // Apply the routes to our application with the prefix /api
     app.use('/api', router);
 }

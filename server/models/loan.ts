@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import ClientPayment from './clientpayment';
+// import ClientPayment from './clientpayment';
 
 const loanSchema = new mongoose.Schema({
   loanId: String,

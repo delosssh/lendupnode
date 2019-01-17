@@ -1,0 +1,26 @@
+<!-- top -->
+<mat-card>
+
+<div fxFlex fxLayout="column" fxLayoutAlign="start">
+  <h3>Payment Schedule</h3>
+  <mat-card *ngFor="let paymentSchedule of paymentSchedules">
+    <mat-card-title>
+
+    </mat-card-title>
+
+    <mat-card-content>
+
+      <div class="schedule" fxFlex fxLayout="row" fxLayoutAlign="start">
+        <div fxFlex="10">{{ paymentSchedule.paymentNumber }}</div>
+        <div fxFlex="30">{{ paymentSchedule.dueDate | date: 'yyyy/MM/dd' }}</div>
+        <div fxFlex="60" fxLayoutAlign="end">{{ paymentSchedule.installmentAmount | number: '1.2-2' }}</div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card-actions>
+  <button mat-button>test</button>
+</mat-card-actions>
+</mat-card>

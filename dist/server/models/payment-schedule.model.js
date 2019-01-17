@@ -11,6 +11,6 @@ var paymentScheduleSchema = new mongoose.Schema({
     principalAmount: Number,
     balanceAmount: Number
 });
-var PaymentSchedule = mongoose.model('PaymentSchedule', paymentScheduleSchema);
-exports.default = PaymentSchedule;
-//# sourceMappingURL=payment-schedule.js.map
+var PaymentScheduleModel = mongoose.model('PaymentSchedule', paymentScheduleSchema);
+exports.default = PaymentScheduleModel;
+//# sourceMappingURL=payment-schedule.model.js.map

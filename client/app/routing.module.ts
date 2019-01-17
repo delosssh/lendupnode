@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { PaymentScheduleListComponent } from './payment-schedule-list/payment-schedule-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'add-new-loan', component: AddNewLoanComponent },
   { path: 'loan-payment', component: LoanPaymentComponent },
   { path: 'add-new-regular-loan', component: AddNewRegularLoanComponent },
+  { path: 'payment-schedule-list', component: PaymentScheduleListComponent },
   { path: '**', redirectTo: '/notfound' },
 ];
 

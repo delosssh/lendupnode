@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoanModel } from '../models/loan.model';
 
@@ -27,6 +27,7 @@ export class LoansDialogComponent {
     @Inject(MAT_DIALOG_DATA) private data: any,
     private loanService: LoanService,
     private dialog: MatDialog,
+    private dialogRef: MatDialogRef<LoansDialogComponent>
   ) {
     console.log('constructor was called');
   }
@@ -80,5 +81,10 @@ export class LoansDialogComponent {
 
   showNewLoan() {
     this.router.navigate(['/add-new-regular-loan', { id: this.client._id }]);
+  }
+
+  showPaymentSchedule(loan) {
+    this.dialogRef.close();
+    this.router.navigate(['/payment-schedule-list', { loanId: loan.loanId } ]);
   }
 }

@@ -15,6 +15,7 @@ export default class PaymentScheduleCtrl extends BaseCtrl {
         console.log(item.loanId);
         schedule = new this.model(item);
         console.log(schedule.loanId);
+        console.log(schedule.interestAmount);
 
 
         schedule.save((err, item) => {

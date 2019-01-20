@@ -3,14 +3,17 @@ import { BaseModel } from './base.model';
 export class LoanPaymentModel extends BaseModel {
   loanId: String;
   clientNumber: String;
-  balanceAmount: Number = 0;
-  interestRate: Number = 0;
-  interestAmount: Number = 0;
-  cashWithdrawal: Number = 0;
-  lessInterestAmount: Number = 0;
-  paymentAmount: Number = 0;
-  newBalanceAmount: Number = 0;
+  balanceAmount: number = 0;
+  interestRate: number = 0;
+  interestAmount: number = 0;
+  cashWithdrawal: number = 0;
+  lessInterestAmount: number = 0;
+  miscellaneousItem: string;
+  miscellaneousAmount: number = 0;
+  paymentAmount: number = 0;
+  newBalanceAmount: number = 0;
   paymentDate: Date;
+  cashOut: number = 0;
   lastUpdate: Date;
   creationDate: Date;
 }

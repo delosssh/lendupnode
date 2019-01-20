@@ -23,6 +23,12 @@ const loanSchema = new mongoose.Schema({
   creationDate: Date
 });
 
+loanSchema.methods.updateBalanceAmount = function(newBalanceAmount: Number) {
+
+  this.balanceAmount = newBalanceAmount;
+
+}
+
 const Loan = mongoose.model('Loan', loanSchema);
 
 export default Loan;

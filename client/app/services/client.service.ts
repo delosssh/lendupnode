@@ -24,6 +24,10 @@ export class ClientService {
     return this.http.get(`/api/client/${client._id}`).map(res => res.json());
   }
 
+  getClientByClientNumber(client): Observable<any> {
+    return this.http.get(`/api/client/client/${client.clientNumber}`).map(res => res.json());
+  }
+
   editClient(client): Observable<any> {
     return this.http.put(`/api/client/${client._id}`, JSON.stringify(client), this.options);
   }

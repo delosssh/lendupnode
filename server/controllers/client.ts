@@ -24,6 +24,7 @@ export default class ClientCtrl extends BaseCtrl {
   getClient = (req, res) => {
     this.model.find({ clientNumber: req.params.id }, (err, obj) => {
       if (err) { return console.error(err); }
+      // console.dir(obj);
       res.json(obj);
     });
   }

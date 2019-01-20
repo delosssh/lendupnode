@@ -38,6 +38,7 @@ var ClientCtrl = (function (_super) {
                 if (err) {
                     return console.error(err);
                 }
+                // console.dir(obj);
                 res.json(obj);
             });
         };

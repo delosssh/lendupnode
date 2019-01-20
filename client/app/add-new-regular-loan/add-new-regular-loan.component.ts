@@ -73,7 +73,8 @@ export class AddNewRegularLoanComponent {
     console.log('save: ' + this.loan.loanId);
 
 
-    this.calculatePaymentSchedule();
+    // this.calculatePaymentSchedule();
+    this.calculatePayment();
 
     // var paymentSchedule: PaymentScheduleModel = new PaymentScheduleModel();
     // paymentSchedule.loanId = this.loan.loanId;

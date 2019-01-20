@@ -486,7 +486,8 @@ var AddNewRegularLoanComponent = (function () {
         var _this = this;
         this.loan.loanId = this.randomString();
         console.log('save: ' + this.loan.loanId);
-        this.calculatePaymentSchedule();
+        // this.calculatePaymentSchedule();
+        this.calculatePayment();
         // var paymentSchedule: PaymentScheduleModel = new PaymentScheduleModel();
         // paymentSchedule.loanId = this.loan.loanId;
         // paymentSchedule.dueAmount = 200000;
@@ -1619,7 +1620,7 @@ var _a, _b, _c, _d, _e, _f;
 /***/ "../../../../../client/app/client-list/loans-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1 md-dialog-title class=\"primary-color\">Client Loans</h1>\r\n<mat-dialog-content class=\"accent-color\">\r\n  <!-- <header style=\"display: flex\">\r\n    <div style=\"flex: 1\">Loan Id</div>\r\n    <div style=\"flex: 1\">Application Date</div>\r\n    <div style=\"flex: 1\">Principal</div>\r\n    <div style=\"flex: 1\">Interest (%)</div>\r\n  </header>\r\n  <div style=\"display: flex\" *ngFor=\"let loan of loans\">\r\n    <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div>\r\n  </div> -->\r\n  <!-- <div style=\"display: flex; flex-wrap: wrap\">\r\n    <mat-card *ngFor=\"let loan of loans\" style=\"flex: 1; max-width: 20rem\">\r\n      <mat-card-title>{{ loan.loanId }}</mat-card-title>\r\n      <mat-card-content>\r\n        <span matLine>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</span>\r\n        <span matLine>{{ loan.principalAmount }}</span>\r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n      </mat-card-actions>\r\n    </mat-card> \r\n  </div> -->\r\n\r\n  <!-- <div style=\"display: flex\" *ngFor=\"let loan of loans\"> -->\r\n    <!-- <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div> -->\r\n  \r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n      <div>{{ loan.principalAmount }}</div>\r\n    </div>\r\n\r\n  </div> -->\r\n\r\n  <div fxFlex fxLayout=\"column\">\r\n\r\n  <div fxFlex *ngFor=\"let loan of loans\">\r\n\r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n    <div fxFlex=\"40\" fxLayout=\"column\" style=\"flex: 0\">\r\n      <div>{{ loan.loanId }}</div>\r\n      <div>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</div>  \r\n    </div>\r\n\r\n    <div fxFlex=\"60\" fxLayout=\"column\">\r\n      <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n      <div>Principal:  {{ loan.principalAmount }}</div>  \r\n      <div>Payments: {{ loan.totalPaymentAmount }}</div>  \r\n      <div>Balance: \r\n          {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}\r\n      </div>\r\n    </div>\r\n    </div> -->\r\n\r\n    <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n\r\n    <mat-card>\r\n      <mat-card-content fxFlex fxLayoutAlign=\"start\" fxLayout=\"column\" style=\"height: 120px\">\r\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex class=\"loanId\">{{ loan.loanId }}</div>\r\n            <div fxFlex>{{ loan.applicationDate }}</div>\r\n            <!-- <div fxFlex fxLayoutAlign=\"start bottom\">\r\n                <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n              </div> -->\r\n            </div>\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex>Principal: {{ loan.principalAmount }}</div>\r\n            <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>\r\n            <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>\r\n            <!-- <div fxFlex fxLayoutAlign=\"end\">\r\n              <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n            </div> -->\r\n          </div>\r\n\r\n        </div>\r\n        <div fxFlex=\"40\" fxAlign=\"bottom\">\r\n          <!-- <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n          <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button> -->\r\n          <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"end bottom\">\r\n            <mat-icon (click)=\"gotoDetails(loan)\">person</mat-icon>\r\n            <mat-icon (click)=\"showAddPayment(loan)\">person</mat-icon>\r\n            <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>person</mat-icon>\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n      <!-- <mat-card-actions>\r\n        <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions> -->\r\n    </mat-card>\r\n\r\n  </div>\r\n\r\n  </div>\r\n\r\n  <!-- <div> -->\r\n    <!-- <mat-card *ngFor=\"let loan of loans\" style=\"width: 100%\">\r\n\r\n      <mat-card-content>\r\n\r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan number\" [value]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n    \r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan proceeds\" [value]=\"loan.loanProceed\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"apply date\" [value]=\"loan.applicationDate | date: 'MM/dd/yyyy'\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>        \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Principal\" [value]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n\r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n            <input matInput placeholder=\"payments\" [value]=\"loan.totalPaymentAmount\" readonly=\"true\">\r\n            <mat-icon matSuffix>receipt</mat-icon>\r\n          </mat-form-field>\r\n        </div>  \r\n          \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [value]=\"getBalance(loan.principalAmount, loan.totalPaymentAmount)\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n  \r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions>\r\n    </mat-card>  -->\r\n  <!-- </div> -->\r\n\r\n\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button mat-button color=\"primary\" mat-dialog-close>\r\n    Close\r\n  </button>\r\n  <button mat-button (click)=\"showNewLoan()\" mat-dialog-close>\r\n      New Loan\r\n    </button>\r\n</mat-dialog-actions>"
+module.exports = "<h1 md-dialog-title class=\"primary-color\">Client Loans</h1>\r\n<mat-dialog-content class=\"accent-color\">\r\n  <!-- <header style=\"display: flex\">\r\n    <div style=\"flex: 1\">Loan Id</div>\r\n    <div style=\"flex: 1\">Application Date</div>\r\n    <div style=\"flex: 1\">Principal</div>\r\n    <div style=\"flex: 1\">Interest (%)</div>\r\n  </header>\r\n  <div style=\"display: flex\" *ngFor=\"let loan of loans\">\r\n    <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div>\r\n  </div> -->\r\n  <!-- <div style=\"display: flex; flex-wrap: wrap\">\r\n    <mat-card *ngFor=\"let loan of loans\" style=\"flex: 1; max-width: 20rem\">\r\n      <mat-card-title>{{ loan.loanId }}</mat-card-title>\r\n      <mat-card-content>\r\n        <span matLine>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</span>\r\n        <span matLine>{{ loan.principalAmount }}</span>\r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n      </mat-card-actions>\r\n    </mat-card> \r\n  </div> -->\r\n\r\n  <!-- <div style=\"display: flex\" *ngFor=\"let loan of loans\"> -->\r\n    <!-- <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div> -->\r\n  \r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n      <div>{{ loan.principalAmount }}</div>\r\n    </div>\r\n\r\n  </div> -->\r\n\r\n  <div fxFlex fxLayout=\"column\">\r\n\r\n  <div fxFlex *ngFor=\"let loan of loans\">\r\n\r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n    <div fxFlex=\"40\" fxLayout=\"column\" style=\"flex: 0\">\r\n      <div>{{ loan.loanId }}</div>\r\n      <div>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</div>  \r\n    </div>\r\n\r\n    <div fxFlex=\"60\" fxLayout=\"column\">\r\n      <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n      <div>Principal:  {{ loan.principalAmount }}</div>  \r\n      <div>Payments: {{ loan.totalPaymentAmount }}</div>  \r\n      <div>Balance: \r\n          {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}\r\n      </div>\r\n    </div>\r\n    </div> -->\r\n\r\n    <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n\r\n    <mat-card>\r\n      <mat-card-content fxFlex fxLayoutAlign=\"start\" fxLayout=\"column\" style=\"height: 120px\">\r\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex class=\"loanId\">{{ loan.loanId }}</div>\r\n            <div fxFlex>{{ loan.applicationDate }}</div>\r\n            <!-- <div fxFlex fxLayoutAlign=\"start bottom\">\r\n                <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n              </div> -->\r\n            </div>\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex>Principal: {{ loan.principalAmount }}</div>\r\n            <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>\r\n            <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>\r\n            <div fxFlex fxLayoutAlign=\"end\">\r\n              <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n              <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n              <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <!-- <div fxFlex=\"40\" fxLayoutAlign=\"bottom\"> -->\r\n          <!-- <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n          <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button> -->\r\n          <!-- <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"end bottom\">\r\n            <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n            <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n            <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n          </div>\r\n        </div> -->\r\n      </mat-card-content>\r\n      <!-- <mat-card-actions>\r\n        <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions> -->\r\n    </mat-card>\r\n\r\n  </div>\r\n\r\n  </div>\r\n\r\n  <!-- <div> -->\r\n    <!-- <mat-card *ngFor=\"let loan of loans\" style=\"width: 100%\">\r\n\r\n      <mat-card-content>\r\n\r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan number\" [value]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n    \r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan proceeds\" [value]=\"loan.loanProceed\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"apply date\" [value]=\"loan.applicationDate | date: 'MM/dd/yyyy'\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>        \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Principal\" [value]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n\r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n            <input matInput placeholder=\"payments\" [value]=\"loan.totalPaymentAmount\" readonly=\"true\">\r\n            <mat-icon matSuffix>receipt</mat-icon>\r\n          </mat-form-field>\r\n        </div>  \r\n          \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [value]=\"getBalance(loan.principalAmount, loan.totalPaymentAmount)\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n  \r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions>\r\n    </mat-card>  -->\r\n  <!-- </div> -->\r\n\r\n\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button mat-button color=\"primary\" mat-dialog-close>\r\n    Close\r\n  </button>\r\n  <button mat-button (click)=\"showNewLoan()\" mat-dialog-close>\r\n      New Loan\r\n    </button>\r\n</mat-dialog-actions>"
 
 /***/ }),
 
@@ -1745,7 +1746,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../client/app/client-loan-payment-dialog/client-loan-payment-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" fxLayout=\"column\">\r\n  <div flFlex>\r\n    <div fxLayout=\"row\">\r\n      <div fxLayout=\"column\">\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"client number\" [(ngModel)]=\"payment.clientNumber\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"client name\" [(ngModel)]=\"clientName\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"date\" [(ngModel)]=\"todayDate\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [(ngModel)]=\"loan.balanceAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"principal amount\" [(ngModel)]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n  \r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"interest %\" [(ngModel)]=\"payment.interestRate\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"interest amount\" [value]=\"interestAmount()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"salary\" [(ngModel)]=\"payment.cashWithdrawal\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <!-- <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"less interest\" [value]=\"lessInterestAmount()\">\r\n          </mat-form-field>\r\n        </div> -->\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"principal\" [(ngModel)]=\"payment.paymentAmount\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"cash out\" [value]=\"cashOut()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"new balance\" [value]=\"newBalance()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan id\" [(ngModel)]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <!-- <mat-icon>person</mat-icon>\r\n          <mat-form-field> -->\r\n            <button mat-raised-button color=\"primary\">Save</button>\r\n            <button mat-raised-button>Close</button>\r\n          <!-- </mat-form-field> -->\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"container\" fxLayout=\"column\">\r\n  <div flFlex>\r\n    <div fxLayout=\"row\">\r\n\r\n      <mat-dialog-content>\r\n\r\n      <div fxLayout=\"column\">\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"client number\" [value]=\"client.clientNumber\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"client name\" [value]=\"clientName\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"date\" [(ngModel)]=\"todayDate\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [(ngModel)]=\"loan.balanceAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"principal amount\" [(ngModel)]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n  \r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"interest %\" [(ngModel)]=\"payment.interestRate\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"interest amount\" [value]=\"interestAmount()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"salary\" [(ngModel)]=\"payment.cashWithdrawal\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <!-- <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"less interest\" [value]=\"lessInterestAmount()\">\r\n          </mat-form-field>\r\n        </div> -->\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"principal\" [(ngModel)]=\"payment.paymentAmount\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"misc item\" [(ngModel)]=\"payment.miscellaneousItem\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n          \r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"misc amount\" [(ngModel)]=\"payment.miscellaneousAmount\" class=\"input-editable\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"cash out\" [value]=\"cashOut()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"new balance\" [value]=\"newBalance()\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <mat-icon>person</mat-icon>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan id\" [(ngModel)]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div fxFlex>\r\n          <!-- <mat-icon>person</mat-icon>\r\n          <mat-form-field> -->\r\n            <button mat-raised-button color=\"primary\" (click)=\"save()\">Save</button>\r\n            <button mat-raised-button>Close</button>\r\n          <!-- </mat-form-field> -->\r\n        </div>\r\n\r\n      </div>\r\n\r\n      </mat-dialog-content>\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1779,6 +1780,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_client_payment_service__ = __webpack_require__("../../../../../client/app/services/client-payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_loan_model__ = __webpack_require__("../../../../../client/app/models/loan.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1798,12 +1801,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
-// import Client from '../../../server/models/client';
+
+
 var ClientLoanPaymentDialogComponent = (function () {
-    function ClientLoanPaymentDialogComponent(route, paymentService, loanService, data) {
+    function ClientLoanPaymentDialogComponent(route, paymentService, loanService, clientService, data) {
         this.route = route;
         this.paymentService = paymentService;
         this.loanService = loanService;
+        this.clientService = clientService;
         this.data = data;
         this.payment = new __WEBPACK_IMPORTED_MODULE_3__models_loan_payment_model__["a" /* LoanPaymentModel */]();
         // sample data;
@@ -1818,14 +1823,43 @@ var ClientLoanPaymentDialogComponent = (function () {
     }
     ClientLoanPaymentDialogComponent.prototype.ngOnInit = function () {
     };
+    ClientLoanPaymentDialogComponent.prototype.save = function () {
+        var _this = this;
+        console.log(this.loan.balanceAmount);
+        console.log(this.payment.newBalanceAmount);
+        // this.payment.interestAmount = this
+        this.payment.balanceAmount = Number(this.loan.balanceAmount);
+        this.loan.balanceAmount = this.payment.newBalanceAmount;
+        // this.loan.balanceAmount = this.payment.balanceAmount;
+        this.paymentService.addPayment(this.payment)
+            .subscribe(function (res) {
+            console.log('successfully saved!');
+            _this.loanService.editLoan(_this.loan)
+                .subscribe(function (res) {
+                console.log('loan has been updated');
+            }, function (error) { return console.log(error); });
+        }, function (error) { return console.log(error); });
+    };
     ClientLoanPaymentDialogComponent.prototype.test = function () {
         return 100.00;
     };
     ClientLoanPaymentDialogComponent.prototype.getClientLoanDetails = function (loan) {
         var _this = this;
+        this.client = new __WEBPACK_IMPORTED_MODULE_8__models_client_model__["a" /* ClientModel */]();
+        this.client.clientNumber = loan.clientNumber;
+        this.clientService.getClientByClientNumber(this.client)
+            .subscribe(function (data) {
+            _this.client = data[0];
+            console.dir(_this.client);
+            _this.clientName = _this.client.lastName + ', ' + _this.client.firstName;
+            _this.payment.clientNumber = _this.client.clientNumber;
+        }, function (error) { return console.log(error); });
         this.loan = new __WEBPACK_IMPORTED_MODULE_6__models_loan_model__["a" /* LoanModel */]();
         this.loanService.getLoan(loan)
-            .subscribe(function (data) { return _this.loan = data; }, function (error) { return console.log(error); });
+            .subscribe(function (data) {
+            _this.loan = data;
+            _this.payment.loanId = _this.loan.loanId;
+        }, function (error) { return console.log(error); });
     };
     ClientLoanPaymentDialogComponent.prototype.interestAmount = function () {
         var balance;
@@ -1833,8 +1867,8 @@ var ClientLoanPaymentDialogComponent = (function () {
         var amount;
         // balance = this.payment.balanceAmount;
         balance = this.loan.balanceAmount;
-        // rate = this.payment.interestRate;
-        rate = this.loan.interestRate;
+        rate = this.payment.interestRate;
+        // rate = this.loan.interestRate;
         amount = Number(balance) * (Number(rate) / 100);
         this.payment.interestAmount = Number(balance) * (Number(rate) / 100);
         return this.payment.interestAmount;
@@ -1851,7 +1885,8 @@ var ClientLoanPaymentDialogComponent = (function () {
     ClientLoanPaymentDialogComponent.prototype.cashOut = function () {
         var lessInterest = this.lessInterestAmount();
         var paymentAmount = this.payment.paymentAmount;
-        var cashOut = Number(lessInterest) - Number(paymentAmount);
+        var cashOut = Number(lessInterest) - Number(paymentAmount) - this.payment.miscellaneousAmount;
+        this.payment.cashOut = cashOut;
         return cashOut;
     };
     ClientLoanPaymentDialogComponent.prototype.newBalance = function () {
@@ -1869,11 +1904,11 @@ ClientLoanPaymentDialogComponent = __decorate([
         template: __webpack_require__("../../../../../client/app/client-loan-payment-dialog/client-loan-payment-dialog.component.html"),
         styles: [__webpack_require__("../../../../../client/app/client-loan-payment-dialog/client-loan-payment-dialog.component.scss")]
     }),
-    __param(3, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MAT_DIALOG_DATA */])),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_client_payment_service__["a" /* ClientPaymentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_client_payment_service__["a" /* ClientPaymentService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_loan_service__["a" /* LoanService */]) === "function" && _c || Object, Object])
+    __param(4, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MAT_DIALOG_DATA */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_client_payment_service__["a" /* ClientPaymentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_client_payment_service__["a" /* ClientPaymentService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_loan_service__["a" /* LoanService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__services_client_service__["a" /* ClientService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_client_service__["a" /* ClientService */]) === "function" && _d || Object, Object])
 ], ClientLoanPaymentDialogComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=client-loan-payment-dialog.component.js.map
 
 /***/ }),
@@ -2399,7 +2434,8 @@ var LoansDialogChildComponent = (function () {
             // console.log(res);
             // console.dir(res);
             console.log('loans-dialog-child : getLoanPayments : subscribe: ' + loanId);
-            var total = res.reduce(function (sum, item) { return sum + item.paidAmount; }, 0);
+            // var total = res.reduce( (sum, item) => sum + item.paidAmount, 0 );
+            var total = res.reduce(function (sum, item) { return sum + item.paymentAmount; }, 0);
             console.log(total);
             _this.loans = res;
             // this.load.emit(res);
@@ -2713,8 +2749,10 @@ var LoanPaymentModel = (function (_super) {
         _this.interestAmount = 0;
         _this.cashWithdrawal = 0;
         _this.lessInterestAmount = 0;
+        _this.miscellaneousAmount = 0;
         _this.paymentAmount = 0;
         _this.newBalanceAmount = 0;
+        _this.cashOut = 0;
         return _this;
     }
     return LoanPaymentModel;
@@ -3511,6 +3549,9 @@ var ClientService = (function () {
     ClientService.prototype.getClient = function (client) {
         return this.http.get("/api/client/" + client._id).map(function (res) { return res.json(); });
     };
+    ClientService.prototype.getClientByClientNumber = function (client) {
+        return this.http.get("/api/client/client/" + client.clientNumber).map(function (res) { return res.json(); });
+    };
     ClientService.prototype.editClient = function (client) {
         return this.http.put("/api/client/" + client._id, JSON.stringify(client), this.options);
     };
@@ -3579,6 +3620,9 @@ var LoanService = (function () {
     };
     LoanService.prototype.deleteLoan = function (loan) {
         return this.http.delete("/api/loan/" + loan._id, this.options);
+    };
+    LoanService.prototype.updateLoan = function (loan) {
+        return this.http.put("/api/loan/" + loan._id, this.options);
     };
     return LoanService;
 }());

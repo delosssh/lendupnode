@@ -44,4 +44,8 @@ export class LoanService {
     return this.http.delete(`/api/loan/${loan._id}`, this.options);
   }
 
+  updateLoan(loan): Observable<any> {
+    return this.http.put(`/api/loan/${loan._id}`, this.options);
+  }
+
 }

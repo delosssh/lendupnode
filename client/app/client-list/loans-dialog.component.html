@@ -74,21 +74,23 @@
             <div fxFlex>Principal: {{ loan.principalAmount }}</div>
             <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>
             <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>
-            <!-- <div fxFlex fxLayoutAlign="end">
-              <button mat-button (click)="showAddPayment(loan)">Add Payment</button>
-            </div> -->
+            <div fxFlex fxLayoutAlign="end">
+              <mat-icon (click)="gotoDetails(loan)" mat-dialog-close>assignment</mat-icon>
+              <mat-icon (click)="showAddPayment(loan)" mat-dialog-close>add_circle</mat-icon>
+              <mat-icon (click)="showPaymentSchedule(loan)" mat-dialog-close>date_range</mat-icon>
+            </div>
           </div>
 
         </div>
-        <div fxFlex="40" fxAlign="bottom">
+        <!-- <div fxFlex="40" fxLayoutAlign="bottom"> -->
           <!-- <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>
           <button mat-button (click)="showAddPayment(loan)">Add Payment</button> -->
-          <div fxFlex fxLayout="row" fxLayoutAlign="end bottom">
-            <mat-icon (click)="gotoDetails(loan)">person</mat-icon>
-            <mat-icon (click)="showAddPayment(loan)">person</mat-icon>
-            <mat-icon (click)="showPaymentSchedule(loan)" mat-dialog-close>person</mat-icon>
+          <!-- <div fxFlex fxLayout="row" fxLayoutAlign="end bottom">
+            <mat-icon (click)="gotoDetails(loan)" mat-dialog-close>assignment</mat-icon>
+            <mat-icon (click)="showAddPayment(loan)" mat-dialog-close>add_circle</mat-icon>
+            <mat-icon (click)="showPaymentSchedule(loan)" mat-dialog-close>date_range</mat-icon>
           </div>
-        </div>
+        </div> -->
       </mat-card-content>
       <!-- <mat-card-actions>
         <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>

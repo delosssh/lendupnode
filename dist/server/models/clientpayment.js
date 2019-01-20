@@ -9,8 +9,21 @@ var clientPaymentSchema = new mongoose.Schema({
     paidAmount: Number,
     paidDate: Date,
     balanceAmount: Number,
+    interestRate: Number,
+    interestAmount: Number,
+    cashWithdrawal: Number,
+    lessInterestAmount: Number,
+    miscellaneousItem: String,
+    miscellaneousAmount: Number,
+    paymentAmount: Number,
+    newBalanceAmount: Number,
+    paymentDate: Date,
     lastPaymentAmount: Number,
     lastPaymentDate: Date
+});
+clientPaymentSchema.post('save', function (next) {
+    console.log('clientpayments.ts models');
+    // next();
 });
 var ClientPayment = mongoose.model('ClientPayment', clientPaymentSchema);
 exports.default = ClientPayment;

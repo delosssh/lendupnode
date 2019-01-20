@@ -26,6 +26,7 @@ var PaymentScheduleCtrl = (function (_super) {
                 console.log(item.loanId);
                 schedule = new _this.model(item);
                 console.log(schedule.loanId);
+                console.log(schedule.interestAmount);
                 schedule.save(function (err, item) {
                     if (err && err.code === 11000) {
                         res.sendStatus(400);

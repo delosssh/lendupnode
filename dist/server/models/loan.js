@@ -23,6 +23,9 @@ var loanSchema = new mongoose.Schema({
     lastUpdate: Date,
     creationDate: Date
 });
+loanSchema.methods.updateBalanceAmount = function (newBalanceAmount) {
+    this.balanceAmount = newBalanceAmount;
+};
 var Loan = mongoose.model('Loan', loanSchema);
 exports.default = Loan;
 //# sourceMappingURL=loan.js.map

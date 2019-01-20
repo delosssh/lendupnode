@@ -35,7 +35,8 @@ export class LoansDialogChildComponent {
           // console.log(res);
           // console.dir(res);
           console.log('loans-dialog-child : getLoanPayments : subscribe: ' + loanId);
-          var total = res.reduce( (sum, item) => sum + item.paidAmount, 0 );
+          // var total = res.reduce( (sum, item) => sum + item.paidAmount, 0 );
+          var total = res.reduce( (sum, item) => sum + item.paymentAmount, 0 );
           console.log(total);
           this.loans = res;
           // this.load.emit(res);

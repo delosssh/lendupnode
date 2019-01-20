@@ -10,7 +10,8 @@ import { LoanPaymentModel } from '../models/loan-payment.model';
 import { ClientPaymentService } from '../services/client-payment.service';
 import { LoanService } from '../services/loan.service';
 import { LoanModel } from '../models/loan.model';
-// import Client from '../../../server/models/client';
+import { ClientService } from '../services/client.service';
+import { ClientModel } from '../models/client.model';
 
 @Component({
   selector: 'client-loan-payment-dialog',
@@ -23,11 +24,13 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
   clientName: String;
   todayDate: String;
   payment: LoanPaymentModel;
+  client: ClientModel;
 
   constructor(
     private route: ActivatedRoute,
     private paymentService: ClientPaymentService,
     private loanService: LoanService,
+    private clientService: ClientService,
     @Inject(MAT_DIALOG_DATA) private data: any,
   ) {
     this.payment = new LoanPaymentModel();
@@ -50,15 +53,59 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
 
   }
 
+  save() {
+
+    console.log(this.loan.balanceAmount);
+    console.log(this.payment.newBalanceAmount);
+    // this.payment.interestAmount = this
+    this.payment.balanceAmount = Number(this.loan.balanceAmount);
+    this.loan.balanceAmount = this.payment.newBalanceAmount;
+    // this.loan.balanceAmount = this.payment.balanceAmount;
+
+    this.paymentService.addPayment(this.payment)
+    .subscribe(
+      res => {
+        console.log('successfully saved!');
+        this.loanService.editLoan(this.loan)
+        .subscribe(
+          res => {
+            console.log('loan has been updated')
+          },
+          error => console.log(error)
+        );
+      },
+      error => console.log(error)
+    );
+  }
+
   test() {
     return 100.00;
   }
 
-  getClientLoanDetails(loan) {
+  getClientLoanDetails(loan: LoanModel) {
+
+    this.client = new ClientModel();
+    this.client.clientNumber = loan.clientNumber;
+    this.clientService.getClientByClientNumber(this.client)
+    .subscribe(
+      data => {
+        this.client = data[0];
+        console.dir(this.client);
+
+        this.clientName = this.client.lastName + ', ' + this.client.firstName;
+        this.payment.clientNumber = this.client.clientNumber;
+
+      },
+      error => console.log(error) 
+    );
+
     this.loan = new LoanModel();
     this.loanService.getLoan(loan)
     .subscribe(
-      data => this.loan = data,
+      data => {
+        this.loan = data;
+        this.payment.loanId = this.loan.loanId;
+      },
       error => console.log(error)
     );
 
@@ -71,8 +118,8 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
 
     // balance = this.payment.balanceAmount;
     balance = this.loan.balanceAmount;
-    // rate = this.payment.interestRate;
-    rate = this.loan.interestRate;
+    rate = this.payment.interestRate;
+    // rate = this.loan.interestRate;
     amount = Number(balance) * ( Number(rate) /  100);
     this.payment.interestAmount = Number(balance) * ( Number(rate) / 100);
 
@@ -94,7 +141,8 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
   cashOut() {
     let lessInterest: Number = this.lessInterestAmount();
     let paymentAmount: Number = this.payment.paymentAmount;
-    let cashOut: Number = Number(lessInterest) - Number(paymentAmount);
+    let cashOut: number = Number(lessInterest) - Number(paymentAmount) - this.payment.miscellaneousAmount;
+    this.payment.cashOut = cashOut;
 
     return cashOut;
   }

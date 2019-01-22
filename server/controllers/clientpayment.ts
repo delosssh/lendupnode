@@ -17,4 +17,15 @@ export default class PaymentCtrl extends BaseCtrl {
       res.json(obj);
     });
   }
+
+  getLoanPayments2 = (req, res) => {
+    this.model.find({ loanId: req.params.id }, (err, obj) => {
+      if (err) { return console.error(err); }
+      res.json(obj);
+    })
+    .sort({paymentDate: 'desc'})
+    .exec(function(error, docs) {
+      console.dir(docs);
+    });
+  }
 }

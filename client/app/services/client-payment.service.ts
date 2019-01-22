@@ -24,4 +24,8 @@ export class ClientPaymentService {
     return this.http.get(`/api/clientpayments/loan/${loanId}`).map(res => res.json());
   }
 
+  getLoanPayments2(loanId): Observable<any> {
+    return this.http.get(`/api/clientpayments/loan/lastpayment/${loanId}`).map(res => res.json());
+  }
+
 }

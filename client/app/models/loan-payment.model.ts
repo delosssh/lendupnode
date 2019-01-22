@@ -8,7 +8,7 @@ export class LoanPaymentModel extends BaseModel {
   interestAmount: number = 0;
   cashWithdrawal: number = 0;
   lessInterestAmount: number = 0;
-  miscellaneousItem: string;
+  miscellaneousItem: string = 'none';
   miscellaneousAmount: number = 0;
   paymentAmount: number = 0;
   newBalanceAmount: number = 0;

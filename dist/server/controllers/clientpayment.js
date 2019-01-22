@@ -33,6 +33,18 @@ var PaymentCtrl = (function (_super) {
                 res.json(obj);
             });
         };
+        _this.getLoanPayments2 = function (req, res) {
+            _this.model.find({ loanId: req.params.id }, function (err, obj) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.json(obj);
+            })
+                .sort({ paymentDate: 'desc' })
+                .exec(function (error, docs) {
+                console.dir(docs);
+            });
+        };
         return _this;
     }
     return PaymentCtrl;

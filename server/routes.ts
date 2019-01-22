@@ -56,6 +56,7 @@ export default function setRoutes(app) {
   router.route('/clientpayment/:id').delete(paymentCtrl.delete);
   router.route('/clientpayments/client/:id').get(paymentCtrl.getClient);
   router.route('/clientpayments/loan/:id').get(paymentCtrl.getLoanPayments);
+  router.route('/clientpayments/loan/lastpayment/:id').get(paymentCtrl.getLoanPayments2);
   
   // Loan
   router.route('/loan').post(loanCtrl.insert);

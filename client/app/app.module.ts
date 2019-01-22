@@ -45,6 +45,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/payment-schedule-dialog.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/paymen
     AuthGuardLogin,
     AuthGuardAdmin,
     CatService,
+    DatePipe,
     UserService,
     ClientService,
     LoanService,

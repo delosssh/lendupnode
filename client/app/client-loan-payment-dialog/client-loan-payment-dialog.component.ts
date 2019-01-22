@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { DatePipe } from '@angular/common';
 
 /** models */
 import { ClientPaymentModel } from '../models/clientpayment.model';
@@ -25,23 +26,26 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
   todayDate: String;
   payment: LoanPaymentModel;
   client: ClientModel;
+  lastPaymentDate: string;
 
   constructor(
     private route: ActivatedRoute,
     private paymentService: ClientPaymentService,
     private loanService: LoanService,
     private clientService: ClientService,
+    private datepipe: DatePipe,
     @Inject(MAT_DIALOG_DATA) private data: any,
   ) {
     this.payment = new LoanPaymentModel();
 
     // sample data;
-    this.payment.clientNumber = "PR0001";
+    // this.payment.clientNumber = "PR0001";
     // this.payment.balanceAmount = 100000;
     // this.payment.interestRate = 2.5;
 
-    this.clientName = "Precy Evangelista";
-    this.todayDate = "2/Nov/2018";
+    // this.clientName = "Precy Evangelista";
+    // this.todayDate = "2/Nov/2018";
+    this.todayDate = new Date().toDateString();
 
     console.log('client-loan-dialog:constructor:data: ');
     console.dir(this.data);
@@ -59,6 +63,7 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
     console.log(this.payment.newBalanceAmount);
     // this.payment.interestAmount = this
     this.payment.balanceAmount = Number(this.loan.balanceAmount);
+    this.payment.paymentDate = new Date();
     this.loan.balanceAmount = this.payment.newBalanceAmount;
     // this.loan.balanceAmount = this.payment.balanceAmount;
 
@@ -105,6 +110,21 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
       data => {
         this.loan = data;
         this.payment.loanId = this.loan.loanId;
+
+        // get loan last payment
+        this.paymentService.getLoanPayments2(this.loan.loanId)
+        .subscribe(
+          data => {
+            console.log('loan last payment');
+            console.dir(data);
+            try {
+              this.lastPaymentDate = this.datepipe.transform( data[0].paymentDate, 'dd-MMM-yyyy');
+            } catch (e) {
+              this.lastPaymentDate = null;
+            }
+          },
+          error => console.log(error)
+        );
       },
       error => console.log(error)
     );
@@ -156,5 +176,6 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
 
     return this.payment.newBalanceAmount;
   }
+
 
 }

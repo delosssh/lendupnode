@@ -103,7 +103,7 @@
   <div style="display: flex">
     <mat-icon matPrefix>calendar_today</mat-icon>
     <mat-form-field>
-      <input matInput [matDatepicker]="releasePicker" placeholder="release date" [(ngModel)]="loan.releaseDate">
+      <input matInput [matDatepicker]="releasePicker" placeholder="release date" [(ngModel)]="loan.releaseDate" (change)="loanTypeChangeEvent($event)">
       <mat-datepicker-toggle matSuffix [for]="releasePicker"></mat-datepicker-toggle>
       <mat-datepicker #releasePicker></mat-datepicker>
     </mat-form-field>

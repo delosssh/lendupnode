@@ -7,11 +7,13 @@ import { DatePipe } from '@angular/common';
 /** models */
 import { ClientPaymentModel } from '../models/clientpayment.model';
 import { LoanPaymentModel } from '../models/loan-payment.model';
+import { LoanTransactionModel } from '../models/loan-transaction.model';
 
 import { ClientPaymentService } from '../services/client-payment.service';
 import { LoanService } from '../services/loan.service';
 import { LoanModel } from '../models/loan.model';
 import { ClientService } from '../services/client.service';
+import { LoanTransactionService } from '../services/loan-transaction.service';
 import { ClientModel } from '../models/client.model';
 
 @Component({
@@ -27,6 +29,7 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
   payment: LoanPaymentModel;
   client: ClientModel;
   lastPaymentDate: string;
+  loanTransaction: LoanTransactionModel;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +37,7 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
     private loanService: LoanService,
     private clientService: ClientService,
     private datepipe: DatePipe,
+    private loanTransactionService: LoanTransactionService,
     @Inject(MAT_DIALOG_DATA) private data: any,
   ) {
     this.payment = new LoanPaymentModel();
@@ -58,6 +62,9 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
   }
 
   save() {
+    let creditAmount: number = 0;
+    var newBalance: number = this.payment.newBalanceAmount;
+    this.loanTransaction = new LoanTransactionModel();
 
     console.log(this.loan.balanceAmount);
     console.log(this.payment.newBalanceAmount);
@@ -78,9 +85,51 @@ export class ClientLoanPaymentDialogComponent implements OnInit {
           },
           error => console.log(error)
         );
+
+        this.loanTransaction.loanId = String(this.loan.loanId);
+        this.loanTransaction.clientNumber = String(this.loan.clientNumber);
+        this.loanTransaction.transactionId = "";
+        this.loanTransaction.transactionDate = new Date();
+        this.loanTransaction.transactionType = "PAYMENT";
+        this.loanTransaction.transactionDescription = "Loan Payment";
+        this.loanTransaction.salaryAmount = this.payment.cashWithdrawal;
+        this.loanTransaction.interestAmount = this.payment.interestAmount;
+        this.loanTransaction.releaseAmount = 0;
+        this.loanTransaction.paymentAmount = this.payment.paymentAmount;
+        this.loanTransaction.otherDescription = this.payment.miscellaneousItem;
+        this.loanTransaction.otherAmount = this.payment.miscellaneousAmount;
+        this.loanTransaction.cashoutAmount = this.payment.cashOut;
+        this.loanTransaction.balanceAmount = newBalance;
+        this.loanTransaction.debitAmount = 0;
+
+        creditAmount = Number.parseFloat(this.payment.interestAmount.toString())
+          + Number.parseFloat(this.payment.paymentAmount.toString())
+          + Number.parseFloat(this.payment.miscellaneousAmount.toString());
+        this.loanTransaction.creditAmount = creditAmount;
+
+        this.loanTransactionService.add(this.loanTransaction)
+        .subscribe(
+          res => {
+            console.log('loan transaction was saved for loan repayments ');
+            console.log(res);
+          },
+          error => console.log(error)
+        );
+
       },
       error => console.log(error)
     );
+  }
+
+
+  collection() {
+    var collectionAmount: number;
+
+    collectionAmount = Number.parseFloat(this.payment.interestAmount.toString())
+      + Number.parseFloat(this.payment.paymentAmount.toString())
+      + Number.parseFloat(this.payment.miscellaneousAmount.toString());
+
+    return collectionAmount;
   }
 
   test() {

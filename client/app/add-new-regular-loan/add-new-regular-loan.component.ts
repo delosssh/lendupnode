@@ -7,10 +7,12 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ClientService } from '../services/client.service';
 import { LoanService } from '../services/loan.service';
 import { PaymentScheduleService } from '../services/payment-schedule.service';
+import { LoanTransactionService } from '../services/loan-transaction.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { ClientModel } from '../models/client.model';
 import { LoanModel } from '../models/loan.model';
 import { PaymentScheduleModel } from '../models/payment-schedule.model';
+import { LoanTransactionModel } from '../models/loan-transaction.model';
 import { PaymentScheduleDialogComponent } from '../payment-schedule-dialog/payment-schedule-dialog.component';
 
 @Component({
@@ -25,12 +27,14 @@ export class AddNewRegularLoanComponent {
   paymentSchedule: PaymentScheduleModel;
   schedules = [];
   paymentInterval: number;
+  loanTransaction: LoanTransactionModel;
 
   public constructor (
     private clientService: ClientService,
     private dialog: MatDialog,
     private loanService: LoanService,
     private paymentScheduleService: PaymentScheduleService,
+    private loanTransactionService: LoanTransactionService,
     private http: Http,
     private route: ActivatedRoute,
     private router: Router,
@@ -59,6 +63,7 @@ export class AddNewRegularLoanComponent {
   }
 
   save() {
+    this.loanTransaction = new LoanTransactionModel();
     // console.log(this.client.firstName);
     // this.clientService.addClient(this.client)
     //   .subscribe(
@@ -89,7 +94,35 @@ export class AddNewRegularLoanComponent {
     .subscribe(
       res => {
         console.log('adding new loan');
+        console.dir(res);
         // this.router.navigate(['/client-detail', {id: this.client._id}]);
+
+        // record new RELPRINCIPAL transaction
+        this.loanTransaction.loanId = String(this.loan.loanId);
+        this.loanTransaction.clientNumber = String(this.loan.clientNumber);
+        this.loanTransaction.transactionId = "";
+        this.loanTransaction.transactionDate = new Date();
+        this.loanTransaction.transactionType = "RELPRIN";
+        this.loanTransaction.transactionDescription = "Principal Released";
+        this.loanTransaction.salaryAmount = 0;
+        this.loanTransaction.interestAmount = 0;
+        this.loanTransaction.releaseAmount = Number(this.loan.principalAmount);
+        this.loanTransaction.paymentAmount = 0;
+        this.loanTransaction.otherDescription = "";
+        this.loanTransaction.otherAmount = 0;
+        this.loanTransaction.cashoutAmount = Number(this.loan.principalAmount);
+        this.loanTransaction.debitAmount = Number(this.loan.principalAmount);
+        this.loanTransaction.balanceAmount = Number(this.loan.balanceAmount);
+        this.loanTransaction.creditAmount = 0;
+
+        this.loanTransactionService.add(this.loanTransaction)
+        .subscribe(
+          res => {
+            console.log('loan transaction was saved ');
+            console.log(res);
+          },
+          error => console.log(error)
+        );
 
         this.paymentScheduleService.add(this.schedules)
         .subscribe(

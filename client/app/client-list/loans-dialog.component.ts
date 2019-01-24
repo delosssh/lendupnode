@@ -87,4 +87,9 @@ export class LoansDialogComponent {
     this.dialogRef.close();
     this.router.navigate(['/payment-schedule-list', { loanId: loan.loanId } ]);
   }
+
+  showLedger(loan: LoanModel) {
+    this.dialogRef.close();
+    this.router.navigate(['/loan-transaction-list', { loanId: loan.loanId}]);
+  }
 }

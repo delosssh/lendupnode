@@ -9,6 +9,7 @@ import { LoanService } from './services/loan.service';
 import { ClientPaymentService } from './services/client-payment.service';
 import { AuthService } from './services/auth.service';
 import { PaymentScheduleService } from './services/payment-schedule.service';
+import { LoanTransactionService } from './services/loan-transaction.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
 import { ClientLoanPaymentDialogComponent } from './client-loan-payment-dialog/client-loan-payment-dialog.component';
 import { PaymentScheduleListComponent } from './payment-schedule-list/payment-schedule-list.component';
 import { LoansDialogChildComponent } from './loans-dialog-child/loans-dialog-child.component';
+import { LoanTransactionListComponent } from './loan-transaction-list/loan-transaction-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 
@@ -74,6 +76,7 @@ import { DatePipe } from '@angular/common';
     PaymentScheduleDialogComponent,
     ClientLoanPaymentDialogComponent,
     PaymentScheduleListComponent,
+    LoanTransactionListComponent,
     NavbarComponent,
     HomeComponent,
     SearchClientFilterPipe
@@ -127,6 +130,7 @@ import { DatePipe } from '@angular/common';
     LoanService,
     ClientPaymentService,
     PaymentScheduleService,
+    LoanTransactionService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

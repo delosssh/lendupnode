@@ -1,0 +1,27 @@
+<mat-card>
+
+  <div fxFlex fxLayout="column" fxLayoutAlign="start">
+    <h3>Loan Transaction</h3>
+    <mat-card *ngFor="let transaction of transactions">
+      <mat-card-title></mat-card-title>
+
+      <mat-card-content>
+
+        <div class="schedule" fxFlex fxLayout="row" fxLayoutAlign="start">
+          <div fxFlex="10">{{ transaction.transactionDate | date: 'yyyy/MM/dd' }}</div>
+          <div fxFlex="30">{{ transaction.transactionType }}</div>
+          <div fxFlex="30">{{ transaction.transactionDescription }}</div>
+          <div fxFlex="30">{{ transaction.salaryAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.interestAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.releaseAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.paymentAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.otherAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.cashoutAmount | number: '1.2-2' }}</div>
+          <div fxFlex="30">{{ transaction.balanceAmount | number: '1.2-2' }}</div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</mat-card>

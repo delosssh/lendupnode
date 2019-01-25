@@ -15,7 +15,7 @@
   </mat-table>
 </div> -->
 
-<div>
+<!-- <div>
   <button mat-raised-button color="accent" routerLink="/add-client">Add Client</button>
 </div>
 <div style="display: flex; flex-wrap: wrap;" class="container" >
@@ -25,9 +25,7 @@
     </mat-form-field>
   </div>
 
-    <!-- <mat-card style="flex: 1; max-width: 30rem; border-radius: 0px;" *ngFor="let client of clients" (click)="details(client._id)"> -->
     <mat-card style="flex: 1; max-width: 30rem; border-radius: 0px;" *ngFor="let client of clients">
-        <!-- <mat-card-title>{{ client.lastName }}, {{ client.firstName }}</mat-card-title> -->
       <mat-card-title>
           <div fxLayout="row" fxLayoutAlign="space-between">
             <div fxFlex="50">
@@ -61,10 +59,41 @@
         </div>
     
       </mat-card-content>
-      <!-- <mat-card-actions> -->
-          <!-- <client-list-child [clientNumber]="client.clientNumber"></client-list-child> -->
-          <!-- <button mat-button (click)="details(client._id)">Details</button> -->
-          <!-- <button mat-button (click)="showLoans(client)">Loans</button> -->
-      <!-- </mat-card-actions> -->
+
     </mat-card>  
-</div>
+</div> -->
+
+<mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="clientNumber">
+    <mat-header-cell *matHeaderCellDef>Client Number</mat-header-cell>
+    <mat-cell *matCellDef="let client" (click)="details(client._id)">{{ client.clientNumber }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef>Lastname</mat-header-cell>
+    <mat-cell *matCellDef="let client">{{ client.lastName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef>Firstname</mat-header-cell>
+    <mat-cell *matCellDef="let client">{{ client.firstName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="middleName">
+    <mat-header-cell *matHeaderCellDef>Middlename</mat-header-cell>
+    <mat-cell *matCellDef="let client">{{ client.middleName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="loans">
+    <mat-header-cell *matHeaderCellDef>Loans</mat-header-cell>
+    <mat-cell *matCellDef="let client" (click)="showLoans(client)">
+      <client-list-child [clientNumber]="client.clientNumber" (load)="client.loans = $event"></client-list-child>
+      {{ client.loans }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>

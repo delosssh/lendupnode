@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var clientSchema = new mongoose.Schema({
+    username: String,
     clientNumber: String,
     firstName: String,
     middleName: String,

@@ -41,6 +41,10 @@ mat-form-field {
   }
 }
 
+mat-cell {
+  font-size: 9pt;
+}
+
 #mat-span-title {
   font-size: 30px;
   font-weight: 700;
@@ -65,4 +69,34 @@ mat-form-field {
   max-width: none;
   width: 100vw;
   height: 100vh;
+}
+
+.mat-column-clientNumber {
+  border-right: 1px solid lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.mat-column-lastName {
+  border-right: 1px solid lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.mat-column-firstName {
+  border-right: 1px solid lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.mat-column-middleName {
+  border-right: 1px solid lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.mat-column-loans {
+  border-right: 1px solid lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
 }

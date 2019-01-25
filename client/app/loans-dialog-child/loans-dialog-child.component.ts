@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 
 import { ClientPaymentService } from '../services/client-payment.service';
 import { LoanService } from '../services/loan.service';
-import { LoansDialogComponent } from '../client-list/loans-dialog.component';
+import { LoansDialogComponent } from '../client-loans-dialog/client-loans-dialog.component';
 
 @Component({
   selector: 'loans-dialog-child',

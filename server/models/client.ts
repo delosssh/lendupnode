@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 
 const clientSchema = new mongoose.Schema({
+  username: String,
   clientNumber: String,
   firstName: String,
   middleName: String,

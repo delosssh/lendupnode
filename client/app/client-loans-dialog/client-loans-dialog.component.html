@@ -1,0 +1,165 @@
+<h1 md-dialog-title class="primary-color">Client Loans</h1>
+<mat-dialog-content class="accent-color">
+  <!-- <header style="display: flex">
+    <div style="flex: 1">Loan Id</div>
+    <div style="flex: 1">Application Date</div>
+    <div style="flex: 1">Principal</div>
+    <div style="flex: 1">Interest (%)</div>
+  </header>
+  <div style="display: flex" *ngFor="let loan of loans">
+    <div style="flex: 1">{{loan.loanId}}</div>
+    <div style="flex: 1">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>
+    <div style="flex: 1">{{loan.principalAmount}}</div>
+    <div style="flex: 1"><a (click)="gotoDetails(loan)" class="nav-item nav-link" routerLinkActive="active">{{loan.interestRate}}</a></div>
+  </div> -->
+  <!-- <div style="display: flex; flex-wrap: wrap">
+    <mat-card *ngFor="let loan of loans" style="flex: 1; max-width: 20rem">
+      <mat-card-title>{{ loan.loanId }}</mat-card-title>
+      <mat-card-content>
+        <span matLine>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</span>
+        <span matLine>{{ loan.principalAmount }}</span>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+      </mat-card-actions>
+    </mat-card> 
+  </div> -->
+
+  <!-- <div style="display: flex" *ngFor="let loan of loans"> -->
+    <!-- <div style="flex: 1">{{loan.loanId}}</div>
+    <div style="flex: 1">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>
+    <div style="flex: 1">{{loan.principalAmount}}</div>
+    <div style="flex: 1"><a (click)="gotoDetails(loan)" class="nav-item nav-link" routerLinkActive="active">{{loan.interestRate}}</a></div> -->
+  
+    <!-- <div fxFlex fxLayout="column">
+      <div>{{ loan.principalAmount }}</div>
+    </div>
+
+  </div> -->
+
+  <div fxFlex fxLayout="column">
+
+  <div fxFlex *ngFor="let loan of loans">
+
+    <!-- <div fxFlex fxLayout="column">
+    <div fxFlex="40" fxLayout="column" style="flex: 0">
+      <div>{{ loan.loanId }}</div>
+      <div>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</div>  
+    </div>
+
+    <div fxFlex="60" fxLayout="column">
+      <loans-dialog-child [loanId]="loan.loanId" (loan)="loan.totalPaymentAmount = $event"></loans-dialog-child>
+      <div>Principal:  {{ loan.principalAmount }}</div>  
+      <div>Payments: {{ loan.totalPaymentAmount }}</div>  
+      <div>Balance: 
+          {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}
+      </div>
+    </div>
+    </div> -->
+
+    <loans-dialog-child [loanId]="loan.loanId" (loan)="loan.totalPaymentAmount = $event"></loans-dialog-child>
+
+    <mat-card>
+      <mat-card-content fxFlex fxLayoutAlign="start" fxLayout="column" style="height: 120px">
+        <div fxFlex fxLayout="row" fxLayoutAlign="start">
+
+          <div fxFlex fxLayout="column" fxLayoutAlign="start">
+            <div fxFlex class="loanId">{{ loan.loanId }}</div>
+            <div fxFlex>{{ loan.applicationDate }}</div>
+            <!-- <div fxFlex fxLayoutAlign="start bottom">
+                <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+              </div> -->
+            </div>
+          <div fxFlex fxLayout="column" fxLayoutAlign="start">
+            <div fxFlex>Principal: {{ loan.principalAmount }}</div>
+            <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>
+            <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>
+            <div fxFlex fxLayoutAlign="end">
+              <mat-icon (click)="gotoDetails(loan)" mat-dialog-close>assignment</mat-icon>
+              <mat-icon (click)="showAddPayment(loan)" mat-dialog-close>add_circle</mat-icon>
+              <mat-icon (click)="showPaymentSchedule(loan)" mat-dialog-close>date_range</mat-icon>
+              <mat-icon (click)="showLedger(loan)" mat-dialog-close>date_range</mat-icon>
+            </div>
+          </div>
+
+        </div>
+        <!-- <div fxFlex="40" fxLayoutAlign="bottom"> -->
+          <!-- <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+          <button mat-button (click)="showAddPayment(loan)">Add Payment</button> -->
+          <!-- <div fxFlex fxLayout="row" fxLayoutAlign="end bottom">
+            <mat-icon (click)="gotoDetails(loan)" mat-dialog-close>assignment</mat-icon>
+            <mat-icon (click)="showAddPayment(loan)" mat-dialog-close>add_circle</mat-icon>
+            <mat-icon (click)="showPaymentSchedule(loan)" mat-dialog-close>date_range</mat-icon>
+          </div>
+        </div> -->
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+        <button mat-button (click)="showAddPayment(loan)">Add Payment</button>
+      </mat-card-actions> -->
+    </mat-card>
+
+  </div>
+
+  </div>
+
+  <!-- <div> -->
+    <!-- <mat-card *ngFor="let loan of loans" style="width: 100%">
+
+      <mat-card-content>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="loan number" [value]="loan.loanId" readonly="true">
+          </mat-form-field>
+        </div>  
+    
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="loan proceeds" [value]="loan.loanProceed" readonly="true">
+          </mat-form-field>
+        </div>  
+        <div style="display: flex">
+          <mat-form-field>
+            <input matInput placeholder="apply date" [value]="loan.applicationDate | date: 'MM/dd/yyyy'" readonly="true">
+          </mat-form-field>
+        </div>        
+        <div style="display: flex">
+          <mat-form-field>
+            <input matInput placeholder="Principal" [value]="loan.principalAmount" readonly="true">
+          </mat-form-field>
+        </div>  
+
+        <div style="display: flex">
+          <mat-form-field>
+            <loans-dialog-child [loanId]="loan.loanId" (loan)="loan.totalPaymentAmount = $event"></loans-dialog-child>
+            <input matInput placeholder="payments" [value]="loan.totalPaymentAmount" readonly="true">
+            <mat-icon matSuffix>receipt</mat-icon>
+          </mat-form-field>
+        </div>  
+          
+        <div style="display: flex">
+          <mat-form-field>
+            <input matInput placeholder="balance" [value]="getBalance(loan.principalAmount, loan.totalPaymentAmount)" readonly="true">
+          </mat-form-field>
+        </div>  
+  
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" mat-dialog-close (click)="gotoDetails(loan)">Details</button>
+        <button mat-button (click)="showAddPayment(loan)">Add Payment</button>
+      </mat-card-actions>
+    </mat-card>  -->
+  <!-- </div> -->
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" mat-dialog-close>
+    Close
+  </button>
+  <button mat-button (click)="showNewLoan()" mat-dialog-close>
+      New Loan
+    </button>
+</mat-dialog-actions>

@@ -6,7 +6,7 @@ import { ClientService } from '../services/client.service';
 
 import { ClientModel } from '../models/client.model';
 
-import { LoansDialogComponent } from '../client-list/loans-dialog.component';
+import { LoansDialogComponent } from '../client-loans-dialog/client-loans-dialog.component';
 
 @Component({
   selector: 'client-detail',

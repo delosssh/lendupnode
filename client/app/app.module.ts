@@ -27,7 +27,7 @@ import { ClientListComponent, SearchClientFilterPipe } from './client-list/clien
 import { ClientListChildComponent } from './client-list/client-list-child.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
-import { LoansDialogComponent } from './client-list/loans-dialog.component';
+import { LoansDialogComponent } from './client-loans-dialog/client-loans-dialog.component';
 import { LoanPaymentDialogComponent } from './loan-payments/loan-payment-dialog.component';
 import { AddLoanPaymentDialogComponent } from './add-loan-payment/add-loan-payment-dialog.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';

@@ -191,8 +191,9 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -207,12 +208,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AddClientComponent = (function () {
-    function AddClientComponent(clientService, http, router) {
+    function AddClientComponent(auth, clientService, http, router) {
+        this.auth = auth;
         this.clientService = clientService;
         this.http = http;
         this.router = router;
-        this.client = new __WEBPACK_IMPORTED_MODULE_4__models_client_model__["a" /* ClientModel */]();
+        this.client = new __WEBPACK_IMPORTED_MODULE_5__models_client_model__["a" /* ClientModel */]();
+        this.client.username = this.auth.currentUser.username;
     }
     AddClientComponent.prototype.save = function () {
         var _this = this;
@@ -231,10 +235,10 @@ AddClientComponent = __decorate([
         template: __webpack_require__("../../../../../client/app/add-client/add-client.component.html"),
         styles: [__webpack_require__("../../../../../client/app/add-client/add-client.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_client_service__["a" /* ClientService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_client_service__["a" /* ClientService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_client_service__["a" /* ClientService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_client_service__["a" /* ClientService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], AddClientComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=add-client.component.js.map
 
 /***/ }),
@@ -1001,7 +1005,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__client_list_client_list_child_component__ = __webpack_require__("../../../../../client/app/client-list/client-list-child.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__loan_details_loan_details_component__ = __webpack_require__("../../../../../client/app/loan-details/loan-details.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__client_detail_client_detail_component__ = __webpack_require__("../../../../../client/app/client-detail/client-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__client_list_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-list/loans-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__client_loans_dialog_client_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__loan_payments_loan_payment_dialog_component__ = __webpack_require__("../../../../../client/app/loan-payments/loan-payment-dialog.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__add_loan_payment_add_loan_payment_dialog_component__ = __webpack_require__("../../../../../client/app/add-loan-payment/add-loan-payment-dialog.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__add_new_loan_add_new_loan_component__ = __webpack_require__("../../../../../client/app/add-new-loan/add-new-loan.component.ts");
@@ -1097,7 +1101,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_25__client_list_client_list_child_component__["a" /* ClientListChildComponent */],
             __WEBPACK_IMPORTED_MODULE_26__loan_details_loan_details_component__["a" /* LoanDetailsComponent */],
             __WEBPACK_IMPORTED_MODULE_27__client_detail_client_detail_component__["a" /* ClientDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__client_list_loans_dialog_component__["a" /* LoansDialogComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__client_loans_dialog_client_loans_dialog_component__["a" /* LoansDialogComponent */],
             __WEBPACK_IMPORTED_MODULE_36__loans_dialog_child_loans_dialog_child_component__["a" /* LoansDialogChildComponent */],
             __WEBPACK_IMPORTED_MODULE_29__loan_payments_loan_payment_dialog_component__["a" /* LoanPaymentDialogComponent */],
             __WEBPACK_IMPORTED_MODULE_30__add_loan_payment_add_loan_payment_dialog_component__["a" /* AddLoanPaymentDialogComponent */],
@@ -1114,7 +1118,7 @@ AppModule = __decorate([
         ],
         entryComponents: [
             __WEBPACK_IMPORTED_MODULE_30__add_loan_payment_add_loan_payment_dialog_component__["a" /* AddLoanPaymentDialogComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__client_list_loans_dialog_component__["a" /* LoansDialogComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__client_loans_dialog_client_loans_dialog_component__["a" /* LoansDialogComponent */],
             __WEBPACK_IMPORTED_MODULE_29__loan_payments_loan_payment_dialog_component__["a" /* LoanPaymentDialogComponent */],
             __WEBPACK_IMPORTED_MODULE_34__client_loan_payment_dialog_client_loan_payment_dialog_component__["a" /* ClientLoanPaymentDialogComponent */],
             __WEBPACK_IMPORTED_MODULE_45__payment_schedule_dialog_payment_schedule_dialog_component__["a" /* PaymentScheduleDialogComponent */],
@@ -1336,7 +1340,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_list_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-list/loans-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_loans_dialog_client_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1374,7 +1378,7 @@ var ClientDetailComponent = (function () {
             .subscribe(function (data) { return _this._client = data; }, function (error) { return console.log(error); });
     };
     ClientDetailComponent.prototype.loans = function (client) {
-        this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__client_list_loans_dialog_component__["a" /* LoansDialogComponent */], {
+        this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__client_loans_dialog_client_loans_dialog_component__["a" /* LoansDialogComponent */], {
             data: { clientNumber: client.clientNumber }
         });
     };
@@ -1421,7 +1425,7 @@ module.exports = "<!-- <a (click)=\"openLoansDialog()\" class=\"nav-item nav-lin
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-list/loans-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client_loans_dialog_client_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1465,7 +1469,7 @@ var ClientListChildComponent = (function () {
         //return clientNumber;
     };
     ClientListChildComponent.prototype.openLoansDialog = function () {
-        this.dialog.open(__WEBPACK_IMPORTED_MODULE_3__loans_dialog_component__["a" /* LoansDialogComponent */], {
+        this.dialog.open(__WEBPACK_IMPORTED_MODULE_3__client_loans_dialog_client_loans_dialog_component__["a" /* LoansDialogComponent */], {
             data: { clientNumber: this.clientNumber }
         });
     };
@@ -1495,7 +1499,7 @@ var _a, _b;
 /***/ "../../../../../client/app/client-list/client-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div style=\"display: flex\" *ngFor=\"let client of clients\">\r\n  <div style=\"flex: 1\">{{client.clientNumber}}</div>\r\n  <div style=\"flex: 1\">{{client.firstName}}</div>\r\n  <div style=\"flex: 1\">{{client.middleName}}</div>\r\n  <div style=\"flex: 1\">{{client.lastName}}</div>\r\n  <div style=\"flex: 1\"><client-list-child [clientNumber]=\"client.clientNumber\"></client-list-child></div>\r\n</div> -->\r\n\r\n<!-- <div class=\"\">\r\n  <mat-table #table [dataSource]=\"dataSource\">\r\n    <ng-container cdkColumnDef=\"clientNumber\">\r\n      <mat-header-cell>Client Number</mat-header-cell>\r\n      <mat-cell>{{ client.clientNumber }}</mat-cell>\r\n    </ng-container>\r\n  </mat-table>\r\n</div> -->\r\n\r\n<div>\r\n  <button mat-raised-button color=\"accent\" routerLink=\"/add-client\">Add Client</button>\r\n</div>\r\n<div style=\"display: flex; flex-wrap: wrap;\" class=\"container\" >\r\n  <div style=\"display: flex\">\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"seach\" #txtClientFirstName style=\"flex: 1\" [(ngModel)]=\"searchTerm\" (ngModelChange)=\"search()\">\r\n    </mat-form-field>\r\n  </div>\r\n\r\n    <!-- <mat-card style=\"flex: 1; max-width: 30rem; border-radius: 0px;\" *ngFor=\"let client of clients\" (click)=\"details(client._id)\"> -->\r\n    <mat-card style=\"flex: 1; max-width: 30rem; border-radius: 0px;\" *ngFor=\"let client of clients\">\r\n        <!-- <mat-card-title>{{ client.lastName }}, {{ client.firstName }}</mat-card-title> -->\r\n      <mat-card-title>\r\n          <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\r\n            <div fxFlex=\"50\">\r\n              <img (click)=\"details(client._id)\" style=\"height: 50px; border-radius: 50%;\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png\">\r\n            </div>\r\n            <div fxFlex=\"50\" fxLayoutAlign=\"end\">{{ client.clientNumber }}</div>\r\n          </div>\r\n      </mat-card-title>\r\n\r\n      <mat-card-content>\r\n\r\n        <div fxLayout=\"column\">\r\n\r\n          <div fxLayout=\"row\">\r\n            <span class=\"mat-span-title\">{{ client.lastName }}</span>\r\n          </div>\r\n          <div fxLayout=\"row\">\r\n              <span>{{ client.firstName }} - {{ client.middleName }}</span>\r\n          </div>\r\n  \r\n          <div fxLayout=\"row\">\r\n            <div fxFlex=\"50\">\r\n              <client-list-child [clientNumber]=\"client.clientNumber\" (load)=\"client.loans = $event\"></client-list-child>\r\n              Current Loans: {{ client.loans }}\r\n            </div>\r\n            <div fxFlex=\"50\" fxLayoutAlign=\"end\">\r\n                <mat-icon matSuffix (click)=\"showLoans(client)\">receipt</mat-icon>\r\n            </div> \r\n          </div>\r\n\r\n        </div>\r\n    \r\n      </mat-card-content>\r\n      <!-- <mat-card-actions> -->\r\n          <!-- <client-list-child [clientNumber]=\"client.clientNumber\"></client-list-child> -->\r\n          <!-- <button mat-button (click)=\"details(client._id)\">Details</button> -->\r\n          <!-- <button mat-button (click)=\"showLoans(client)\">Loans</button> -->\r\n      <!-- </mat-card-actions> -->\r\n    </mat-card>  \r\n</div>\r\n"
+module.exports = "<!-- <div style=\"display: flex\" *ngFor=\"let client of clients\">\r\n  <div style=\"flex: 1\">{{client.clientNumber}}</div>\r\n  <div style=\"flex: 1\">{{client.firstName}}</div>\r\n  <div style=\"flex: 1\">{{client.middleName}}</div>\r\n  <div style=\"flex: 1\">{{client.lastName}}</div>\r\n  <div style=\"flex: 1\"><client-list-child [clientNumber]=\"client.clientNumber\"></client-list-child></div>\r\n</div> -->\r\n\r\n<!-- <div class=\"\">\r\n  <mat-table #table [dataSource]=\"dataSource\">\r\n    <ng-container cdkColumnDef=\"clientNumber\">\r\n      <mat-header-cell>Client Number</mat-header-cell>\r\n      <mat-cell>{{ client.clientNumber }}</mat-cell>\r\n    </ng-container>\r\n  </mat-table>\r\n</div> -->\r\n\r\n<!-- <div>\r\n  <button mat-raised-button color=\"accent\" routerLink=\"/add-client\">Add Client</button>\r\n</div>\r\n<div style=\"display: flex; flex-wrap: wrap;\" class=\"container\" >\r\n  <div style=\"display: flex\">\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"seach\" #txtClientFirstName style=\"flex: 1\" [(ngModel)]=\"searchTerm\" (ngModelChange)=\"search()\">\r\n    </mat-form-field>\r\n  </div>\r\n\r\n    <mat-card style=\"flex: 1; max-width: 30rem; border-radius: 0px;\" *ngFor=\"let client of clients\">\r\n      <mat-card-title>\r\n          <div fxLayout=\"row\" fxLayoutAlign=\"space-between\">\r\n            <div fxFlex=\"50\">\r\n              <img (click)=\"details(client._id)\" style=\"height: 50px; border-radius: 50%;\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Icons8_flat_businessman.svg/1024px-Icons8_flat_businessman.svg.png\">\r\n            </div>\r\n            <div fxFlex=\"50\" fxLayoutAlign=\"end\">{{ client.clientNumber }}</div>\r\n          </div>\r\n      </mat-card-title>\r\n\r\n      <mat-card-content>\r\n\r\n        <div fxLayout=\"column\">\r\n\r\n          <div fxLayout=\"row\">\r\n            <span class=\"mat-span-title\">{{ client.lastName }}</span>\r\n          </div>\r\n          <div fxLayout=\"row\">\r\n              <span>{{ client.firstName }} - {{ client.middleName }}</span>\r\n          </div>\r\n  \r\n          <div fxLayout=\"row\">\r\n            <div fxFlex=\"50\">\r\n              <client-list-child [clientNumber]=\"client.clientNumber\" (load)=\"client.loans = $event\"></client-list-child>\r\n              Current Loans: {{ client.loans }}\r\n            </div>\r\n            <div fxFlex=\"50\" fxLayoutAlign=\"end\">\r\n                <mat-icon matSuffix (click)=\"showLoans(client)\">receipt</mat-icon>\r\n            </div> \r\n          </div>\r\n\r\n        </div>\r\n    \r\n      </mat-card-content>\r\n\r\n    </mat-card>  \r\n</div> -->\r\n\r\n<mat-table [dataSource]=\"dataSource\">\r\n\r\n  <ng-container matColumnDef=\"clientNumber\">\r\n    <mat-header-cell *matHeaderCellDef>Client Number</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let client\" (click)=\"details(client._id)\">{{ client.clientNumber }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"lastName\">\r\n    <mat-header-cell *matHeaderCellDef>Lastname</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let client\">{{ client.lastName }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"firstName\">\r\n    <mat-header-cell *matHeaderCellDef>Firstname</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let client\">{{ client.firstName }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"middleName\">\r\n    <mat-header-cell *matHeaderCellDef>Middlename</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let client\">{{ client.middleName }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"loans\">\r\n    <mat-header-cell *matHeaderCellDef>Loans</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let client\" (click)=\"showLoans(client)\">\r\n      <client-list-child [clientNumber]=\"client.clientNumber\" (load)=\"client.loans = $event\"></client-list-child>\r\n      {{ client.loans }}\r\n    </mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: displayedColumns\"></mat-row>\r\n\r\n</mat-table>"
 
 /***/ }),
 
@@ -1507,7 +1511,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\n  padding-left: 10px;\n  padding-right: 10px; }\n\nmat-card {\n  min-width: 17rem;\n  margin-bottom: 10px;\n  width: 100%;\n  background-color: #a2d200; }\n\nmat-form-field {\n  min-width: 200px;\n  max-width: 300px;\n  width: 100%; }\n  mat-form-field input {\n    width: 300px; }\n  mat-form-field mat-input-placeholder {\n    width: 100%; }\n\n#mat-span-title {\n  font-size: 30px;\n  font-weight: 700; }\n\n.mat-span-title {\n  font-size: 30px;\n  font-weight: 700; }\n\n.flex-container-div {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 300px; }\n\n.loan-dialog .mat-dialog-container {\n  max-width: none;\n  width: 100vw;\n  height: 100vh; }\n", ""]);
+exports.push([module.i, ".container {\n  padding-left: 10px;\n  padding-right: 10px; }\n\nmat-card {\n  min-width: 17rem;\n  margin-bottom: 10px;\n  width: 100%;\n  background-color: #a2d200; }\n\nmat-form-field {\n  min-width: 200px;\n  max-width: 300px;\n  width: 100%; }\n  mat-form-field input {\n    width: 300px; }\n  mat-form-field mat-input-placeholder {\n    width: 100%; }\n\nmat-cell {\n  font-size: 9pt; }\n\n#mat-span-title {\n  font-size: 30px;\n  font-weight: 700; }\n\n.mat-span-title {\n  font-size: 30px;\n  font-weight: 700; }\n\n.flex-container-div {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 300px; }\n\n.loan-dialog .mat-dialog-container {\n  max-width: none;\n  width: 100vw;\n  height: 100vh; }\n\n.mat-column-clientNumber {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-lastName {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-firstName {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-middleName {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-loans {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n", ""]);
 
 // exports
 
@@ -1523,15 +1527,27 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientListComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SearchClientFilterPipe; });
+/* unused harmony export ClientModelDataSource */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-list/loans-dialog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_collections__ = __webpack_require__("../../../cdk/esm5/collections.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_auth_service__ = __webpack_require__("../../../../../client/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_client_service__ = __webpack_require__("../../../../../client/app/services/client.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_client_model__ = __webpack_require__("../../../../../client/app/models/client.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__client_loans_dialog_client_loans_dialog_component__ = __webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.ts");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1541,6 +1557,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1562,7 +1579,11 @@ var ClientListComponent = (function () {
         this.clients = [];
         this.clientsCopy = [];
         this.clientNumber = "AnCdEf";
-        this.client = new __WEBPACK_IMPORTED_MODULE_7__models_client_model__["a" /* ClientModel */]();
+        this.displayedColumns = [
+            "clientNumber", "lastName", "firstName", "middleName", "loans"
+            // "clientNumber"
+        ];
+        this.client = new __WEBPACK_IMPORTED_MODULE_8__models_client_model__["a" /* ClientModel */]();
     }
     ClientListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1571,8 +1592,10 @@ var ClientListComponent = (function () {
                 .subscribe(function (data) {
                 _this.clients = data;
                 _this.clientsCopy = data;
-                _this.dataSource = data;
+                // this.dataSource = data;
             }, function (error) { return console.log(error); });
+            this.dataSource = new ClientModelDataSource(this.clientService, this.auth.currentUser.username);
+            this.dataSourceCopy = this.dataSourceCopy;
         }
         else {
             this.router.navigate(['/login']);
@@ -1608,7 +1631,7 @@ var ClientListComponent = (function () {
         // this.client.loans = event;
     };
     ClientListComponent.prototype.showLoans = function (client) {
-        this.dialog.open(__WEBPACK_IMPORTED_MODULE_8__loans_dialog_component__["a" /* LoansDialogComponent */], {
+        this.dialog.open(__WEBPACK_IMPORTED_MODULE_9__client_loans_dialog_client_loans_dialog_component__["a" /* LoansDialogComponent */], {
             // width: '400px',
             // data: { clientNumber: client.clientNumber }
             data: { client: client }
@@ -1620,6 +1643,7 @@ var ClientListComponent = (function () {
             return tag.firstName.toLowerCase().indexOf(term.toLowerCase()) >= 0;
             // return tag.firstName.indexOf(term) >= 0;
         });
+        // this.dataSource
     };
     return ClientListComponent;
 }());
@@ -1629,7 +1653,7 @@ ClientListComponent = __decorate([
         template: __webpack_require__("../../../../../client/app/client-list/client-list.component.html"),
         styles: [__webpack_require__("../../../../../client/app/client-list/client-list.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_client_service__["a" /* ClientService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_client_service__["a" /* ClientService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_loan_service__["a" /* LoanService */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__services_client_service__["a" /* ClientService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_client_service__["a" /* ClientService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_loan_service__["a" /* LoanService */]) === "function" && _f || Object])
 ], ClientListComponent);
 
 
@@ -1650,138 +1674,24 @@ SearchClientFilterPipe = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
 ], SearchClientFilterPipe);
 
+var ClientModelDataSource = (function (_super) {
+    __extends(ClientModelDataSource, _super);
+    function ClientModelDataSource(dataService, username) {
+        var _this = _super.call(this) || this;
+        _this.dataService = dataService;
+        _this.username = username;
+        return _this;
+    }
+    ClientModelDataSource.prototype.connect = function () {
+        // return this.dataService.getClients();
+        return this.dataService.getByUsername(this.username);
+    };
+    ClientModelDataSource.prototype.disconnect = function () { };
+    return ClientModelDataSource;
+}(__WEBPACK_IMPORTED_MODULE_3__angular_cdk_collections__["a" /* DataSource */]));
+
 var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=client-list.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../client/app/client-list/loans-dialog.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<h1 md-dialog-title class=\"primary-color\">Client Loans</h1>\r\n<mat-dialog-content class=\"accent-color\">\r\n  <!-- <header style=\"display: flex\">\r\n    <div style=\"flex: 1\">Loan Id</div>\r\n    <div style=\"flex: 1\">Application Date</div>\r\n    <div style=\"flex: 1\">Principal</div>\r\n    <div style=\"flex: 1\">Interest (%)</div>\r\n  </header>\r\n  <div style=\"display: flex\" *ngFor=\"let loan of loans\">\r\n    <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div>\r\n  </div> -->\r\n  <!-- <div style=\"display: flex; flex-wrap: wrap\">\r\n    <mat-card *ngFor=\"let loan of loans\" style=\"flex: 1; max-width: 20rem\">\r\n      <mat-card-title>{{ loan.loanId }}</mat-card-title>\r\n      <mat-card-content>\r\n        <span matLine>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</span>\r\n        <span matLine>{{ loan.principalAmount }}</span>\r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n      </mat-card-actions>\r\n    </mat-card> \r\n  </div> -->\r\n\r\n  <!-- <div style=\"display: flex\" *ngFor=\"let loan of loans\"> -->\r\n    <!-- <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div> -->\r\n  \r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n      <div>{{ loan.principalAmount }}</div>\r\n    </div>\r\n\r\n  </div> -->\r\n\r\n  <div fxFlex fxLayout=\"column\">\r\n\r\n  <div fxFlex *ngFor=\"let loan of loans\">\r\n\r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n    <div fxFlex=\"40\" fxLayout=\"column\" style=\"flex: 0\">\r\n      <div>{{ loan.loanId }}</div>\r\n      <div>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</div>  \r\n    </div>\r\n\r\n    <div fxFlex=\"60\" fxLayout=\"column\">\r\n      <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n      <div>Principal:  {{ loan.principalAmount }}</div>  \r\n      <div>Payments: {{ loan.totalPaymentAmount }}</div>  \r\n      <div>Balance: \r\n          {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}\r\n      </div>\r\n    </div>\r\n    </div> -->\r\n\r\n    <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n\r\n    <mat-card>\r\n      <mat-card-content fxFlex fxLayoutAlign=\"start\" fxLayout=\"column\" style=\"height: 120px\">\r\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex class=\"loanId\">{{ loan.loanId }}</div>\r\n            <div fxFlex>{{ loan.applicationDate }}</div>\r\n            <!-- <div fxFlex fxLayoutAlign=\"start bottom\">\r\n                <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n              </div> -->\r\n            </div>\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex>Principal: {{ loan.principalAmount }}</div>\r\n            <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>\r\n            <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>\r\n            <div fxFlex fxLayoutAlign=\"end\">\r\n              <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n              <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n              <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n              <mat-icon (click)=\"showLedger(loan)\" mat-dialog-close>date_range</mat-icon>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <!-- <div fxFlex=\"40\" fxLayoutAlign=\"bottom\"> -->\r\n          <!-- <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n          <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button> -->\r\n          <!-- <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"end bottom\">\r\n            <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n            <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n            <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n          </div>\r\n        </div> -->\r\n      </mat-card-content>\r\n      <!-- <mat-card-actions>\r\n        <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions> -->\r\n    </mat-card>\r\n\r\n  </div>\r\n\r\n  </div>\r\n\r\n  <!-- <div> -->\r\n    <!-- <mat-card *ngFor=\"let loan of loans\" style=\"width: 100%\">\r\n\r\n      <mat-card-content>\r\n\r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan number\" [value]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n    \r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan proceeds\" [value]=\"loan.loanProceed\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"apply date\" [value]=\"loan.applicationDate | date: 'MM/dd/yyyy'\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>        \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Principal\" [value]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n\r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n            <input matInput placeholder=\"payments\" [value]=\"loan.totalPaymentAmount\" readonly=\"true\">\r\n            <mat-icon matSuffix>receipt</mat-icon>\r\n          </mat-form-field>\r\n        </div>  \r\n          \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [value]=\"getBalance(loan.principalAmount, loan.totalPaymentAmount)\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n  \r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions>\r\n    </mat-card>  -->\r\n  <!-- </div> -->\r\n\r\n\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button mat-button color=\"primary\" mat-dialog-close>\r\n    Close\r\n  </button>\r\n  <button mat-button (click)=\"showNewLoan()\" mat-dialog-close>\r\n      New Loan\r\n    </button>\r\n</mat-dialog-actions>"
-
-/***/ }),
-
-/***/ "../../../../../client/app/client-list/loans-dialog.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".primary-color {\n  font-family: 'Roboto'; }\n\n.loanId {\n  font-size: 18px;\n  font-weight: bold; }\n\nmat-card {\n  width: 100%; }\n  mat-card mat-card-content {\n    margin-left: 0px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../client/app/client-list/loans-dialog.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoansDialogComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_loan_model__ = __webpack_require__("../../../../../client/app/models/loan.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_loan_payment_dialog_client_loan_payment_dialog_component__ = __webpack_require__("../../../../../client/app/client-loan-payment-dialog/client-loan-payment-dialog.component.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-
-
-
-var LoansDialogComponent = (function () {
-    function LoansDialogComponent(router, data, loanService, dialog, dialogRef) {
-        this.router = router;
-        this.data = data;
-        this.loanService = loanService;
-        this.dialog = dialog;
-        this.dialogRef = dialogRef;
-        this.loans = [];
-        this.loanPayments = 0;
-        console.log('constructor was called');
-    }
-    LoansDialogComponent.prototype.ngOnInit = function () {
-        console.log('ngOnInit was called');
-        console.log('data: ' + this.data);
-        console.dir('data dir: ' + this.data);
-        console.dir('clientNumber: ' + this.data.client.clientNumber);
-        this.client = this.data.client;
-        this.clientLoans(this.data.client.clientNumber);
-    };
-    LoansDialogComponent.prototype.clientLoans = function (clientNumber) {
-        var _this = this;
-        this.loan = new __WEBPACK_IMPORTED_MODULE_3__models_loan_model__["a" /* LoanModel */]();
-        this.loan.clientNumber = clientNumber;
-        this.loanService.getLoans(this.loan)
-            .subscribe(function (data) { return _this.loans = data; }, function (error) { return console.log(error); });
-    };
-    // load(event) {
-    //   console.log('getLoanPayments');
-    //   console.log(event);
-    //   this.loanPayments = 100;
-    // }
-    LoansDialogComponent.prototype.loanEvent = function (event) {
-        console.log('loans-dialog: loanEvent: ' + event);
-        this.loanPayments = event;
-    };
-    LoansDialogComponent.prototype.getBalance = function (principal, payment) {
-        return principal - payment;
-    };
-    LoansDialogComponent.prototype.gotoDetails = function (loan) {
-        console.log('loanId: ' + loan);
-        console.dir(loan);
-        this.router.navigate(['/loan-details', { id: loan._id }]);
-    };
-    LoansDialogComponent.prototype.showAddPayment = function (loan) {
-        this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__client_loan_payment_dialog_client_loan_payment_dialog_component__["a" /* ClientLoanPaymentDialogComponent */], {
-            data: { loan: loan }
-        });
-    };
-    LoansDialogComponent.prototype.showNewLoan = function () {
-        this.router.navigate(['/add-new-regular-loan', { id: this.client._id }]);
-    };
-    LoansDialogComponent.prototype.showPaymentSchedule = function (loan) {
-        this.dialogRef.close();
-        this.router.navigate(['/payment-schedule-list', { loanId: loan.loanId }]);
-    };
-    LoansDialogComponent.prototype.showLedger = function (loan) {
-        this.dialogRef.close();
-        this.router.navigate(['/loan-transaction-list', { loanId: loan.loanId }]);
-    };
-    return LoansDialogComponent;
-}());
-LoansDialogComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'loans-dialog',
-        template: __webpack_require__("../../../../../client/app/client-list/loans-dialog.component.html"),
-        styles: [__webpack_require__("../../../../../client/app/client-list/loans-dialog.component.scss")]
-    }),
-    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MAT_DIALOG_DATA */])),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_loan_service__["a" /* LoanService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MatDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MatDialogRef */]) === "function" && _d || Object])
-], LoansDialogComponent);
-
-var _a, _b, _c, _d;
-//# sourceMappingURL=loans-dialog.component.js.map
 
 /***/ }),
 
@@ -2008,6 +1918,137 @@ ClientLoanPaymentDialogComponent = __decorate([
 
 var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=client-loan-payment-dialog.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../client/app/client-loans-dialog/client-loans-dialog.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1 md-dialog-title class=\"primary-color\">Client Loans</h1>\r\n<mat-dialog-content class=\"accent-color\">\r\n  <!-- <header style=\"display: flex\">\r\n    <div style=\"flex: 1\">Loan Id</div>\r\n    <div style=\"flex: 1\">Application Date</div>\r\n    <div style=\"flex: 1\">Principal</div>\r\n    <div style=\"flex: 1\">Interest (%)</div>\r\n  </header>\r\n  <div style=\"display: flex\" *ngFor=\"let loan of loans\">\r\n    <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div>\r\n  </div> -->\r\n  <!-- <div style=\"display: flex; flex-wrap: wrap\">\r\n    <mat-card *ngFor=\"let loan of loans\" style=\"flex: 1; max-width: 20rem\">\r\n      <mat-card-title>{{ loan.loanId }}</mat-card-title>\r\n      <mat-card-content>\r\n        <span matLine>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</span>\r\n        <span matLine>{{ loan.principalAmount }}</span>\r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n      </mat-card-actions>\r\n    </mat-card> \r\n  </div> -->\r\n\r\n  <!-- <div style=\"display: flex\" *ngFor=\"let loan of loans\"> -->\r\n    <!-- <div style=\"flex: 1\">{{loan.loanId}}</div>\r\n    <div style=\"flex: 1\">{{loan.applicationDate | date: 'MM/dd/yyyy'}}</div>\r\n    <div style=\"flex: 1\">{{loan.principalAmount}}</div>\r\n    <div style=\"flex: 1\"><a (click)=\"gotoDetails(loan)\" class=\"nav-item nav-link\" routerLinkActive=\"active\">{{loan.interestRate}}</a></div> -->\r\n  \r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n      <div>{{ loan.principalAmount }}</div>\r\n    </div>\r\n\r\n  </div> -->\r\n\r\n  <div fxFlex fxLayout=\"column\">\r\n\r\n  <div fxFlex *ngFor=\"let loan of loans\">\r\n\r\n    <!-- <div fxFlex fxLayout=\"column\">\r\n    <div fxFlex=\"40\" fxLayout=\"column\" style=\"flex: 0\">\r\n      <div>{{ loan.loanId }}</div>\r\n      <div>{{ loan.applicationDate | date: 'MM/dd/yyyy' }}</div>  \r\n    </div>\r\n\r\n    <div fxFlex=\"60\" fxLayout=\"column\">\r\n      <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n      <div>Principal:  {{ loan.principalAmount }}</div>  \r\n      <div>Payments: {{ loan.totalPaymentAmount }}</div>  \r\n      <div>Balance: \r\n          {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}\r\n      </div>\r\n    </div>\r\n    </div> -->\r\n\r\n    <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n\r\n    <mat-card>\r\n      <mat-card-content fxFlex fxLayoutAlign=\"start\" fxLayout=\"column\" style=\"height: 120px\">\r\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex class=\"loanId\">{{ loan.loanId }}</div>\r\n            <div fxFlex>{{ loan.applicationDate }}</div>\r\n            <!-- <div fxFlex fxLayoutAlign=\"start bottom\">\r\n                <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n              </div> -->\r\n            </div>\r\n          <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n            <div fxFlex>Principal: {{ loan.principalAmount }}</div>\r\n            <div fxFlex>Payments: {{ loan.totalPaymentAmount }}</div>\r\n            <div fxFlex>Balance: {{ getBalance(loan.principalAmount, loan.totalPaymentAmount) }}</div>\r\n            <div fxFlex fxLayoutAlign=\"end\">\r\n              <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n              <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n              <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n              <mat-icon (click)=\"showLedger(loan)\" mat-dialog-close>date_range</mat-icon>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <!-- <div fxFlex=\"40\" fxLayoutAlign=\"bottom\"> -->\r\n          <!-- <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n          <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button> -->\r\n          <!-- <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"end bottom\">\r\n            <mat-icon (click)=\"gotoDetails(loan)\" mat-dialog-close>assignment</mat-icon>\r\n            <mat-icon (click)=\"showAddPayment(loan)\" mat-dialog-close>add_circle</mat-icon>\r\n            <mat-icon (click)=\"showPaymentSchedule(loan)\" mat-dialog-close>date_range</mat-icon>\r\n          </div>\r\n        </div> -->\r\n      </mat-card-content>\r\n      <!-- <mat-card-actions>\r\n        <button mat-button mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions> -->\r\n    </mat-card>\r\n\r\n  </div>\r\n\r\n  </div>\r\n\r\n  <!-- <div> -->\r\n    <!-- <mat-card *ngFor=\"let loan of loans\" style=\"width: 100%\">\r\n\r\n      <mat-card-content>\r\n\r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan number\" [value]=\"loan.loanId\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n    \r\n        <div>\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"loan proceeds\" [value]=\"loan.loanProceed\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"apply date\" [value]=\"loan.applicationDate | date: 'MM/dd/yyyy'\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>        \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Principal\" [value]=\"loan.principalAmount\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n\r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <loans-dialog-child [loanId]=\"loan.loanId\" (loan)=\"loan.totalPaymentAmount = $event\"></loans-dialog-child>\r\n            <input matInput placeholder=\"payments\" [value]=\"loan.totalPaymentAmount\" readonly=\"true\">\r\n            <mat-icon matSuffix>receipt</mat-icon>\r\n          </mat-form-field>\r\n        </div>  \r\n          \r\n        <div style=\"display: flex\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"balance\" [value]=\"getBalance(loan.principalAmount, loan.totalPaymentAmount)\" readonly=\"true\">\r\n          </mat-form-field>\r\n        </div>  \r\n  \r\n      </mat-card-content>\r\n      <mat-card-actions>\r\n        <button mat-raised-button color=\"accent\" mat-dialog-close (click)=\"gotoDetails(loan)\">Details</button>\r\n        <button mat-button (click)=\"showAddPayment(loan)\">Add Payment</button>\r\n      </mat-card-actions>\r\n    </mat-card>  -->\r\n  <!-- </div> -->\r\n\r\n\r\n\r\n</mat-dialog-content>\r\n<mat-dialog-actions>\r\n  <button mat-button color=\"primary\" mat-dialog-close>\r\n    Close\r\n  </button>\r\n  <button mat-button (click)=\"showNewLoan()\" mat-dialog-close>\r\n      New Loan\r\n    </button>\r\n</mat-dialog-actions>"
+
+/***/ }),
+
+/***/ "../../../../../client/app/client-loans-dialog/client-loans-dialog.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".primary-color {\n  font-family: 'Roboto'; }\n\n.loanId {\n  font-size: 18px;\n  font-weight: bold; }\n\nmat-card {\n  width: 100%; }\n  mat-card mat-card-content {\n    margin-left: 0px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../client/app/client-loans-dialog/client-loans-dialog.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoansDialogComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_loan_model__ = __webpack_require__("../../../../../client/app/models/loan.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_loan_service__ = __webpack_require__("../../../../../client/app/services/loan.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_loan_payment_dialog_client_loan_payment_dialog_component__ = __webpack_require__("../../../../../client/app/client-loan-payment-dialog/client-loan-payment-dialog.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+var LoansDialogComponent = (function () {
+    function LoansDialogComponent(router, data, loanService, dialog, dialogRef) {
+        this.router = router;
+        this.data = data;
+        this.loanService = loanService;
+        this.dialog = dialog;
+        this.dialogRef = dialogRef;
+        this.loans = [];
+        this.loanPayments = 0;
+        console.log('constructor was called');
+    }
+    LoansDialogComponent.prototype.ngOnInit = function () {
+        console.log('ngOnInit was called');
+        console.log('data: ' + this.data);
+        console.dir('data dir: ' + this.data);
+        console.dir('clientNumber: ' + this.data.client.clientNumber);
+        this.client = this.data.client;
+        this.clientLoans(this.data.client.clientNumber);
+    };
+    LoansDialogComponent.prototype.clientLoans = function (clientNumber) {
+        var _this = this;
+        this.loan = new __WEBPACK_IMPORTED_MODULE_3__models_loan_model__["a" /* LoanModel */]();
+        this.loan.clientNumber = clientNumber;
+        this.loanService.getLoans(this.loan)
+            .subscribe(function (data) { return _this.loans = data; }, function (error) { return console.log(error); });
+    };
+    // load(event) {
+    //   console.log('getLoanPayments');
+    //   console.log(event);
+    //   this.loanPayments = 100;
+    // }
+    LoansDialogComponent.prototype.loanEvent = function (event) {
+        console.log('loans-dialog: loanEvent: ' + event);
+        this.loanPayments = event;
+    };
+    LoansDialogComponent.prototype.getBalance = function (principal, payment) {
+        return principal - payment;
+    };
+    LoansDialogComponent.prototype.gotoDetails = function (loan) {
+        console.log('loanId: ' + loan);
+        console.dir(loan);
+        this.router.navigate(['/loan-details', { id: loan._id }]);
+    };
+    LoansDialogComponent.prototype.showAddPayment = function (loan) {
+        this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__client_loan_payment_dialog_client_loan_payment_dialog_component__["a" /* ClientLoanPaymentDialogComponent */], {
+            data: { loan: loan }
+        });
+    };
+    LoansDialogComponent.prototype.showNewLoan = function () {
+        this.router.navigate(['/add-new-regular-loan', { id: this.client._id }]);
+    };
+    LoansDialogComponent.prototype.showPaymentSchedule = function (loan) {
+        this.dialogRef.close();
+        this.router.navigate(['/payment-schedule-list', { loanId: loan.loanId }]);
+    };
+    LoansDialogComponent.prototype.showLedger = function (loan) {
+        this.dialogRef.close();
+        console.dir(loan);
+        this.router.navigate(['/loan-transaction-list', { loanId: loan.loanId }]);
+    };
+    return LoansDialogComponent;
+}());
+LoansDialogComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'loans-dialog',
+        template: __webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.html"),
+        styles: [__webpack_require__("../../../../../client/app/client-loans-dialog/client-loans-dialog.component.scss")]
+    }),
+    __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MAT_DIALOG_DATA */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_loan_service__["a" /* LoanService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_loan_service__["a" /* LoanService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MatDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["h" /* MatDialogRef */]) === "function" && _d || Object])
+], LoansDialogComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=client-loans-dialog.component.js.map
 
 /***/ }),
 
@@ -2487,7 +2528,7 @@ var _a, _b, _c;
 /***/ "../../../../../client/app/loan-transaction-list/loan-transaction-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n\r\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n    <h3>Loan Transaction</h3>\r\n    <mat-card *ngFor=\"let transaction of transactions\">\r\n      <mat-card-title></mat-card-title>\r\n\r\n      <mat-card-content>\r\n\r\n        <div class=\"schedule\" fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n          <div fxFlex=\"10\">{{ transaction.transactionDate | date: 'yyyy/MM/dd' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.transactionType }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.transactionDescription }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.salaryAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.interestAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.releaseAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.paymentAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.otherAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.cashoutAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.balanceAmount | number: '1.2-2' }}</div>\r\n        </div>\r\n\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n\r\n</mat-card>"
+module.exports = "<!-- <mat-card>\r\n\r\n  <div fxFlex fxLayout=\"column\" fxLayoutAlign=\"start\">\r\n    <h3>Loan Transaction</h3>\r\n    <mat-card *ngFor=\"let transaction of transactions\">\r\n      <mat-card-title></mat-card-title>\r\n\r\n      <mat-card-content>\r\n\r\n        <div class=\"schedule\" fxFlex fxLayout=\"row\" fxLayoutAlign=\"start\">\r\n          <div fxFlex=\"10\">{{ transaction.transactionDate | date: 'yyyy/MM/dd' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.transactionType }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.transactionDescription }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.salaryAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.interestAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.releaseAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.paymentAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.otherAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.cashoutAmount | number: '1.2-2' }}</div>\r\n          <div fxFlex=\"30\">{{ transaction.balanceAmount | number: '1.2-2' }}</div>\r\n        </div>\r\n\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n\r\n</mat-card> -->\r\n\r\n<h3>Loan Transaction</h3>\r\n\r\n<mat-table class=\"mat-elevation-z8\" [dataSource]=\"dataSource\">\r\n\r\n  <ng-container matColumnDef=\"transactionDate\">\r\n    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\">{{ transaction.transactionDate | date: 'yyyy/MM/dd' }}</mat-cell>\r\n  </ng-container>\r\n  \r\n  <ng-container matColumnDef=\"transactionType\">\r\n    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\">{{ transaction.transactionDescription }} {{ transaction.transactionType }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"salaryAmount\">\r\n    <mat-header-cell *matHeaderCellDef>Salary</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.salaryAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"interestAmount\">\r\n    <mat-header-cell *matHeaderCellDef>Interest</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.interestAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"releaseAmount\">\r\n    <mat-header-cell *matHeaderCellDef>Release</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.releaseAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"paymentAmount\">\r\n    <mat-header-cell *matHeaderCellDef>Payment</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.paymentAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"otherDescription\">\r\n    <mat-header-cell *matHeaderCellDef>Other</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.otherDescription }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"otherAmount\">\r\n    <mat-header-cell *matHeaderCellDef></mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.otherAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"cashoutAmount\">\r\n    <mat-header-cell *matHeaderCellDef>Cashout</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.cashoutAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"balanceAmount\">\r\n    <mat-header-cell *matHeaderCellDef class=\"mat-header-cell-number\">Balance</mat-header-cell>\r\n    <mat-cell *matCellDef=\"let transaction\" class=\"mat-cell-number\">{{ transaction.balanceAmount }}</mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n\r\n  <mat-row *matRowDef=\"let row; columns: displayedColumns\"></mat-row>\r\n\r\n</mat-table>\r\n\r\n<!-- <table mat-table [dataSource]=\"transactions\" class=\"mat-elevation-z8\">\r\n\r\n  <ng-container matColumnDef=\"xdate\">\r\n    <th mat-header-cell *matHeaderCellDef>xdate</th>\r\n    <td mat-cell *matCellDef=\"let transaction\">{{ transaction.transactionDate }}</td>\r\n  </ng-container>\r\n\r\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n  <tr mat-row *matRowDef=\"let row; columns: displayColumns;\"></tr>\r\n\r\n</table> -->"
 
 /***/ }),
 
@@ -2499,7 +2540,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "mat-header-cell {\n  font-size: 9pt; }\n\nmat-cell {\n  font-size: 9pt; }\n\n#mat-cell-number {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n\n.mat-cell-number {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end; }\n\n#mat-header-cell-number {\n  width: 100px; }\n\n.mat-header-cell-number {\n  width: 100px; }\n\n.mat-column-salaryAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-interestAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgray;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-releaseAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-paymentAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-otherAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-cashoutAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-balanceAmount {\n  word-wrap: break-word !important;\n  white-space: unset !important;\n  -webkit-box-flex: 0 !important;\n      -ms-flex: 0 0 75px !important;\n          flex: 0 0 75px !important;\n  width: 75px !important;\n  overflow-wrap: break-word;\n  word-wrap: break-word;\n  word-break: break-word;\n  -ms-hyphens: auto;\n  -webkit-hyphens: auto;\n  hyphens: auto;\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-transactionType {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-otherDescription {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n\n.mat-column-transactionDate {\n  border-right: 1px solid lightgrey;\n  padding-left: 3px;\n  padding-right: 3px; }\n", ""]);
 
 // exports
 
@@ -2514,9 +2555,23 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoanTransactionListComponent; });
+/* unused harmony export LoanTransactionDataSource */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_loan_transaction_service__ = __webpack_require__("../../../../../client/app/services/loan-transaction.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__ = __webpack_require__("../../../cdk/esm5/collections.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_loan_transaction_service__ = __webpack_require__("../../../../../client/app/services/loan-transaction.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/add/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2528,12 +2583,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import { MatTableDataSource } from '@angular/material/table';
+
+
 
 var LoanTransactionListComponent = (function () {
     function LoanTransactionListComponent(route, loanTransactionService) {
         this.route = route;
         this.loanTransactionService = loanTransactionService;
         this.transactions = [];
+        this.displayedColumns = [
+            "transactionDate", "transactionType", "salaryAmount",
+            "interestAmount", "releaseAmount", "paymentAmount", "otherDescription", "otherAmount",
+            "cashoutAmount", "balanceAmount"
+        ];
     }
     LoanTransactionListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2548,7 +2611,10 @@ var LoanTransactionListComponent = (function () {
         console.log(loanId);
         this.transactions = [];
         this.loanTransactionService.getList(loanId)
-            .subscribe(function (data) { return _this.transactions = data; }, function (error) { return console.log(error); });
+            .subscribe(function (data) {
+            _this.transactions = data;
+            _this.dataSource = new LoanTransactionDataSource(_this.loanTransactionService, loanId);
+        }, function (error) { return console.log(error); });
     };
     return LoanTransactionListComponent;
 }());
@@ -2558,8 +2624,31 @@ LoanTransactionListComponent = __decorate([
         template: __webpack_require__("../../../../../client/app/loan-transaction-list/loan-transaction-list.component.html"),
         styles: [__webpack_require__("../../../../../client/app/loan-transaction-list/loan-transaction-list.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_loan_transaction_service__["a" /* LoanTransactionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_loan_transaction_service__["a" /* LoanTransactionService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_loan_transaction_service__["a" /* LoanTransactionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_loan_transaction_service__["a" /* LoanTransactionService */]) === "function" && _b || Object])
 ], LoanTransactionListComponent);
+
+var LoanTransactionDataSource = (function (_super) {
+    __extends(LoanTransactionDataSource, _super);
+    // private transactionLesson = new BehaviorSubject<LoanTransactionModel[]>([]);
+    function LoanTransactionDataSource(dataService, loanId) {
+        var _this = _super.call(this) || this;
+        _this.dataService = dataService;
+        _this.loanId = loanId;
+        return _this;
+    }
+    // connect(collectionViewer: CollectionViewer): Observable<LoanTransactionModel[]> {
+    //   return this.transactionLesson.asObservable();
+    // }
+    // disconnect(collectionViewer: CollectionViewer): void {
+    //   this.transactionLesson.complete();
+    // }
+    LoanTransactionDataSource.prototype.connect = function () {
+        return this.dataService.getList(this.loanId);
+    };
+    LoanTransactionDataSource.prototype.disconnect = function () {
+    };
+    return LoanTransactionDataSource;
+}(__WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__["a" /* DataSource */]));
 
 var _a, _b;
 //# sourceMappingURL=loan-transaction-list.component.js.map
@@ -2822,6 +2911,7 @@ var ClientModel = (function (_super) {
     __extends(ClientModel, _super);
     function ClientModel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.username = "";
         _this.clientNumber = '';
         _this.firstName = '';
         _this.middleName = '';
@@ -3767,6 +3857,9 @@ var ClientService = (function () {
     };
     ClientService.prototype.getClientByClientNumber = function (client) {
         return this.http.get("/api/client/client/" + client.clientNumber).map(function (res) { return res.json(); });
+    };
+    ClientService.prototype.getByUsername = function (username) {
+        return this.http.get("/api/clients/username/" + username).map(function (res) { return res.json(); });
     };
     ClientService.prototype.editClient = function (client) {
         return this.http.put("/api/client/" + client._id, JSON.stringify(client), this.options);

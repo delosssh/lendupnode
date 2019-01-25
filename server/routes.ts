@@ -3,16 +3,16 @@ import * as express from 'express';
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
 import PaymentCtrl from './controllers/clientpayment';
-import ClientCtrl from './controllers/client';
+import ClientCtrl from './controllers/client.controller';
 import LoanCtrl from './controllers/loan';
 import PaymentScheduleCtrl from './controllers/payment-schedule';
 import LoanTransactionCtrl from './controllers/loan-transaction.controller';
-import Cat from './models/cat';
-import User from './models/user';
-import Payment from './models/clientpayment';
-import Client from './models/client';
-import Loan from './models/loan';
-import PaymentScheduleModel from './models/payment-schedule.model';
+// import Cat from './models/cat';
+// import User from './models/user';
+// import Payment from './models/clientpayment';
+// import Client from './models/client';
+// import Loan from './models/loan';
+// import PaymentScheduleModel from './models/payment-schedule.model';
 
 export default function setRoutes(app) {
 
@@ -49,6 +49,7 @@ export default function setRoutes(app) {
   router.route('/client/:id').put(clientCtrl.update);
   router.route('/client/:id').delete(clientCtrl.delete);
   router.route('/clients').get(clientCtrl.getAll);
+  router.route('/clients/username/:id').get(clientCtrl.getByUsername);
   router.route('/client/client/:id').get(clientCtrl.getClient);
   
   // Client Payments

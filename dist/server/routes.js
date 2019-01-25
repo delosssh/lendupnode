@@ -4,16 +4,22 @@ var express = require("express");
 var cat_1 = require("./controllers/cat");
 var user_1 = require("./controllers/user");
 var clientpayment_1 = require("./controllers/clientpayment");
-var client_1 = require("./controllers/client");
+var client_controller_1 = require("./controllers/client.controller");
 var loan_1 = require("./controllers/loan");
 var payment_schedule_1 = require("./controllers/payment-schedule");
 var loan_transaction_controller_1 = require("./controllers/loan-transaction.controller");
+// import Cat from './models/cat';
+// import User from './models/user';
+// import Payment from './models/clientpayment';
+// import Client from './models/client';
+// import Loan from './models/loan';
+// import PaymentScheduleModel from './models/payment-schedule.model';
 function setRoutes(app) {
     var router = express.Router();
     var catCtrl = new cat_1.default();
     var userCtrl = new user_1.default();
     var paymentCtrl = new clientpayment_1.default();
-    var clientCtrl = new client_1.default();
+    var clientCtrl = new client_controller_1.default();
     var loanCtrl = new loan_1.default();
     var paymentScheduleCtrl = new payment_schedule_1.default();
     var loanTransactionCtrl = new loan_transaction_controller_1.default();
@@ -38,6 +44,7 @@ function setRoutes(app) {
     router.route('/client/:id').put(clientCtrl.update);
     router.route('/client/:id').delete(clientCtrl.delete);
     router.route('/clients').get(clientCtrl.getAll);
+    router.route('/clients/username/:id').get(clientCtrl.getByUsername);
     router.route('/client/client/:id').get(clientCtrl.getClient);
     // Client Payments
     router.route('/clientpayment').post(paymentCtrl.insert);

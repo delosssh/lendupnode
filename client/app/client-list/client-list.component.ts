@@ -10,7 +10,7 @@ import { ClientService } from '../services/client.service';
 import { LoanService } from '../services/loan.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { ClientModel } from '../models/client.model';
-import { LoansDialogComponent } from './loans-dialog.component';
+import { LoansDialogComponent } from '../client-loans-dialog/client-loans-dialog.component';
 
 // import { ClientListChildComponent } from './client-list-child.component';
 
@@ -25,7 +25,13 @@ export class ClientListComponent {
   clients = [];
   clientsCopy = [];
   clientNumber:String = "AnCdEf";
-  dataSource: DataSource<any>;
+  // dataSource: DataSource<any>;
+  dataSource: ClientModelDataSource;
+  dataSourceCopy: ClientModelDataSource;
+  displayedColumns = [
+    "clientNumber", "lastName", "firstName", "middleName", "loans"
+    // "clientNumber"
+  ];
   loan: Number;
   searchTerm: String;
 
@@ -47,10 +53,16 @@ export class ClientListComponent {
         data => {
           this.clients = data;
           this.clientsCopy = data;
-          this.dataSource = data;
+          // this.dataSource = data;
         },
         error => console.log(error)
       );
+
+      this.dataSource = new ClientModelDataSource(
+        this.clientService, 
+        this.auth.currentUser.username
+      );
+      this.dataSourceCopy = this.dataSourceCopy;
     } else {
       this.router.navigate(['/login']);
     }
@@ -107,12 +119,15 @@ export class ClientListComponent {
       return tag.firstName.toLowerCase().indexOf(term.toLowerCase()) >= 0;
       // return tag.firstName.indexOf(term) >= 0;
     });
+
+    // this.dataSource
   }
 
 }
 
 
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Pipe({
   name: 'searchClient'
@@ -124,4 +139,22 @@ export class SearchClientFilterPipe implements PipeTransform {
     if(!items) return [];
     return items.filter(it => it[field] == value);
   }
+}
+
+export class ClientModelDataSource extends DataSource<any> {
+
+  constructor (
+    private dataService: ClientService,
+    private username: string,
+  ) {
+    super();
+  }
+
+  connect(): Observable<ClientModel[]> {
+    // return this.dataService.getClients();
+    return this.dataService.getByUsername(this.username);
+  }
+
+  disconnect(): void {}
+
 }

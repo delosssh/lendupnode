@@ -17,6 +17,10 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
 import { AddNewRegularLoanComponent } from './add-new-regular-loan/add-new-regular-loan.component';
 import { LoanPaymentComponent } from './loan-payment/loan-payment.component';
+import { LoanApplicationFormComponent } from './loan-application-form/loan-application-form.component';
+import { LoanApplicationForm2Component } from './loan-application-form-2/loan-application-form-2.component';
+import { LoanApplicationForm3Component } from './loan-application-form-3/loan-application-form-3.component';
+// import { LoanApplicationForm4Component } from './loan-application-form-4/loan-application-form-4.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuardLogin } from './services/auth-guard-login.service';
@@ -44,6 +48,10 @@ const routes: Routes = [
   { path: 'add-new-regular-loan', component: AddNewRegularLoanComponent },
   { path: 'payment-schedule-list', component: PaymentScheduleListComponent },
   { path: 'loan-transaction-list', component: LoanTransactionListComponent },
+  { path: 'loan-application-form', component: LoanApplicationFormComponent },
+  { path: 'loan-application-form-2', component: LoanApplicationForm2Component },
+  { path: 'loan-application-form-3', component: LoanApplicationForm3Component },
+  // { path: 'loan-application-form-4', component: LoanApplicationForm4Component },
   { path: '**', redirectTo: '/notfound' },
 ];
 

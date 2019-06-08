@@ -1,0 +1,547 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="display: flex; width: 100%;">
+    <div class="application-form" fxLayout="column" fxLayoutAlign="center center">
+      <h1>Registration</h1>
+
+      <form 
+        fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+      
+        <!-- Occupation -->
+        <mat-form-field
+          fxFlex="0 1 calc(50% - 10px)"
+          fxFlex.lt-md="0 1 calc (50% - 10px)"
+          fxFlex.lt-sm="100%">
+          <mat-label>Occupation</mat-label>
+          <mat-select [(value)]="setSelected" [(ngModel)]="loanApplication.occupationId" name="occupationId">
+            <mat-option value="3">Private Office Employee</mat-option>
+            <mat-option value="4">Government Employee</mat-option>
+            <mat-option value="5">Business Owner/Entreprenuer</mat-option>
+            <mat-option value="6">Unemployed / Housewife</mat-option>
+            <mat-option value="7">Call Center Employee</mat-option>
+            <mat-option value="1">OFW (Land-Based)</mat-option>
+            <mat-option value="2">OFW (Sea-Based)</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field 
+          fxFlex="0 1 calc(50% - 10px)"
+          fxFlex.lt-md="0 1 calc(50% - 10px)"
+          fxFlex.lt-sm="100%">
+          <input matInput placeholder="Company Name">
+        </mat-form-field> -->
+
+        <div [style.display]="privateEmployeeBlock" fxFlex="100%"
+          fxLayout="row wrap" fxLayoutAlign="space-between none" fxLayoutGap="10px" fxLayout.lt-sm="column">
+          <h2 fxFlex="100%">Private/Government Employment</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company Name" [(ngModel)]="loanApplication.companyName" name="companyName">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company phone" [(ngModel)]="loanApplication.companyPhone" name="companyPhone">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Employee Status</mat-label>
+            <mat-select [(ngModel)]="loanApplication.employmentStatus" name="employmentStatus">
+              <mat-option value="regular">Regular</mat-option>
+              <mat-option value="contractual">Contractual</mat-option>
+              <mat-option value="probationary">Probationary</mat-option>
+            </mat-select>
+          </mat-form-field>        
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Monthly income" [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+          </mat-form-field>
+      
+          <!-- <div class="income"> -->
+
+            <mat-form-field 
+              fxFlex="0 1 calc(50% - 10px)"
+              fxFlex.lt-md="0 1 calc(50% - 10px)"
+              fxFlex.lt-sm="100%">
+              <mat-label>Monthly Income Payment</mat-label>
+              <mat-select [(ngModel)]="loanApplication.incomePayment" name="incomePayment">
+                <mat-option value="onceamonth">Once a month</mat-option>
+                <mat-option value="twiceamonth">2x a month</mat-option>
+                <mat-option value="weekly">Weekly</mat-option>
+              </mat-select>
+            </mat-form-field>        
+              
+            <mat-form-field
+              fxFlex="0 1 calc(50% - 10px)"
+              fxFlex.lt-md="0 1 (50% - 10px)"
+              fxFlex.lt-sm="100%">
+              <input matInput [matDatepicker]="nextdateincomepicker" placeholder="Next date of income" [(ngModel)]="loanApplication.nextDateOfIncome" name="nextDateOfIncome">
+              <mat-datepicker-toggle matSuffix [for]="nextdateincomepicker"></mat-datepicker-toggle>
+              <mat-datepicker #nextdateincomepicker startView="year"></mat-datepicker>
+            </mat-form-field>
+
+          <!-- </div> -->
+
+          <h2 fxFlex="100%">Co-Worker</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker name" [(ngModel)]="loanApplication.coworker1Name" name="coworker1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker mobile phone" [(ngModel)]="loanApplication.coworker1MobilePhone" name="coworker1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker name" [(ngModel)]="loanApplication.coworker2Name" name="coworker2Name">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker mobile phone" [(ngModel)]="loanApplication.coworker2MobilePhone" name="coworker2MobilePhone">
+          </mat-form-field>
+
+          <h2 fxFlex="100%">Relative</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative name" [(ngModel)]="loanApplication.relative1Name" name="relative1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative mobile phone" [(ngModel)]="loanApplication.relative1MobilePhone" name="relative1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative name" [(ngModel)]="loanApplication.relative2Name" name="relative2Name0">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative mobile phone" [(ngModel)]="loanApplication.relative2MobilePhone" name="relative2MobilePhone">
+          </mat-form-field>
+          
+        </div>
+
+        <div [style.display]="governmentEmployeeBlock" fxFlex="100%"
+        fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+          <h2 fxFlex="100%">Government Employee</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company Name" [(ngModel)]="loanApplication.companyName" name="companyName">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company phone" [(ngModel)]="loanApplication.companyPhone" name="companyPhone">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Employee Status</mat-label>
+            <mat-select [(ngModel)]="loanApplication.employmentStatus" name="employmentStatus">
+              <mat-option value="regular">Regular</mat-option>
+              <mat-option value="contractual">Contractual</mat-option>
+              <mat-option value="probationary">Probationary</mat-option>
+            </mat-select>
+          </mat-form-field>        
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Monthly income" [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+          </mat-form-field>
+      
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Monthly Income Payment</mat-label>
+            <mat-select [(ngModel)]="loanApplication.incomePayment" name="incomePayment">
+              <mat-option value="onceamonth">Once a month</mat-option>
+              <mat-option value="twiceamonth">2x a month</mat-option>
+              <mat-option value="weekly">Weekly</mat-option>
+            </mat-select>
+          </mat-form-field>        
+            
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput [matDatepicker]="governmentnextdateincomepicker" placeholder="Next date of income" [(ngModel)]="loanApplication.nextDateOfIncome" name="nextDateOfIncome">
+            <mat-datepicker-toggle matSuffix [for]="governmentnextdateincomepicker"></mat-datepicker-toggle>
+            <mat-datepicker #governmentnextdateincomepicker startView="year"></mat-datepicker>
+          </mat-form-field>
+      
+          <h2>Co-Worker</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker name" [(ngModel)]="loanApplication.coworker1Name" name="coworker1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker mobile phone" [(ngModel)]="loanApplication.coworker1MobilePhone" name="coworker1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker name" [(ngModel)]="loanApplication.coworker2Name" name="coworker2Name">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker mobile phone" [(ngModel)]="loanApplication.coworker2MobilePhone" name="coworker2MobilePhone">
+          </mat-form-field>
+
+          <h2 fxFlex="100%">Relative</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative name" [(ngModel)]="loanApplication.relative1Name" name="relative1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative mobile phone" [(ngModel)]="loanApplication.relative1MobilePhone" name="relative1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative name" [(ngModel)]="loanApplication.relative2Name" name="relative2Name2">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative mobile phone" [(ngModel)]="loanApplication.relative2MobilePhone" name="relative2MobilePhone">
+          </mat-form-field>
+          
+        </div>
+
+        <div [style.display]="freelanceBlock" fxFlex="100%"
+          fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+          <h2 fxFlex="100%">Freelance / Self-employed / Business Owner</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company Name" [(ngModel)]="loanApplication.companyName" name="companyName">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Monthly income" [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+          </mat-form-field>
+      
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Monthly Income Payment</mat-label>
+            <mat-select [(ngModel)]="loanApplication.incomePayment" name="incomePayment">
+              <mat-option value="onceamonth">Once a month</mat-option>
+              <mat-option value="twiceamonth">2x a month</mat-option>
+              <mat-option value="weekly">Weekly</mat-option>
+            </mat-select>
+          </mat-form-field>        
+            
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput [matDatepicker]="nextdateincomepicker1" placeholder="Next date of income" [(ngModel)]="loanApplication.nextDateOfIncome" name="nextDateOfIncome">
+            <mat-datepicker-toggle matSuffix [for]="nextdateincomepicker1"></mat-datepicker-toggle>
+            <mat-datepicker #nextdateincomepicker1 startView="year"></mat-datepicker>
+          </mat-form-field>
+    
+        </div>
+
+        <div [style.display]="unemployedBlock" fxFlex="100%"
+          fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+          <h2 fxFlex="100%">Unemployed / Housewife</h2>
+      
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Monthly Income Payment</mat-label>
+            <mat-select [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+              <mat-option value="onceamonth">Once a month</mat-option>
+              <mat-option value="twiceamonth">2x a month</mat-option>
+              <mat-option value="weekly">Weekly</mat-option>
+            </mat-select>
+          </mat-form-field>        
+            
+          <!-- <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput [matDatepicker]="unemployednextdateincomepicker" placeholder="Next date of income">
+            <mat-datepicker-toggle matSuffix [for]="unemployednextdateincomepicker"></mat-datepicker-toggle>
+            <mat-datepicker #unemployednextdateincomepicker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field> -->
+
+          <h2 fxFlex="100%">Relative</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative name" [(ngModel)]="loanApplication.relative1Name" name="relative1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative mobile phone" [(ngModel)]="loanApplication.relative1MobilePhone" name="relative1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative name" [(ngModel)]="loanApplication.relative2Name" name="relative2Name3">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative mobile phone" [(ngModel)]="loanApplication.relative2MobilePhone" name="relative2MobilePhone">
+          </mat-form-field>
+          
+        </div>
+
+        <div [style.display]="callcenterBlock" fxFlex="100%"
+          fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+          <h2 fxFlex="100%">Call Center Employee</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company Name" [(ngModel)]="loanApplication.companyName" name="companyName">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Company phone" [(ngModel)]="loanApplication.companyPhone" name="companyPhone">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Employee Status</mat-label>
+            <mat-select [(ngModel)]="loanApplication.employmentStatus" name="employmentStatus">
+              <mat-option value="regular">Regular</mat-option>
+              <mat-option value="contractual">Contractual</mat-option>
+              <mat-option value="probationary">Probationary</mat-option>
+            </mat-select>
+          </mat-form-field>        
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Monthly income (PHP)" [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+          </mat-form-field>
+      
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <mat-label>Monthly Income Payment</mat-label>
+            <mat-select [(ngModel)]="loanApplication.monthlyIncome" name="monthlyIncome">
+              <mat-option value="onceamonth">Once a month</mat-option>
+              <mat-option value="twiceamonth">2x a month</mat-option>
+              <mat-option value="weekly">Weekly</mat-option>
+            </mat-select>
+          </mat-form-field>        
+            
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput [matDatepicker]="callcenternextdateincomepicker" placeholder="Next date of income" [(ngModel)]="loanApplication.nextDateOfIncome" name="nextDateOfIncome">
+            <mat-datepicker-toggle matSuffix [for]="callcenternextdateincomepicker"></mat-datepicker-toggle>
+            <mat-datepicker #callcenternextdateincomepicker startView="year"></mat-datepicker>
+          </mat-form-field>
+      
+          <h2 fxFlex="100%">Co-Worker</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker name" [(ngModel)]="loanApplication.coworker1Name" name="coworker1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Co-worker mobile phone" [(ngModel)]="loanApplication.coworker1MobilePhone" name="coworker1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker name" [(ngModel)]="loanApplication.coworker2Name" name="coworker2Name">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second co-worker mobile phone" [(ngModel)]="loanApplication.coworker2MobilePhone" name="coworker2MobilePhone">
+          </mat-form-field>
+
+          <h2 fxFlex="100%">Relative</h2>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative name" [(ngModel)]="loanApplication.relative1Name" name="relative1Name">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Relative mobile phone" [(ngModel)]="loanApplication.relative1MobilePhone" name="relative1MobilePhone">
+          </mat-form-field>
+    
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative name" [(ngModel)]="loanApplication.relative2Name" name="relative2Name4">
+          </mat-form-field>
+
+          <mat-form-field 
+            fxFlex="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-sm="100%">
+            <input matInput placeholder="Second relative mobile phone" [(ngModel)]="loanApplication.relative2MobilePhone" name="relative2MobilePhone">
+          </mat-form-field>
+          
+        </div>
+    
+      </form>
+    
+      <div class="buttons">
+        <p class="back-page-button"><button mat-flat-button>BACK</button></p>
+        <p class="next-page-button"><button mat-flat-button (click)="nextPage()">NEXT</button></p>
+      </div>
+
+
+        
+  </div>
+
+  
+  
+</div>
+
+
+<!-- <div [style.display]="privateEmployeeBlock" fxFlex="100%"
+fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+<h2 fxFlex="100%">Private/Government Employment {{selected}}</h2>
+
+<mat-form-field 
+  fxFlex="0 1 calc(50% - 0px)"
+  fxFlex.lt-md="0 1 calc(50% - 0px)"
+  fxFlex.lt-sm="100%">
+  <input matInput placeholder="Company Name">
+</mat-form-field>
+
+<mat-form-field 
+  fxFlex="0 1 calc(50% - 0px)"
+  fxFlex.lt-md="0 1 calc(50% - 0px)"
+  fxFlex.lt-sm="100%">
+  <input matInput placeholder="Company phone">
+</mat-form-field>
+
+<mat-form-field 
+  fxFlex="0 1 calc(50% - 10px)"
+  fxFlex.lt-md="0 1 calc(50% - 10px)"
+  fxFlex.lt-sm="100%">
+  <mat-label>Employee Status</mat-label>
+  <mat-select>
+    <mat-option>Regular</mat-option>
+    <mat-option>Contractual</mat-option>
+    <mat-option>Probationary</mat-option>
+  </mat-select>
+</mat-form-field>        
+
+<mat-form-field 
+  fxFlex="0 1 calc(50% - 10px)"
+  fxFlex.lt-md="0 1 calc(50% - 10px)"
+  fxFlex.lt-sm="100%">
+  <input matInput placeholder="Monthly income">
+</mat-form-field>
+
+</div> -->

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var chai = require("chai");
-var chaiHttp = require("chai-http");
+// var chaiHttp = require("chai-http");
 process.env.NODE_ENV = 'test';
 var app_1 = require("../app");
 var user_1 = require("../models/user");
-var should = chai.use(chaiHttp).should();
+// var should = chai.use(chaiHttp).should();
 describe('Users', function () {
     beforeEach(function (done) {
         user_1.default.remove({}, function (err) {

@@ -1,0 +1,253 @@
+<div style="display: flex; flex-wrap: wrap" fxLayout="column">
+    
+  <div class="feature">
+    <!-- <div style="min-width: 80vh; min-height: 75vh; background-color:coral; margin: 10px 10px 10px 10px">
+      APPLY WITH CONFIDENCE
+    </div>
+
+    <div style="min-width: 80vh; min-height: 75vh; background-color:coral; margin: 10px 10px 10px 10px">
+      APPLY WITH CONFIDENCE
+    </div> -->
+
+    <div fxLayout="row" fxLayoutAlign="space-around">
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="space-around">
+        <p>test test left </p>
+        <p>test test right </p>
+
+        <p>test test right2 </p>
+
+      </div>
+
+      <!-- <span class="fill-space"></span> -->
+
+      <div fxLayout="row">
+
+        <!-- <div fxLayout="column"> -->
+
+
+
+        <mat-card>
+
+          <mat-card-title>Login</mat-card-title>
+
+          <mat-card-content fxLayout="column">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div>
+              <mat-icon>lock</mat-icon>
+              <mat-form-field>
+                <input matInput formControlName="email" placeholder="email address"readonly="false">
+              </mat-form-field>            
+            </div>
+
+            <div>
+              <mat-icon></mat-icon>
+              <mat-form-field>
+                <input matInput formControlName="password" placeholder="password" readonly="false" type="password">
+              </mat-form-field>            
+            </div>
+
+            <button mat-raised-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+
+          </form>
+        </mat-card-content>
+
+        </mat-card>
+
+        <!-- </div> -->
+
+      </div>
+    </div>
+
+    <!-- <div fxLayout="column">
+          <div fxFlex>
+            <mat-icon>person</mat-icon>
+            <mat-form-field>
+              <input matInput placeholder="login" [(ngModel)]="clientName" readonly="false">
+            </mat-form-field>            
+          </div>
+          <div fxFlex>
+              <mat-icon>person</mat-icon>
+            <mat-form-field>
+              <input matInput placeholder="login" [(ngModel)]="clientName" readonly="false">
+            </mat-form-field>            
+          </div>
+    </div> -->
+
+  </div>
+
+  <div class="eligible" fxLayout="column">
+  <!-- <div style="background-color:#8510C0; justify-content: center; align-items: center; min-height: 50vh; width: 100%; display: flex; flex-wrap: wrap;"> -->
+
+    <!-- <div style="background-color:aqua; margin-bottom: 0px;">
+      <h1>you are eligible if</h1>
+    </div> -->
+    <h1>You are Eligible if</h1>
+    
+    <div>
+    <!-- <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;"> -->
+      <mat-card>
+        <mat-card-content>
+          <div style="width: 100%;">
+            <!-- <img src="https://www.w3schools.com/w3css/img_avatar3.png" style="max-width: 60px"> -->
+            <mat-icon>person</mat-icon>
+            <!-- <div>You are 21 y/o or above</div> -->
+            <h2>21 y/o or above, but not 70 y/o upon loan maturity</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <mat-icon>home</mat-icon>
+            <h2>A Filipino citizen, bills on his/her name</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <mat-icon>store</mat-icon>
+            <h2>Self-employed operating a legitimate business that has been profitable at least 3 years</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+        
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <mat-icon>attach_money</mat-icon>
+            <h2>Employed for at least 1 year earning a gross monthly income of Php15,000</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+  <div class="how-it-works" fxLayout="column">
+      
+    <h1>How LendUp Works</h1>
+    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
+      <mat-card>
+          <mat-card-headers>
+            <mat-card-title>Step 1</mat-card-title>
+          </mat-card-headers>
+    
+            <mat-card-content>
+          <div>
+            <h2>Accomplished application form which includes name and contact details. </h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 2</mat-card-title>
+        </mat-card-headers>
+  
+        <mat-card-content>
+          <div >
+            <h2>Choose from several options and choose the best one</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 3</mat-card-title>
+        </mat-card-headers>
+
+        <mat-card-content>
+          <div >
+            <h2>We process your submitted loan application </h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+        
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 4</mat-card-title>
+        </mat-card-headers>
+
+        <mat-card-content>
+          <div >
+            <h2>Collect your loan after approval</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+      
+  <!-- footer -->
+  <div class="footer">
+  <!-- <div style="background-color:#545454; justify-content: center; align-items: center; min-height: 30vh; width: 100%; display: flex; flex-wrap: wrap;"> -->
+      
+    <div>
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-subtitle>ABOUT US</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Home</p>
+          <p>Our Story</p>
+          <p>Branches</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>PRODUCTS</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+          <p>Salary Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>TOOLS</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Loan</p>
+          <p>Calculator</p>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>GUIDES</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+          <p>Salary Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>CONNECT WITH US</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <mat-icon>facebook</mat-icon>
+          <mat-icon>instagram</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+
+  </div>
+      
+
+</div>
+    

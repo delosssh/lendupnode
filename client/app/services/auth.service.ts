@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from '../services/user.service';
 
@@ -9,7 +9,7 @@ export class AuthService {
   loggedIn = false;
   isAdmin = false;
 
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   currentUser = { _id: '', username: '', role: '' };
 

@@ -278,7 +278,7 @@ export class AddNewRegularLoanComponent {
     console.dir(this.schedules);
     this.loan.maturityDate = dueDateTmp;
 
-    // this.showPaymentSchedule(this.schedules);
+    this.showPaymentSchedule(this.schedules);
   }
 
   calculatePaymentScheduleDaily() {

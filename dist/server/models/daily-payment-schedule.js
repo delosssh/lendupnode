@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var DailyPaymentSchedule = (function () {
+var DailyPaymentSchedule = /** @class */ (function () {
     function DailyPaymentSchedule() {
     }
     return DailyPaymentSchedule;

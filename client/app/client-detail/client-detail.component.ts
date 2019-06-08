@@ -47,7 +47,8 @@ export class ClientDetailComponent implements OnInit {
 
   loans(client: ClientModel) {
     this.dialog.open(LoansDialogComponent, {
-      data: { clientNumber: client.clientNumber }
+      // data: { clientNumber: client.clientNumber }
+      data: { client: this._client }
     });    
   }
 

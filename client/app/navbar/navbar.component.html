@@ -1,25 +1,29 @@
 <div class="navbar">
-  
-  <mat-toolbar color="accent">
-          
-    <button mat-button routerLink="/">
-    <mat-icon>home</mat-icon> 
-        {{title}}</button>
-  
-    <!-- This fills the remaining space of the current row -->
-    <span class="fill-space"></span>
-    <!-- <span flex></span> -->
-    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="/whatis">What is LendUp</button>
-        <button mat-button routerLink="/dashboard">How LendUp Works?</button>
-        <button mat-button routerLink="/dashboard">Our Products</button>
-        <button mat-button routerLink="/add-client">Add Client</button>
-        <button mat-button routerLink="/loan-payment">Payments</button>
-        <button mat-button routerLink="/client-list">Collector</button>
-      </div>
+  <!-- ABOUT US -->
+  <mat-toolbar color="primary">
+
     <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
     </button>
+    
+
+    <!-- <span flex></span> -->
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+        <button mat-button routerLink="/whatis">ABOUT US</button>
+        <button mat-button routerLink="/dashboard">HOW IT WORKS?</button>
+        <button mat-button routerLink="/dashboard">FAQ</button>
+        <button mat-button routerLink="/dashboard">CONTACT</button>
+        <!-- <button mat-button routerLink="/add-client">Add Client</button>
+        <button mat-button routerLink="/loan-payment">Payments</button>
+        <button mat-button routerLink="/client-list">Collector</button> -->
+      </div>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-space"></span>
+
+    <button mat-button routerLink="/">
+      <mat-icon>home</mat-icon> 
+          {{title}}</button>
           
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">

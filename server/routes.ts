@@ -7,6 +7,7 @@ import ClientCtrl from './controllers/client.controller';
 import LoanCtrl from './controllers/loan';
 import PaymentScheduleCtrl from './controllers/payment-schedule';
 import LoanTransactionCtrl from './controllers/loan-transaction.controller';
+import LoanApplicationCtrl from './controllers/loan-application.controller';
 // import Cat from './models/cat';
 // import User from './models/user';
 // import Payment from './models/clientpayment';
@@ -25,6 +26,7 @@ export default function setRoutes(app) {
   const loanCtrl = new LoanCtrl();
   const paymentScheduleCtrl = new PaymentScheduleCtrl();
   const loanTransactionCtrl = new LoanTransactionCtrl();
+  const loanApplicationCtrl = new LoanApplicationCtrl();
 
   // Cats
   router.route('/cats').get(catCtrl.getAll);
@@ -77,6 +79,11 @@ export default function setRoutes(app) {
   // Transaction
   router.route('/loantransaction').post(loanTransactionCtrl.insert);
   router.route('/loantransaction/loan/:id').get(loanTransactionCtrl.getByLoanId);
+
+  // 2019-06-08
+  // Loan application
+  router.route('/loanapplication').post(loanApplicationCtrl.insert);
+
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);

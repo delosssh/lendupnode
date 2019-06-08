@@ -2,7 +2,7 @@
 var express = require("express");
 /** controller */
 var router = express.Router();
-var PaymentRoutes = (function () {
+var PaymentRoutes = /** @class */ (function () {
     function PaymentRoutes() {
     }
     return PaymentRoutes;

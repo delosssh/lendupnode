@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var chai = require("chai");
-var chaiHttp = require("chai-http");
+// var chaiHttp = require("chai-http");
 process.env.NODE_ENV = 'test';
 var app_1 = require("../app");
 var cat_1 = require("../models/cat");

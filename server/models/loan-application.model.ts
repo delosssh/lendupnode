@@ -1,0 +1,47 @@
+import * as mongoose from 'mongoose';
+
+const loanApplicationSchema = new mongoose.Schema({
+  applicationId: String,
+  idType: String,
+  idNumber: String,
+  firstName: String,
+  middleName: String,
+  lastName: String,
+  birthDate: Date,
+  gender: String,
+  suffix: String,
+  emailAddress: String,
+  mobileNumber: String,
+  facebookHandle: String,
+  twitterHandle: String,
+  instagramHandle: String,
+  provinceName: String,
+  cityName: String,
+  streetAddress: String,
+  streetAddress2: String,
+  barangayName: String,
+  occupationId: String,
+  companyName: String,
+  companyPhone: String,
+  employmentStatus: String,
+  monthlyIncome: Number,
+  incomePayment: String,
+  nextDateOfIncome: Date,
+  coworker1Name: String,
+  coworker1MobilePhone: String,
+  coworker2Name: String,
+  coworker2MobilePhone: String,
+  relative1Name: String,
+  relative1MobilePhone: String,
+  relative2Name: String,
+  relative2MobilePhone: String,
+  amountToBorrow: Number,
+  durationInMonths: Number,
+  applicationDate: Date,
+  creationDate: Date,
+  lastUpdate: Date,
+});
+
+const LoanApplication = mongoose.model('loan-application', loanApplicationSchema);
+
+export default LoanApplication;

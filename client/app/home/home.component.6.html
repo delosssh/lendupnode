@@ -1,0 +1,315 @@
+<div style="display: flex; flex-wrap: wrap" fxLayout="column">
+    
+  <div class="feature">
+    <!-- <div style="min-width: 80vh; min-height: 75vh; background-color:coral; margin: 10px 10px 10px 10px">
+      APPLY WITH CONFIDENCE
+    </div>
+
+    <div style="min-width: 80vh; min-height: 75vh; background-color:coral; margin: 10px 10px 10px 10px">
+      APPLY WITH CONFIDENCE
+    </div> -->
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+
+      <div fxLayout="column" class="feature-description" fxLayoutAlign="end start">
+        <div class="feature-title">Need money quickly?</div>
+        <div class="feature-sub-title">Fast, online loan application</div>
+        <div class="feature-sub-title">Php 5,000 - Php 25,000</div>
+      </div>
+
+
+      <div fxLayout="row">
+
+        <!-- <div fxLayout="column"> -->
+
+        <div class="mat-carder">
+
+        <mat-card>
+
+          <!-- <mat-card-title>Login</mat-card-title> -->
+
+          <mat-card-content fxLayout="column" fxLayoutAlign="end">
+          
+            <div fxLayout="row" fxLayoutAlign="space-between">
+
+              <p class="loan-amount-label">I need to borrow</p>
+
+              <p class="loan-amount">Php {{ loanAmount | number : fractionSize }}</p>
+
+            </div>
+
+
+            <mat-slider
+              thumbLabel
+              [displayWith]="loanSlider"
+              tickInterval="1000"
+              step="1000"
+              min="1000"
+              max="10000"
+            ></mat-slider>
+           
+            <div class="divider"></div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+
+              <p class="loan-amount-label">I will repay in</p>
+
+              <p class="loan-amount">{{ duration }} months</p>
+
+            </div>
+
+            <mat-slider
+              thumbLabel
+              [displayWith]="durationSlider"
+              tickInterval="1"
+              step="1"
+              min="1"
+              max="3"
+            ></mat-slider>
+
+            <div class="divider"></div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+
+              <p class="loan-amount-label">Your monthly payment: Php 9,999</p>
+
+              <p></p>
+
+            </div>
+
+            <!-- <div> -->
+            <!-- <button mat-flat-button >
+            <p class="apply-now-button">{{ duration }} months</p>
+            </button> -->
+            <!-- </div> -->
+
+            <p class="apply-now-button"><button mat-flat-button>APPLY NOW</button></p>
+        
+          </mat-card-content>
+
+        </mat-card>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- <div fxLayout="column">
+          <div fxFlex>
+            <mat-icon>person</mat-icon>
+            <mat-form-field>
+              <input matInput placeholder="login" [(ngModel)]="clientName" readonly="false">
+            </mat-form-field>            
+          </div>
+          <div fxFlex>
+              <mat-icon>person</mat-icon>
+            <mat-form-field>
+              <input matInput placeholder="login" [(ngModel)]="clientName" readonly="false">
+            </mat-form-field>            
+          </div>
+    </div> -->
+
+  </div>
+
+  <!-- <div class="different" fxLayout="row" fxLayoutAlign="space-evenly center">
+
+    <div>
+      <mat-icon>home</mat-icon>      
+    </div>
+
+    <div>
+      <mat-icon>home</mat-icon>      
+    </div>
+
+    <div>
+      <mat-icon>home</mat-icon>      
+    </div>
+
+    <div>
+      <mat-icon>home</mat-icon>      
+    </div>
+
+    <div>
+      <mat-icon>home</mat-icon>      
+    </div>
+
+
+  </div> -->
+
+  <div class="eligible" fxLayout="column">
+  <!-- <div style="background-color:#8510C0; justify-content: center; align-items: center; min-height: 50vh; width: 100%; display: flex; flex-wrap: wrap;"> -->
+
+    <!-- <div style="background-color:aqua; margin-bottom: 0px;">
+      <h1>you are eligible if</h1>
+    </div> -->
+    <h1>You are Eligible if</h1>
+    
+    <div>
+    <!-- <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;"> -->
+      <!-- <div> -->
+      <mat-card>
+        <mat-card-content>
+          <div>
+            <!-- <img src="https://www.w3schools.com/w3css/img_avatar3.png" style="max-width: 60px"> -->
+            <div><mat-icon>person</mat-icon></div>
+            <!-- <div>You are 21 y/o or above</div> -->
+            <h2>Loan up to PHP 25K</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    <!-- </div> -->
+
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <div><mat-icon>home</mat-icon></div>
+            <h2>Whole process completely online</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <div><mat-icon>store</mat-icon></div>
+            <h2>Money in your account in 24 - 72 hours</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+        
+      <mat-card>
+        <mat-card-content>
+          <div >
+            <div><mat-icon>attach_money</mat-icon></div>
+            <h2>Credit duration up to 90 days</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+  <div class="how-it-works" fxLayout="column">
+      
+    <h1>Quick Loan in 3 Easy Steps</h1>
+    <div>
+      <mat-card>
+          <mat-card-headers>
+            <mat-card-title>Step 1</mat-card-title>
+          </mat-card-headers>
+    
+            <mat-card-content>
+          <div>
+            <h2>Fill up our online application form here.  We will get back to you in 1 to days.</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 2</mat-card-title>
+        </mat-card-headers>
+  
+        <mat-card-content>
+          <div >
+            <h2>Choose from several options and choose the best one</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 3</mat-card-title>
+        </mat-card-headers>
+
+        <mat-card-content>
+          <div >
+            <h2>We process your submitted loan application </h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+        
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-title>Step 4</mat-card-title>
+        </mat-card-headers>
+
+        <mat-card-content>
+          <div >
+            <h2>Collect your loan after approval</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+      
+  <!-- footer -->
+  <div class="footer">
+  <!-- <div style="background-color:#545454; justify-content: center; align-items: center; min-height: 30vh; width: 100%; display: flex; flex-wrap: wrap;"> -->
+      
+    <div>
+      <mat-card>
+        <mat-card-headers>
+          <mat-card-subtitle>ABOUT US</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Home</p>
+          <p>Our Story</p>
+          <p>Branches</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>PRODUCTS</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+          <p>Salary Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>TOOLS</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Loan</p>
+          <p>Calculator</p>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>GUIDES</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <p>Personal Loan</p>
+          <p>Business Loan</p>
+          <p>Salary Loan</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="max-width: 25vh; margin: 10px 10px 10px 10px;">
+        <mat-card-headers>
+          <mat-card-subtitle>CONNECT WITH US</mat-card-subtitle>
+        </mat-card-headers>
+        <mat-card-content>
+          <mat-icon>facebook</mat-icon>
+          <mat-icon>instagram</mat-icon>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+
+  </div>
+      
+
+</div>
+    

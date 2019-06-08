@@ -8,6 +8,7 @@ var client_controller_1 = require("./controllers/client.controller");
 var loan_1 = require("./controllers/loan");
 var payment_schedule_1 = require("./controllers/payment-schedule");
 var loan_transaction_controller_1 = require("./controllers/loan-transaction.controller");
+var loan_application_controller_1 = require("./controllers/loan-application.controller");
 // import Cat from './models/cat';
 // import User from './models/user';
 // import Payment from './models/clientpayment';
@@ -23,6 +24,7 @@ function setRoutes(app) {
     var loanCtrl = new loan_1.default();
     var paymentScheduleCtrl = new payment_schedule_1.default();
     var loanTransactionCtrl = new loan_transaction_controller_1.default();
+    var loanApplicationCtrl = new loan_application_controller_1.default();
     // Cats
     router.route('/cats').get(catCtrl.getAll);
     router.route('/cats/count').get(catCtrl.count);
@@ -68,6 +70,9 @@ function setRoutes(app) {
     // Transaction
     router.route('/loantransaction').post(loanTransactionCtrl.insert);
     router.route('/loantransaction/loan/:id').get(loanTransactionCtrl.getByLoanId);
+    // 2019-06-08
+    // Loan application
+    router.route('/loanapplication').post(loanApplicationCtrl.insert);
     // Apply the routes to our application with the prefix /api
     app.use('/api', router);
 }

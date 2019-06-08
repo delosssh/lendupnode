@@ -2,7 +2,7 @@
 var express = require("express");
 /* routes */
 var app = express();
-var Routes = (function () {
+var Routes = /** @class */ (function () {
     function Routes() {
     }
     Object.defineProperty(Routes.prototype, "routes", {

@@ -1,0 +1,182 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="display: flex; width: 100%;">
+<div class="application-form" fxLayout="column" fxLayoutAlign="center center">
+  <h1>Registration</h1>
+
+  <form fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="10px" fxLayout.lt-sm="column">
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+        <mat-label>Identification</mat-label>
+        <mat-select placeholder="Identification" [(ngModel)]="loanApplication.idType" name="identification">
+          <mat-option value="passport">Passport</mat-option>
+          <mat-option value="driverlicense">Driver's License</mat-option>
+          <mat-option value="prcid">Professional Regulation Commission (PRC) ID</mat-option>
+          <mat-option value="nbicleareance">NBI Clearance</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="ID Number" [(ngModel)]="loanApplication.idNumber" name="idNumber">
+    </mat-form-field>
+      
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="First Name" [(ngModel)]="loanApplication.firstName" name="firstName">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="Middle Name" [(ngModel)]="loanApplication.middleName" name="middleName">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="Last Name" [(ngModel)]="loanApplication.lastName" name="lastName">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput [matDatepicker]="picker" placeholder="Birthdate" [(ngModel)]="loanApplication.birthDate" name="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <mat-label>Gender</mat-label>
+      <mat-select placeholder="Gender" [(ngModel)]="loanApplication.gender" name="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>    
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <mat-label>Suffix</mat-label>
+      <mat-select [(ngModel)]="loanApplication.suffix" name="suffix">
+        <mat-option value="none">None</mat-option>
+        <mat-option value="sr">Sr</mat-option>
+        <mat-option value="jr">Jr</mat-option>
+        <mat-option value="ii">II</mat-option>
+        <mat-option value="iii">III</mat-option>
+        <mat-option value="iv">IV</mat-option>
+        <mat-option value="v">V</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="Business or Private Email" [(ngModel)]="loanApplication.emailAddress" name="emailAddress">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="Mobile Number" [(ngModel)]="loanApplication.mobileNumber" name="mobileNumber">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="facebook" [(ngModel)]="loanApplication.facebookHandle" name="facebookHandle">
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="twitter" [(ngModel)]="loanApplication.twitterHandle" name="twitterHandle">
+    </mat-form-field>
+    
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <input matInput placeholder="instagram" [(ngModel)]="loanApplication.instagramHandle" name="instagramHandle">
+    </mat-form-field>    
+
+
+    <h2 fxFlex="100%">Current Address</h2>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <mat-label>Region/Province</mat-label>
+      <mat-select [(ngModel)]="loanApplication.provinceName" name="provinceName">
+        <mat-option value="nuevaecija">Nueva Ecija</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field 
+      fxFlex="0 1 calc(50% - 10px)"
+      fxFlex.lt-md="0 1 (50% - 10px)"
+      fxFlex.lt-sm="100%">
+      <mat-label>City</mat-label>
+      <mat-select [(ngModel)]="loanApplication.cityName" name="cityName">
+        <mat-option value="sanjosecity">San Jose City</mat-option>
+        <mat-option value="munoz">Science City of Munoz</mat-option>
+        <mat-option value="talavera">Talavera</mat-option>
+        <mat-option value="guimba">Guimba</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <div> -->
+      <mat-form-field 
+        fxFlex="0 1 calc(50% - 10px)"
+        fxFlex.lt-md="0 1 (50% - 10px)"
+        fxFlex.lt-sm="100%">
+        <input matInput placeholder="Subdivision / Village" [(ngModel)]="loanApplication.subdivisionName" name="subdivisionName">
+      </mat-form-field>
+      <mat-form-field 
+        fxFlex="0 1 calc(50% - 10px)"
+        fxFlex.lt-md="0 1 (50% - 10px)"
+        fxFlex.lt-sm="100%">
+        <input matInput placeholder="Zone / Barangay" [(ngModel)]="loanApplication.barangayName" name="barangayName">
+      </mat-form-field>
+      <mat-form-field 
+        fxFlex="0 1 calc(50% - 10px)"
+        fxFlex.lt-md="0 1 (50% - 10px)"
+        fxFlex.lt-sm="100%">
+        <input matInput placeholder="House" [(ngModel)]="loanApplication.streetAddress" name="house">
+      </mat-form-field>
+      <mat-form-field 
+        fxFlex="0 1 calc(50% - 10px)"
+        fxFlex.lt-md="0 1 (50% - 10px)"
+        fxFlex.lt-sm="100%">
+        <input matInput placeholder="Apartment" [(ngModel)]="loanApplication.apartmentName" name="apartmentName">
+      </mat-form-field>
+    <!-- </div> -->  
+
+  </form>
+
+  <div class="buttons">
+    <p class="back-page-button"><button mat-flat-button>BACK</button></p>
+    <p class="next-page-button"><button mat-flat-button (click)="nextPage()">NEXT</button></p>
+  </div>
+
+</div>
+
+</div>

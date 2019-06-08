@@ -12,6 +12,7 @@ import { PaymentScheduleService } from './services/payment-schedule.service';
 import { LoanTransactionService } from './services/loan-transaction.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { LoanApplicationService } from './services/loan-application.service';
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
 import { AboutComponent } from './about/about.component';
@@ -28,6 +29,7 @@ import { ClientListChildComponent } from './client-list/client-list-child.compon
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { LoansDialogComponent } from './client-loans-dialog/client-loans-dialog.component';
+import { LoansDialogComponent1 } from './client-list/loans-dialog.component';
 import { LoanPaymentDialogComponent } from './loan-payments/loan-payment-dialog.component';
 import { AddLoanPaymentDialogComponent } from './add-loan-payment/add-loan-payment-dialog.component';
 import { AddNewLoanComponent } from './add-new-loan/add-new-loan.component';
@@ -39,13 +41,17 @@ import { LoansDialogChildComponent } from './loans-dialog-child/loans-dialog-chi
 import { LoanTransactionListComponent } from './loan-transaction-list/loan-transaction-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { LoanApplicationFormComponent } from './loan-application-form/loan-application-form.component';
+import { LoanApplicationForm2Component } from './loan-application-form-2/loan-application-form-2.component';
+import { LoanApplicationForm3Component } from './loan-application-form-3/loan-application-form-3.component';
+// import { LoanApplicationForm4Component } from './loan-application-form-4/loan-application-form-4.component';
 
-import { BrowserModule } from '@angular/platform-browser';
-// import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdInputModule, MdSelectModule, MdDialogModule, MdTableModule } from '@angular/material';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatInputModule, MatSelectModule, MatDialogModule, MatTableModule, MatListModule, MatStepperModule, MatRadioModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatInputModule, MatSelectModule, MatDialogModule, MatTableModule, MatListModule, MatStepperModule, MatRadioModule, MatDatepickerModule, MatNativeDateModule, GestureConfig } from '@angular/material';
+import { MatSliderModule } from '@angular/material/slider';
 import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentScheduleDialogComponent } from './payment-schedule-dialog/payment-schedule-dialog.component';
 import { DatePipe } from '@angular/common';
 
@@ -67,6 +73,7 @@ import { DatePipe } from '@angular/common';
     LoanDetailsComponent,
     ClientDetailComponent,
     LoansDialogComponent,
+    LoansDialogComponent1,
     LoansDialogChildComponent,
     LoanPaymentDialogComponent,
     AddLoanPaymentDialogComponent,
@@ -79,6 +86,10 @@ import { DatePipe } from '@angular/common';
     LoanTransactionListComponent,
     NavbarComponent,
     HomeComponent,
+    LoanApplicationFormComponent,
+    LoanApplicationForm2Component,
+    LoanApplicationForm3Component,
+    // LoanApplicationForm4Component,
     SearchClientFilterPipe
   ],
   entryComponents: [
@@ -117,7 +128,8 @@ import { DatePipe } from '@angular/common';
     MatStepperModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSliderModule,
   ],
   providers: [
     AuthService,
@@ -131,6 +143,8 @@ import { DatePipe } from '@angular/common';
     ClientPaymentService,
     PaymentScheduleService,
     LoanTransactionService,
+    LoanApplicationService,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig},
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

@@ -62,11 +62,11 @@
 
   <ng-container matColumnDef="otherDescription">
     <mat-header-cell *matHeaderCellDef>Other</mat-header-cell>
-    <mat-cell *matCellDef="let transaction" class="mat-cell-number">{{ transaction.otherDescription }}</mat-cell>
+    <mat-cell *matCellDef="let transaction" class="mat-cell-number">{{ (transaction.otherDescription == null) ? 'none' : transaction.otherDescription }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="otherAmount">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
     <mat-cell *matCellDef="let transaction" class="mat-cell-number">{{ transaction.otherAmount }}</mat-cell>
   </ng-container>
 

@@ -56,20 +56,20 @@
           fxFlex.lt-sm="100%">         -->
 
         <div [style.display]="privateEmployeeBlock" 
-          fxFlex="100%" fxFlex.lt-md="800px" fxFlex.lt-sm="100%"
+          fxFlex="100%" fxFlex.lt-md="100%" fxFlex.lt-sm="100%"
           fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="space-between none" fxLayoutGap="10px">
           <h2 fxFlex="100%">Private/Government Employment</h2>
 
           <mat-form-field 
             fxFlex="1 0 calc(50% - 10px)"
-            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="1 0 calc(50% - 10px)"
             fxFlex.lt-sm="100%">
             <input matInput placeholder="Company Name" [(ngModel)]="loanApplication.companyName" name="companyName">
           </mat-form-field>
 
           <mat-form-field 
             fxFlex="1 0 calc(50% - 10px)"
-            fxFlex.lt-md="0 1 calc(50% - 10px)"
+            fxFlex.lt-md="100%"
             fxFlex.lt-sm="100%">
             <input matInput placeholder="Company phone" [(ngModel)]="loanApplication.companyPhone" name="companyPhone">
           </mat-form-field>

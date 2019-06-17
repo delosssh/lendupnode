@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewChildren, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { AuthService } from '../services/auth.service';
 // import { ToastComponent } from '../shared/toast/toast.component';
@@ -22,6 +23,7 @@ export class LoanApplicationFormComponent {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private location: Location,
     private loanApplicationService: LoanApplicationService,
   ) {
     this.loanApplication = new LoanApplicationModel();
@@ -33,6 +35,10 @@ export class LoanApplicationFormComponent {
     console.log('loan-application-form: ' + this.loanApplication.amountToBorrow.toString());
   }
 
+
+  backPage() {
+    this.location.back();
+  }
 
   nextPage() {
     this.loanApplicationService.setData(this.loanApplication);

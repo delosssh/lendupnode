@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewChildren, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { AuthService } from '../services/auth.service';
 // import { ToastComponent } from '../shared/toast/toast.component';
@@ -32,6 +33,7 @@ export class LoanApplicationForm2Component {
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private location: Location,
     private loanApplicationService: LoanApplicationService,
     // public toast: ToastComponent,
   ) {
@@ -80,6 +82,10 @@ export class LoanApplicationForm2Component {
   occupationOnChange = (value) => {
     // console.log('changed: ' + this.privateEmployementBlock);
     // this.privateEmployementBlock = !this.privateEmployementBlock;
+  }
+
+  backPage() {
+    this.location.back();
   }
 
   nextPage() {

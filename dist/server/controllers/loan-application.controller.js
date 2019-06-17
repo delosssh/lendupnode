@@ -28,7 +28,8 @@ var LoanApplicationCtrl = /** @class */ (function (_super) {
                 }
                 var mailOptions = {
                     from: 'SS delos Santos ✔ <delosssh@gmail.com>',
-                    to: 'ancalifi@gmail.com',
+                    // to: 'ancalifi@gmail.com',
+                    to: obj.emailAddress,
                     subject: "Hello " + "sherwin",
                     text: 'Hello ' + "req.body.email" + '✔',
                     html: "<p>Hello " + "req.body.email" + " </p>",

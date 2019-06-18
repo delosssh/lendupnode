@@ -32,13 +32,13 @@ export default class LoanApplicationCtrl extends BaseCtrl {
       }
 
       // htmlMessage: String;
-      let htmlMessage = "<p>Hello " + obj.firstName + "</p>" + '✔'
+      let htmlMessage = "<p>Hello " + obj.firstName + "</p>"
                       + "<p>This is to confirm that your application was received "
                       + "and will be reviewed by our team.  It will take us 24 "
                       + "to 48 hours to review and will contact you shortly. "
                       + "In the meantime, please click the link below to validate "
-                      + "your email address.</p>" + '✔'
-                      + "<p/>" + '✔'
+                      + "your email address.</p>"
+                      + "<p/>"
                       + "<a href=''>Confirm email</a>";
 
       var mailOptions = {

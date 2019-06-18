@@ -1,5 +1,6 @@
 import LoanApplication from '../models/loan-application.model';
 import BaseCtrl from './base';
+var random = require('randomatic');
 
 import * as NodeMailer from 'nodemailer';
 
@@ -18,6 +19,9 @@ export default class LoanApplicationCtrl extends BaseCtrl {
     });
 
     const obj = new this.model(req.body);
+
+    // application id
+    obj.applicationId = random('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 6);
     obj.save((err, item) => {
       // 11000 is the code for duplicate key error
       if (err && err.code === 11000) {
@@ -27,13 +31,23 @@ export default class LoanApplicationCtrl extends BaseCtrl {
         return console.error(err);
       }
 
+      // htmlMessage: String;
+      let htmlMessage = "<p>Hello " + obj.firstName + "</p>" + '✔'
+                      + "<p>This is to confirm that your application was received "
+                      + "and will be reviewed by our team.  It will take us 24 "
+                      + "to 48 hours to review and will contact you shortly. "
+                      + "In the meantime, please click the link below to validate "
+                      + "your email address.</p>" + '✔'
+                      + "<p/>" + '✔'
+                      + "<a href=''>Confirm email</a>";
+
       var mailOptions = {
         from: 'SS delos Santos ✔ <delosssh@gmail.com>',
         // to: 'ancalifi@gmail.com',
         to: obj.emailAddress,
-        subject: "Hello " + "sherwin",
-        text: 'Hello ' + "req.body.email" + '✔',
-        html: "<p>Hello " + "req.body.email" + " </p>",
+        subject: "Loan Application No: " + obj.applicationId,
+        // text: 'Hello ' + "req.body.email" + '✔',
+        html: htmlMessage,
         bcc: "ancalifi@gmail.com"
       };
 

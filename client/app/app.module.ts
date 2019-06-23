@@ -26,6 +26,7 @@ import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { ClientListComponent, SearchClientFilterPipe } from './client-list/client-list.component';
 import { ClientListChildComponent } from './client-list/client-list-child.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { LoansDialogComponent } from './client-loans-dialog/client-loans-dialog.component';
@@ -44,6 +45,8 @@ import { HomeComponent } from './home/home.component';
 import { LoanApplicationFormComponent } from './loan-application-form/loan-application-form.component';
 import { LoanApplicationForm2Component } from './loan-application-form-2/loan-application-form-2.component';
 import { LoanApplicationForm3Component } from './loan-application-form-3/loan-application-form-3.component';
+import { FooterComponent } from './footer/footer.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 // import { LoanApplicationForm4Component } from './loan-application-form-4/loan-application-form-4.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -70,6 +73,7 @@ import { DatePipe } from '@angular/common';
     AddClientComponent,
     ClientListComponent,
     ClientListChildComponent,
+    ContactUsComponent,
     LoanDetailsComponent,
     ClientDetailComponent,
     LoansDialogComponent,
@@ -85,10 +89,12 @@ import { DatePipe } from '@angular/common';
     PaymentScheduleListComponent,
     LoanTransactionListComponent,
     NavbarComponent,
+    FooterComponent,
     HomeComponent,
     LoanApplicationFormComponent,
     LoanApplicationForm2Component,
     LoanApplicationForm3Component,
+    HowItWorksComponent,
     // LoanApplicationForm4Component,
     SearchClientFilterPipe
   ],

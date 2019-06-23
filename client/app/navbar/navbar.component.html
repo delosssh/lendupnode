@@ -10,9 +10,9 @@
     <!-- <span flex></span> -->
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/whatis">ABOUT US</button>
-        <button mat-button routerLink="/dashboard">HOW IT WORKS?</button>
-        <button mat-button routerLink="/dashboard">FAQ</button>
-        <button mat-button routerLink="/dashboard">CONTACT</button>
+        <button mat-button routerLink="/how-it-works">HOW IT WORKS?</button>
+        <!-- <button mat-button routerLink="/dashboard">FAQ</button> -->
+        <button mat-button routerLink="/contact-us">CONTACT</button>
         <!-- <button mat-button routerLink="/add-client">Add Client</button>
         <button mat-button routerLink="/loan-payment">Payments</button>
         <button mat-button routerLink="/client-list">Collector</button> -->
@@ -27,12 +27,13 @@
           
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item routerLink="/whatis">What is LendUp</button>
-    <button mat-menu-item routerLink="/dashboard">How LendUp Works?</button>
-    <button mat-menu-item>Our Products</button>
-    <button mat-menu-item routerLink="/add-client">Add Client</button>
-    <button mat-button routerLink="/loan-payment">Payments</button>
-    <button mat-button routerLink="/client-list">Collector</button>
+    <button mat-menu-item routerLink="/whatis">ABOUT US</button>
+    <button mat-menu-item routerLink="/how-it-works">HOW IT WORKS?</button>
+    <!-- <button mat-menu-item>Our Products</button> -->
+    <!-- <button mat-menu-item routerLink="/add-client">Add Client</button> -->
+    <!-- <button mat-button routerLink="/loan-payment">Payments</button> -->
+    <!-- <button mat-button routerLink="/client-list">Collector</button> -->
+    <button mat-button routerLink="/contact-us">CONTACT</button>
   </mat-menu>
   
 </div>
